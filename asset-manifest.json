@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/zerif/static/css/main.48d3b1ac.css",
-    "main.js": "/zerif/static/js/main.d14d7fcd.js",
+    "main.css": "/zerif/static/css/main.d3590f6f.css",
+    "main.js": "/zerif/static/js/main.a2413177.js",
     "static/js/787.044d8b7e.chunk.js": "/zerif/static/js/787.044d8b7e.chunk.js",
     "static/media/formPieNew2.png": "/zerif/static/media/formPieNew2.8f4ee826acf2f4f898bf.png",
     "static/media/GradientBody3Desc.png": "/zerif/static/media/GradientBody3Desc.db564e84eb1590b2ed95.png",
@@ -56,14 +56,16 @@
     "static/media/sideImg4.png": "/zerif/static/media/sideImg4.20f00c3531c56dc2ecd4.png",
     "static/media/sideImg1.png": "/zerif/static/media/sideImg1.f9efaf674d653952f3bf.png",
     "static/media/productImage.png": "/zerif/static/media/productImage.c18b9e817a14921d4aa5.png",
+    "static/media/success.svg": "/zerif/static/media/success.7032386d9d570afd59fb246c4ad79224.svg",
     "index.html": "/zerif/index.html",
+    "static/media/upIcon.svg": "/zerif/static/media/upIcon.f0c879dc4eada967a4396651329ad3f2.svg",
     "static/media/downIcon.svg": "/zerif/static/media/downIcon.03f4ac5120a63ce59cb8a51958771e10.svg",
-    "main.48d3b1ac.css.map": "/zerif/static/css/main.48d3b1ac.css.map",
-    "main.d14d7fcd.js.map": "/zerif/static/js/main.d14d7fcd.js.map",
+    "main.d3590f6f.css.map": "/zerif/static/css/main.d3590f6f.css.map",
+    "main.a2413177.js.map": "/zerif/static/js/main.a2413177.js.map",
     "787.044d8b7e.chunk.js.map": "/zerif/static/js/787.044d8b7e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.48d3b1ac.css",
-    "static/js/main.d14d7fcd.js"
+    "static/css/main.d3590f6f.css",
+    "static/js/main.a2413177.js"
   ]
 }
