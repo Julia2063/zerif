@@ -1,0 +1,61 @@
+@import "../../../styles/mixines.scss";
+
+.popularBlock3 {
+  
+  background-image: url("../../../images/Popular/GradientBlock3.png");
+  background-size: cover;
+  width: 100%;
+  height: min-content;
+  padding: 120px 120px 90px 120px;
+
+  @include onMobile {
+    padding: 74px 55px 74px;
+    height: min-content;
+  
+  }
+}
+
+.swiperBox2 {
+
+  &__img {
+    width: 100%;
+
+    margin-bottom: 35px;
+  }
+
+  &__title {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;
+    line-height: 21px;
+    text-transform: uppercase;
+
+    margin-bottom: 12.6px;
+
+    @include onTablet {
+      font-size: 16px;
+    }
+
+    @include onMobile {
+      font-size: 20px;
+    }
+  }
+
+  &__price {
+    font-family: Montserrat, sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 21px;
+
+   
+
+    @include onTablet {
+      font-size: 14px;
+    }
+
+     @include onMobile {
+   
+      font-size: 20px;
+      line-height: 21px;
+    }
+  }
+}

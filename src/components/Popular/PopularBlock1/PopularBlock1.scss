@@ -1,0 +1,121 @@
+@import "../../../styles/mixines.scss";
+
+.popularBlock1 {
+   background-image: url("../../../images/Popular/GradientBlock3.png");
+    background-size: cover;
+    width: 100%;
+    height: min-content;
+    padding: 120px 120px 90px 120px;
+
+  @include onMobile {
+    background-image: url("../../../images/Popular/GradientBlock1.png");
+    padding: 74px 55px 74px;
+    height: min-content;
+  
+  }
+
+}
+
+.swiperBox1 {
+ 
+  &__img {
+    width: 100%;
+
+    margin-bottom: 35px;
+  }
+
+  &__title {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;
+    line-height: 21px;
+    text-transform: uppercase;
+
+    margin-bottom: 12.6px;
+
+    @include onTablet {
+      font-size: 16px;
+    }
+
+    @include onMobile {
+      font-size: 20px;
+    }
+
+
+  }
+
+  &__price {
+    font-family: Montserrat, sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 21px;
+
+   
+
+    @include onTablet {
+      font-size: 14px;
+    }
+
+     @include onMobile {
+   
+      font-size: 20px;
+      line-height: 21px;
+    }
+  }
+}
+
+.swiper{
+  margin-bottom: 84px;
+
+  &-wrapper {
+    margin-bottom: 50px;
+  }
+
+  .swiper-scrollbar {
+    border-radius: var(--swiper-scrollbar-border-radius, 10px);
+    position: relative;
+    -ms-touch-action: none;
+    background: rgba(235, 198, 168, 1);
+    ;
+    .swiper-scrollbar-disabled > &,
+    &.swiper-scrollbar-disabled {
+      display: none !important;
+    }
+    .swiper-horizontal > &,
+    &.swiper-scrollbar-horizontal {
+      position: absolute;
+      left: 0;
+      bottom: var(--swiper-scrollbar-bottom, 4px);
+      top: var(--swiper-scrollbar-top, auto);
+      z-index: 50;
+      height: 2px;
+      width: 100%;
+    }
+    .swiper-vertical > &,
+    &.swiper-scrollbar-vertical {
+      position: absolute;
+      left: var(--swiper-scrollbar-left, auto);
+      right: var(--swiper-scrollbar-right, 4px);
+      top: var(--swiper-scrollbar-sides-offset, 1%);
+      z-index: 50;
+      width: 100%;
+      height: calc(100% - 2 * var(--swiper-scrollbar-sides-offset, 1%));
+    }
+  }
+  .swiper-scrollbar-drag {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    background: rgba(144, 88, 75, 1);
+    ;
+    border-radius: var(--swiper-scrollbar-border-radius, 10px);
+    left: 0;
+    top: 0;
+  }
+  .swiper-scrollbar-cursor-drag {
+    cursor: move;
+  }
+  .swiper-scrollbar-lock {
+    display: none;
+  }
+}
+

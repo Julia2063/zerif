@@ -1,0 +1,217 @@
+@import '../../styles/mixines.scss';
+
+.helperLink {
+  text-decoration: none;
+  color: white;
+}
+
+.basket {
+    background-image: url('../../images/BasketPage/Gradient.png');
+    background-size: cover;
+
+    padding: 50px 120px 180px 120px;
+    display: flex;
+    flex-direction: column;
+
+  @include onMobile {
+    display: block;
+    background-image: none;
+    background-color: #FFF7F1;
+    padding: 30px 30px 82px 30px;
+  }
+
+  &__title {
+    font-family: Montserrat, sans-serif;
+    font-size: 20px;
+    line-height: 21px;
+    text-transform: uppercase;
+
+    margin-bottom: 30px;
+  }
+
+  &__button {
+    font-family: Montserrat, sans-serif;
+    font-weight: 500;
+ 
+    padding: 13px 24px;
+
+    width: 40%;
+    height: 47px;
+    border: none;
+    background-color: #08090B;
+
+    font-size: 20px;
+    line-height: 21px;
+    text-transform: uppercase;
+    color: white;
+    align-self: end;
+
+    @include onTablet {
+      width: 60%;
+    }
+    
+
+    @include onMobile {
+
+      width: 100%;
+    }
+
+  }
+}
+
+.basketBox {
+  
+    background-color: #FFF7F1;
+    padding: 32px;
+    
+    width: 100%;
+
+    margin-bottom: 32px;
+    
+  @include onMobile {
+    padding: 0;
+
+    margin-bottom: 36.5;
+  }
+
+}
+
+.basketBlock1 {
+  
+  border-bottom: 1px solid #000;
+
+  &__item {
+    display: grid;
+    grid-template-columns: 0.5fr 7fr 1fr 1fr;
+    gap: 16px;
+    align-items: center;
+    margin-bottom: 25px;
+
+  }
+  
+
+  &__img {
+    width: 50px;
+    height: 47px;
+  }
+
+  &__title {
+    display: flex;
+    justify-content: space-between;
+    font-family: Montserrat, sans-serif;
+    font-size: 15px;
+    line-height: 22px;
+
+    @include onMobile {
+      flex-direction: column;
+    }
+  }
+
+  &__counterBox {
+    width: 70px;
+    display: flex;
+    justify-content: space-between;
+
+    justify-self: center;
+   
+    @include onMobile {
+      width: 100px;
+    }
+
+
+  }
+
+  &__counterButton {
+    display: inline-block;
+    border: none;
+    background: none;
+    font-size: 17px;
+  }
+
+  &__counterText {
+    display: inline-block;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;
+  }
+
+  &__price {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;
+    color: #431F1D;
+    justify-self: end;
+
+  }
+
+  &__deleteButton {
+    justify-self: end;
+    border: none;
+    background: none;
+
+    & img {
+      width: 10px;
+    }
+    
+  }
+}
+
+.basketBlock2 {
+  padding-top: 24px;
+
+  &__productPrice {
+    display: flex;
+    justify-content: space-between;
+    font-size: 15px;
+    line-height: 22px;
+
+    font-family: Montserrat, sans-serif;
+    font-weight: 400;
+
+    margin-bottom: 2px;
+
+    @include onTablet {
+      font-size: 11px;
+      line-height: 18px;
+    }
+
+    @include onMobile {
+      font-size: 15px;
+      line-height: 22px;
+
+      margin-bottom: 13.5px;
+    }
+  }
+
+  &__delivery {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+
+    font-size: 15px;
+    line-height: 22px;
+
+    font-family: Montserrat, sans-serif;
+    font-weight: 400;
+
+    @include onTablet {
+      font-size: 11px;
+      line-height: 18px;
+    }
+
+    @include onMobile {
+      font-size: 15px;
+      line-height: 22px;
+    }
+
+  }
+
+  &__fullCoast {
+    display: flex;
+    justify-content: space-between;
+
+    font-family: Montserrat, sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 21px;
+    text-transform: uppercase;
+  }
+}

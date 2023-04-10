@@ -1,0 +1,128 @@
+@import '../../../styles/mixines.scss';
+
+.popular {
+  position: relative;
+
+
+  @include onMobile {
+    background-image: url('../../../images/Popular/HeaderPopGradient.png');
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  &__content {
+
+
+    &--title1 {
+
+      position: absolute;
+      top: 32%;
+      left: 60%;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      font-weight: 700;
+      font-size: 40px;
+      line-height: 42px;
+      text-transform: uppercase;
+
+      @include onDesktop {
+        font-size: 35px;
+        line-height: 37px;
+      }
+
+      @include onTablet {
+        position: absolute;
+        top: 50%;
+        left: 55%;
+        font-size: 30px;
+        line-height: 35px;
+      }
+
+      @include onMobile {
+        top: 60%;
+        left: 56px;
+        font-weight: 700;
+        font-size: 40px;
+        line-height: 45px;
+      }
+    }
+
+    &--title2 {
+      
+      position: absolute;
+      top: 55%;
+      left: 57%;
+      font-family: Montserrat, sans-serif;
+      font-size: 20px;
+      line-height: 21px;
+      width: 500px;
+      text-transform: uppercase;
+
+      @include onDesktop {
+        font-size: 18px;
+        line-height: 25px;
+        width: 400px;
+      }
+
+      @include onTablet {
+        left: 50%;
+        top: 70%;
+        font-size: 16px;
+        line-height: 20px;
+        width: 350px;
+      }
+
+      @include onMobile {
+        width: 250px;
+        top: 77%;
+        left: 56px;
+        font-size: 20px;
+        line-height: 24px;
+        text-transform: none;
+      }
+
+      
+    }
+  }
+}
+
+.popHeadImg {
+   display: none;
+
+  @include onMobile {
+    display: block;
+    width: 100%;
+    object-fit: contain;
+    object-position: 0 -100px;
+  
+  }
+
+}
+
+.popHeadImgDesc {
+  height: 100%;
+  align-self: end;
+
+  @include onMobile {
+    display: none;
+  }
+}
+
+.imageBox {
+  height: 312px;
+  background-image: url('../../../images/Popular/HeaderPopGradient.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+
+
+  @include onDesktop {
+    height: 270px;
+  }
+
+  @include onMobile {
+    height: 100vh;
+    background-image: url('../../../images/Popular/gradientHeader.png');
+    overflow: hidden;
+  }
+}

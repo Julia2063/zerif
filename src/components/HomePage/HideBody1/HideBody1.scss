@@ -1,0 +1,120 @@
+@import "../../../styles/mixines.scss";
+
+.hideBody1 {
+  display: block;
+  position: relative;
+  background-image: url("../../../images/HomePage/fone.jpg");
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 575px;
+
+  @include onMobile {
+    display: none;
+  }
+
+  
+}
+
+.hidenPie {
+  display: block;
+  position: absolute;
+  top: calc(48% + 11px);
+  left: 48%;
+  transform: translateX(-50%) translateY(-50%);
+  @include onMobile {
+    display: none;
+  }
+   
+}
+
+.blockRd {
+  height: 100%;
+  position: relative;
+
+  &__someContent {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    height: 100%;
+    padding: 110px 60px 0 120px;
+    background-color: rgba(255, 252, 250, 0.3);
+    backdrop-filter: blur(15px);
+    z-index: 1;
+
+    @include onDesktop {
+      padding: 100px 60px 0 100px;
+    }
+
+    @include onTablet {
+      padding: 80px 60px 0 40px;
+    }
+
+      &--title {
+      font-family: Georgia, "Times New Roman", Times, serif;
+      font-size: 40px;
+      font-weight: 700;
+      line-height: 42px;
+      text-transform: uppercase;
+      margin-bottom: 40px;
+
+      @include onDesktop {
+        font-size: 30px;
+        margin-bottom: 30px;
+      }
+
+      @include onTablet {
+        font-size: 25px;
+        margin-bottom: 20px;
+      }
+    }
+
+    &--description {
+      display: inline-block;
+      font-family: Montserrat;
+      font-size: 20px;
+      font-weight: 500;
+      margin-bottom: 40px;
+
+      
+      @include onDesktop {
+        margin-bottom: 30px;
+      }
+
+      @include onTablet {
+        font-size: 16px;
+      }
+    }
+  }
+
+  &__imageWrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  
+    img {
+      max-width: 100%;
+      width: 1440px;
+      height: 689px;
+      object-fit: cover;
+      transform: translateY(-60px);
+     
+    }
+  }
+}
+
+.onDesctop {
+  @include onMobile {
+    display: none;
+  }
+
+  @include onTablet {
+    display: none;
+  }
+
+  @include onDesktop {
+    display: block;
+  }
+}

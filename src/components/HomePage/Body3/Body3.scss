@@ -1,0 +1,199 @@
+@import "../../../styles//mixines.scss";
+
+.body3 {
+
+  background-image: url("../../../images/HomePage/GradientBody3Desc.png");
+  background-size: cover;
+  padding: 120px;
+  padding-bottom: 0;
+  height: min-content;
+  display: flex;
+  flex-direction: column;
+
+  @include onDesktop {
+    padding: 80px;
+  }
+
+  @include onTablet {
+    padding: 60px;
+  }
+
+   @include onMobile {
+    background-image: url("../../../images/HomePage/GradientBody3.png");
+    background-size: cover;
+    padding: 0;
+    padding-top: 86px;
+  }
+
+  &__title1 {
+    font-family: Montserrat;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 105%;
+    text-transform: uppercase;
+    text-align: center;
+
+    margin-bottom: 30px;
+
+    @include onMobile {
+      font-size: 12px;
+
+      margin-bottom: 15px;
+    }
+
+    @include onTablet {
+      font-size: 16px;
+
+      margin-bottom: 15px;
+    }
+  }
+
+  &__title2 {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-weight: 700;
+    font-size: 40px;
+    text-align: center;
+
+    margin-bottom: 85px;
+ 
+
+    @include onTablet {
+      font-size: 25px;
+
+      margin-bottom: 40px;
+    }
+
+    @include onMobile {
+      font-size: 32px;
+      line-height: 132.62%;
+    }
+
+  }
+}
+
+.container3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  justify-items: center;
+  column-gap: 40px;
+  row-gap: 75px;
+
+  margin-bottom: 100px;
+
+  @include onMobile {
+    display: none;
+  }
+
+  @include onTablet {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    column-gap: 10px;
+    row-gap: 50px;
+
+    margin-bottom: 60px;
+  }
+
+  @include onDesktop {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+
+  }
+
+  
+}
+
+.card3 {
+ 
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include onTablet {
+    padding: 0 10px;
+  }
+  
+  &__photo {
+    margin-bottom: 28px;
+
+    @include onDesktop {
+      width: 240px;
+    }
+
+    @include onTablet {
+      width: 200px;
+    }
+
+    @include onMobile {
+      width: 280px;
+    }
+  }
+
+  &__title {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 21px;
+    text-align: center;
+
+    margin-bottom: 5px;
+      
+    @include onMobile {
+     
+      font-size: 7px;
+    
+    }
+
+    @include onTablet {
+      font-size: 16px;
+    }
+  }
+
+  &__description {
+     font-family: Montserrat, sans-serif;
+      font-size: 15px;
+      line-height: 22px;
+      text-align: center;
+
+
+    @include onTablet {
+    
+      font-size: 10px;
+      line-height: 15px;
+    }
+  }
+}
+
+.container3Mob {
+  display: none;
+
+  @include onMobile {
+    display: flex;
+   justify-content: center;
+
+   margin-bottom: 46px;
+  }
+
+
+  &__card {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   max-width: 280px;
+  }
+
+  &__title {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: 700;
+    font-size: 20px;
+    text-transform: uppercase;
+
+    margin-bottom: 5px;
+  }
+
+  &__description {
+    font-family: Montserrat, sans-serif;
+    font-size: 15px;
+    line-height: 150%;
+    text-align: center;
+    }
+  }
+

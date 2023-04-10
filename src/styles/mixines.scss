@@ -1,0 +1,35 @@
+@mixin onMobile {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin smallMobile {
+  @media (max-width: 280px) {
+    @content;
+  }
+}
+
+@mixin onTablet {
+  @media (max-width: 1000px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (max-width: 1200px) {
+    @content;
+  }
+}
+
+/* @mixin forPie {
+  @media (min-width: 1390px) {
+    @content;
+  }
+} */
+
+@mixin oneMorefooter {
+  @media (min-width: 538px) {
+    @content;
+  }
+}

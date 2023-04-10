@@ -1,0 +1,146 @@
+@import '../../../styles/mixines.scss';
+
+.categoriesMain {
+  background-image: url('../../../images/Categories/gradient.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 100% 0;
+  padding: 50px 120px 66px 120px;
+
+    @include onDesktop {
+      padding: 50px 80px 66px 80px;
+    }
+
+    @include onMobile {
+      background-image: none;
+      background: #fff7f1;
+      padding: 30px 30px 82px 30px;
+    }
+
+    &__title {
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      font-size: 20px;
+      line-height: 21px;
+
+      margin-bottom: 43px;
+
+      @include onMobile {
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-size: 20px;
+        line-height: 21px;
+        
+      }
+    }
+
+    &__boxDisplay {
+
+      display: grid;
+      column-gap: 90px;
+      row-gap: 90px;
+      grid-template-columns: 1fr 1fr 1fr;
+
+      margin-bottom: 84px;
+
+        @include onDesktop {
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          column-gap: 60px;
+        }
+   
+      
+        @include onTablet {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        column-gap: 40px;
+        row-gap: 40px;
+      }
+
+        @include onMobile {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+      }
+
+  
+    }
+
+    &__box {
+       width: 100%;
+    }
+
+    &__img {
+      width: 100%;
+
+      margin-bottom: 37px;
+    }
+
+    &__productTitle {
+       font-family: Georgia, 'Times New Roman', Times, serif;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 18px;
+        text-transform: uppercase;
+
+        margin-bottom: 15.6px;
+
+      
+
+      @include onTablet {
+        font-size: 14px;
+       
+      }
+
+      @include onMobile {
+        font-size: 18px;
+      }
+    }
+
+    &__price {
+       font-family: Montserrat, sans-serif;
+        font-size: 18px;
+        line-height: 22px;
+        color: #A18A68;
+
+        @include onTablet {
+          font-size: 14px;
+         
+        }
+
+        @include onMobile {
+          font-size: 18px;
+          line-height: 22px;
+        }
+    }
+
+  &__pagination {
+    display: flex;
+    justify-content: end;
+    gap: 14px;
+
+    font-family: Roboto, serif;
+    color: rgba(8, 9, 11, 1);
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+
+    @include onMobile {
+      justify-content: center;
+    }
+
+
+    &-item {
+      width: 43px;
+      height: 43px;
+      border: 1px solid rgba(255, 247, 241, 1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+
+      &--active {
+        color: rgba(255, 255, 255, 1);
+        background: rgba(8, 9, 11, 1);
+        border: 1px solid  rgba(8, 9, 11, 1);
+      }
+    }
+  }
+}

@@ -1,0 +1,190 @@
+@import "../../../styles/mixines.scss";
+
+.footer {
+    font-family: Montserrat, sans-serif;
+    color: #fff7f1;
+
+    height: 470px;
+    background-image: url("../../../images/HomePage/GradientFooterDesc.png");
+    background-size: cover;
+    padding: 100px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1.5fr 1.5fr;
+    gap: 50px;
+
+    @include onDesktop {
+      padding: 80px;
+    }
+    @include onTablet {
+      padding: 40px;
+      gap: 20px;
+      height: 400px;
+    }
+ 
+
+  @include onMobile {
+    background-image: url("../../../images/HomePage/GradientFooter.png");
+    padding: 43px 32px 43px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+
+    font-family: Trebuchet MS, serif;
+
+    height: 490px;
+  }
+
+  &__block1 {
+
+    &--iconDesc {
+      display: block;
+      width: 215px;
+      margin-bottom: 36px;
+
+      @include onTablet {
+        width: 180px;
+        margin-bottom: 29px;
+      }
+      @include onMobile {
+        width: 88px;
+      }
+    }
+
+    &--text {
+      font-size: 15px;
+      line-height: 150%;
+       
+      margin-bottom: 24px;
+
+      @include onTablet {
+        font-size: 12px;
+      }
+
+      @include onMobile {
+        font-size: 11px;
+        line-height: 17px;
+        margin-bottom: 20px;
+      }
+    }
+
+    &--links {
+        display: flex;
+        width: 25%;
+        justify-content: space-between;
+        gap: 15px;
+
+      @include onMobile {
+        display: flex;
+        width: 90%;
+        justify-content: space-between;
+        gap: 12%;
+        margin-bottom: 17px;
+      }
+
+    }
+  }
+
+  &__block2 {
+  
+    @include onMobile {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      margin-bottom: 20px;
+
+      &:nth-child(4) {
+        display: none;
+      }
+    }
+
+    &--text {
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 36px;
+
+      & p:first-child {
+        margin-bottom: 24px;
+
+        @include onMobile {
+          margin-bottom: 0;
+        }
+      }
+
+      margin-bottom: 24px;
+
+      @include onDesktop {
+        font-size: 16px;
+      }
+      @include onTablet {
+        font-size: 14px;
+      }
+
+    
+      @include onMobile {
+      
+        font-size: 14px;
+        line-height: 36px;
+    
+      }
+    }
+  }
+
+  &__block3Mob {
+    display: none;
+    @include onMobile {
+      display: block;
+      font-size: 14px;
+    }
+  }
+}
+
+.oneMoreFooter {
+  display: flex;
+  flex-direction: column;
+  gap: 42px;
+  white-space: nowrap;
+   
+  @include onMobile {
+    display: none;
+  }
+
+  &__link {
+    font-size: 20px;
+    color: inherit;
+    text-decoration: none;
+
+    @include onTablet {
+      font-size: 16px;
+    }
+
+  }
+}
+
+.socialMedia {
+  display: block;
+  font-size: 20px;
+  text-transform: uppercase;
+
+  margin-bottom: 12px;
+
+  @include onMobile {
+    display: none;
+  }
+
+}
+
+span {
+  cursor: pointer;
+}
+
+.divForLink {
+  width: 166px;
+}
+
+.iconFrame {
+  @include onMobile {
+    width: 28px;
+    height: 28px;
+  }
+}
+

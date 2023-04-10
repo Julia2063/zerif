@@ -1,0 +1,133 @@
+@import './mixines.scss';
+
+.App {
+  text-align: center;
+}
+
+.app {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+a {
+  color: inherit;
+}
+
+.order-button {
+  font-family: Montserrat;
+  font-weight: 500;
+  padding: 10px;
+  width: 295px;
+  height: 49px;
+  background: #ebc6a8;
+  border: none;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-size: 20px;
+  text-transform: uppercase;
+
+  @include onDesktop {
+    font-size: 16px;
+    width: 250px;
+  }
+
+  @include onTablet {
+    width: 200px;
+    font-size: 14px;
+  }
+
+  @include onMobile {
+    margin: 0 auto;
+    padding: 10px;
+    width: 100%;
+    height: 53px;
+  }
+}
+
+.allProducts-button {
+  font-family: Montserrat;
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: 500;
+  height: 33px;
+  background: none;
+  border: none;
+  display: flex;
+  border-bottom: 2px solid #000;
+  padding-bottom: 10px;
+  margin: 0 auto 107px;
+
+
+  & span {
+    margin-right: 21px;
+  } 
+  
+
+@include onTablet {
+  font-size: 18px;
+  margin-bottom: 50px;
+}
+
+ @include onMobile {
+  font-size: 15px;
+
+  margin-bottom: 120px;
+}
+
+}
+
+.popularBlock-button {
+margin-left:  auto;
+margin-right: 0;
+
+@include onMobile {
+  margin: 0 auto;
+}
+}
+
+.productCardPage {
+  background-image: url('../images/Categories/gradient.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 100% 0;
+
+  @include onMobile {
+    background-image: none;
+    background: #fff7f1;
+  }
+}

@@ -1,23 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import './styles/App.scss';
+import { HomePage } from './Pages/HomePage';
+import { PopularPage } from './Pages/PopularPage';
+import { ProductCardPage } from './Pages/ProductCardPage';
+import { CategoriesPage } from './Pages/CategoriesPage';
+import { ContactsPage } from './Pages/ContactsPage';
+import { AccountEnterPage } from './Pages/AccountEnterPage';
+import { AccountInformationPage } from './Pages/AccountInformationPage';
+import { BasketPage } from './Pages/BasketPage';
+import { BasketOrderPage } from './Pages/BasketOrderPage';
+import { Header } from './components/Header';
+import { Footer } from './components/HomePage/Footer/Footer';
 
-function App() {
+function App () {
+  const [productCategory, setProductCategory] = useState(null);
+
+  console.log(productCategory);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <Header 
+        setProductCategory={setProductCategory} 
+      />
+      <Routes>
+        <Route path="/" element={<HomePage />}/>
+        <Route path="/popular" element={<PopularPage />}/>
+        <Route path="/categories">
+          <Route index  element={<CategoriesPage />} />
+          <Route path=":slug" element={<ProductCardPage />} />
+        </Route>
+        <Route path="/contacts" element={<ContactsPage />}/>
+        <Route path="/account" element={<AccountEnterPage />}/>
+        <Route 
+          path="/account/information" 
+          element={<AccountInformationPage />}
+        />
+        <Route path="/basket">
+          <Route index element={<BasketPage/>} />
+          <Route path="/basket/order" element={<BasketOrderPage />}/>
+        </Route>
+
+        
+      </Routes>
+      <Footer />
     </div>
   );
 }

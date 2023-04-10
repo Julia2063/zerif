@@ -1,0 +1,88 @@
+@import "../../../styles/mixines.scss";
+
+.productCardBlock1 {
+  font-family: Montserrat, sans-serif;
+  font-weight: 400;
+  color: rgba(112, 112, 112, 1);
+  padding: 50px 120px 66px 120px;
+
+  @include onDesktop {
+    padding: 50px 80px 66px 80px;
+  }
+
+  @include onTablet {
+    padding: 0 60px 66px 60px;
+  }
+
+  @include onMobile {
+   
+    padding: 30px 30px 82px 30px;
+  }
+
+  &__tabs {
+    display: flex;
+    gap: 70px;
+
+    margin-bottom: 30px;
+
+    @include onMobile {
+      gap: 9px;
+    }
+
+    &-button {
+      font-family: inherit;
+      color: inherit;
+      background: none;
+      border: none;
+      font-size: 24px;
+      line-height: 26px;
+      padding-bottom: 12px;
+      cursor: pointer;
+
+      @include onDesktop {
+        font-size: 20px;
+        line-height: 22px;
+      }
+
+      &--active {
+         color: rgba(0, 0, 0, 1);
+         border-bottom: 1px solid rgba(0, 0, 0, 1);
+
+      }
+
+      &--mobile {
+        display: none;
+
+        @include onMobile {
+          display: block;
+        }
+      }
+
+      &--desktop {
+        @include onMobile {
+          display: none;
+        }
+      }
+  }
+
+  
+  }
+
+  &__text {
+    font-size: 24px;
+    line-height: 30px;
+
+    @include onDesktop {
+      font-size: 20px;
+      line-height: 22px;
+    }
+ 
+    @include onMobile {
+      font-size: 24px;
+      line-height: 30px;
+    
+    }
+
+    
+  }
+}

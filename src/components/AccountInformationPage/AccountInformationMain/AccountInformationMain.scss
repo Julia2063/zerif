@@ -1,0 +1,172 @@
+@import '../../../styles/mixines.scss';
+
+.accountInformationMain {
+  background-image: url('../../../images/Contacts/BgrdGradient.png');
+    background-size: cover;
+
+    padding: 50px 120px 180px 120px;
+
+    @include onDesktop {
+      padding: 50px 80px 150px 80px;
+    }
+  
+    @include onTablet {
+      padding: 50px 60px 100px 60px;
+    }
+    
+
+  @include onMobile {
+    background-image: none;
+    background-color: #FFF7F1;
+    padding: 30px 30px 82px 30px;
+    overflow: hidden;
+  }
+
+  &__title {
+    margin-bottom: 60px;
+
+    @include onMobile {
+      margin-bottom: 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    & h1 {
+      font-family: Montserrat, sans-serif;
+    font-size: 20px;
+    line-height: 21px;
+    text-transform: uppercase;
+
+    
+    }
+    
+
+  }
+
+  &__tabs {
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 75px;
+
+    @include onTablet {
+      margin-bottom: 50px;
+      width: 70%;
+    }
+
+    @include onMobile {
+      width: 100%;
+      justify-content: start;
+      gap: 24px;
+    }
+   
+
+    &-item {
+      font-family: Montserrat, sans-serif;
+      font-size: 20px;
+      line-height: 26px;
+      padding-bottom: 5px;
+      border: none;
+      background: none;
+
+      &--active {
+        border-bottom: 1px solid #000;
+      }
+
+      &--desktop {
+        @include onMobile {
+          display: none;
+        }
+      }
+
+      &--mobile {
+        display: none;
+        padding: 0;
+
+        @include onMobile {
+          display: block;
+        }
+      }
+    }
+  }
+
+  &__orders {
+    width: 100%;
+    table-layout: fixed;
+
+    border-spacing: 0 40px;
+    font-family: Montserrat, sans-serif;
+    font-size: 16px;
+    line-height: 27px;
+
+    @include onTablet {
+      font-size: 12px;
+      line-height: 18px;
+      
+    }
+    @include onTablet {
+      font-size: 16px;
+      line-height: 27px;
+      min-width: 700px;
+    }
+
+    & th {
+      text-align: left;
+      font-weight: normal;
+    }
+
+    & td {
+      color: rgba(8, 9, 11, 0.5);
+    }
+
+
+  }
+}
+
+
+.infoDisplay {
+  display: grid;
+  grid-template-columns: 5fr 8fr;
+  grid-template-rows: 60px 60px;
+
+  column-gap: 15px;
+  row-gap: 48px;
+
+  @include onTablet {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @include onMobile {
+    display: flex;
+    flex-direction: column;
+    row-gap: 37px;
+  }
+
+  &__block {
+    &-title {
+      font-family: Montserrat, sans-serif;
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 105%;
+      text-transform: uppercase;
+
+      display: flex;
+      gap: 14.3px;
+
+      margin-bottom: 18px;
+    }
+
+    &-text {
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      font-size: 20px;
+      line-height: 21px;
+
+      @include onMobile {
+        padding-bottom: 5px;
+        border-bottom: 1px solid #000;
+      }
+    }
+  }
+}

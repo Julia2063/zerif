@@ -1,0 +1,367 @@
+@import '../../styles/mixines.scss';
+
+.header {
+  
+  height: 80px;
+  padding: 0 100px;
+
+  @include onDesktop {
+    padding: 0 50px;
+  }
+
+  @include onTablet {
+    position: relative;
+    padding: 0 30px;
+  }
+
+  @include onMobile {
+    padding: 0 15px;
+
+  }
+
+  &__nav {
+
+    display: grid;
+    grid-template-columns: 2fr 5fr 2fr 1fr;
+    align-items: center;
+    height: 100%;
+
+    @include onTablet {
+     display: flex;
+     justify-content: space-between;
+     padding-bottom: 17px;
+
+     align-items: end;
+    }
+  }
+
+  &__burger {
+    @include onDesktop {
+      display: none;
+    }
+
+    @include onTablet {
+      display: block;
+    }
+  }
+
+
+  &__logo {
+    width: 141px;
+    height: 44px;
+
+    @include onMobile {
+      width: 63px;
+      height: 20px;
+    }
+  }
+}
+
+.desctopImg {
+  @include onMobile {
+    display: none;
+  }
+
+  @include onTablet {
+    width: 100%;
+  }
+
+  @include onDesktop {
+    width: 100%;
+  }
+}
+
+.desktopLinks {
+  padding-top: 5px;
+  display: flex;
+  gap: 30px;
+  
+  @include onDesktop {
+    gap: 20px;
+  }
+
+  @include onTablet {
+    width: max-content;
+    padding: 0;
+    gap: 0;
+
+    & a {
+      display: none;
+    }
+  }
+
+}
+
+.language {
+  display: flex;
+  justify-content: end;
+
+  @include onTablet {
+    display: none;
+  }
+ 
+  &__text {
+    font-size: 20px;
+  }
+
+  &__icon {
+    width: 12px;
+    display: inline-block;
+    vertical-align: text-bottom;
+  }
+
+}
+
+.select {
+  position: relative;
+  display: flex;
+  gap: 11px;
+
+  &--burger {
+    display: none;
+
+    @include onTablet {
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+    }
+  }
+
+
+  @include onTablet {
+    display: none;
+  }
+
+  &__selectDropdown {
+    position: absolute;
+    width: 380px;
+    top: 50px;
+    left: 0;
+    background: #fff;
+    font-size: 20px;
+    padding: 10px 20px;
+
+    @include onTablet {
+      position: static;
+      font-size: 16px;
+      line-height: 105%;
+      background: none;
+      padding: 0;
+
+      & li {
+        list-style: none;
+      }
+    }
+
+    &-item {
+      margin-bottom: 15px;
+      cursor: pointer;
+
+      @include onMobile {
+        margin-bottom: 20px;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+
+.burgerMenu {
+  display: none;
+
+  @include onTablet {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 80%;
+    height: 100vh;
+    z-index: 10;
+    padding: 15px 15px 15px 30px;
+  }
+}
+
+.closeButton {
+  @include onTablet {
+    display: flex;
+    border: none;
+    background: none;
+    justify-content: right;
+  }
+}
+
+.desctopLinksBurger {
+   display: none;
+
+    @include onTablet {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+  }
+
+  & a {
+    width: max-content;
+  }
+
+}
+
+.burgerButton {
+  background: none;
+  border: none;
+}
+
+.burgerLinks {
+  display: flex;
+  flex-direction: column;
+}
+
+.selectButton {
+  display: inline-block;
+  background: none;
+  border: none;
+  margin: 0;
+  padding: 0 0 0 4%;
+  width: 35%;
+  font-size: 15px;
+  position: relative;
+}
+
+.burgerSelectIcon {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.iconBox {
+  display: flex;
+  gap: 45px;
+
+  
+
+  @include onDesktop {
+    gap: 30px;
+    justify-self: end;
+  }
+
+  @include onTablet {
+    gap: 50px;
+    justify-content: end;
+    
+  }
+
+  @include onMobile {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+
+   
+  }
+
+}
+
+.burgLog {
+  display: none;
+
+  @include onTablet {
+    display: block;
+  }
+}
+
+.search {
+  position: relative;
+
+  @include onTablet {
+    position: static;
+  }
+
+  &__input {
+    border: none;
+    border-bottom: 1px solid black;
+    outline: none;
+    width: 180px;
+    margin-right: 40px;
+
+    @include onDesktop {
+      width: 150px;
+      margin-right: 25px;
+    }
+
+    @include onTablet {
+      width: 200px;
+      margin-right: 10px;
+    }
+
+    @include onMobile {
+    
+      width:  47vw;
+      
+    }
+  }
+  
+  &__list {
+    display: flex;
+    flex-direction: column;
+    width: 375px;
+    background-color: white;
+    z-index: 10;
+    top: 50px;
+    left: -30px;
+    padding: 16px 32px;
+    
+    position: absolute;
+
+    @include onTablet {
+      width: 100vw;
+      top: 80px;
+      left: 0;
+      background: rgba(255, 247, 241, 1);
+      ;
+    }
+
+    &-item {
+      display: flex;
+      align-items: center;
+      padding-bottom: 24px;
+
+      &:last-child {
+        padding-bottom: 0;
+      }
+    }
+    
+
+  &-image {
+    width: 47px;
+    height: 47px;
+    margin-right: 16px;
+  }
+
+  &-text {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  &-title {
+    font-family: Montserrat;
+    font-size: 15px;
+    line-height: 22px;
+  }
+
+  &-price {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;
+    line-height: 21px;
+    color: #431F1D;
+  }
+  }
+
+}
+
+.onMobile {
+  @include onMobile {
+    display: none;
+  }
+}

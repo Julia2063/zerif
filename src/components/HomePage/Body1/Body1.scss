@@ -1,0 +1,207 @@
+@import '../../../styles/mixines.scss';
+
+.body1 {
+    position: relative;
+    width: 100%;
+    height: 1120px;
+    background-image:  url('../../../images/HomePage/GradientBody1Desc.png');
+    background-size: cover;
+    padding-top: 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+ 
+  @include onDesktop {
+    padding-top: 60px;
+  }
+  @include onTablet {
+    height: 1000px;
+    padding-top: 30px;
+  }
+   @include onMobile {
+    position: relative;
+    width: 100%;
+    background-image:  url('../../../images/HomePage/GradientBody3.png');
+    background-size: cover;
+
+    
+    padding-top: 48px;
+    height: min-content;
+    padding-bottom: 40px;
+  }
+
+ 
+
+  &__leftCookie {
+    position: absolute;
+    background-image: url('../../../images/HomePage/leftCookie.png');
+    background-repeat: repeat-y;
+    background-size: 60%;
+    width: 31%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    @include onMobile {
+      display: none;
+    }
+
+    @include onTablet {
+      position: absolute;
+      background-image: url('../../../images/HomePage/leftCookie.png');
+      background-repeat: repeat-y;
+      background-size: 90%;
+      width: 21%;
+      height: 100%;
+      left: 0;
+      top: 0;
+    }
+  }
+
+  &__rightCookie {
+    position: absolute;
+    background-image: url('../../../images/HomePage/rightCookie.png');
+    background-repeat: repeat-y;
+    background-size: 60%;
+    width: 31%;
+    height: 100%;
+    right: -12.4%;
+    top: 0;
+    @include onMobile {
+      display: none;
+    }
+
+    @include onTablet {
+      position: absolute;
+      background-image: url('../../../images/HomePage/rightCookie.png');
+      background-repeat: repeat-y;
+      background-size: 55%;
+      width: 31%;
+      height: 100%;
+      right: -14%;
+      top: 0;
+    }
+  }
+
+  &__title1 {
+    font-family: Montserrat;;
+    font-size: 20px;
+    line-height: 21px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    font-weight: 500;
+
+    @include onTablet {
+      font-size: 12px;
+      line-height: 12px;
+    }
+  }
+
+  &__title2 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 40px;
+    line-height: 42px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 70px;
+
+    @include onTablet {
+      font-size: 16px;
+      line-height: 16px;
+      margin-bottom: 30px;
+    }
+  }
+    
+}
+
+.container1 {
+   display: grid;
+   column-gap: 20px;
+   row-gap: 60px;
+   grid-template-columns: repeat(auto-fit, minmax(317px, 1fr));
+   width: 85%;
+   align-items: center;
+  
+
+  @include onTablet {
+    grid-template-columns: repeat(auto-fit, minmax(212px, 1fr));
+    row-gap: 20px;
+  }
+  @include onDesktop {
+    column-gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+  @include onMobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__photo {
+    width: 240px;
+    height: 240px;
+    margin-bottom: 28px;
+
+    @include onTablet {
+      width: 180px;
+      height: 180px;
+    }
+
+    @include onDesktop {
+      width: 200px;
+      height: 200px;
+    }
+
+    @include onMobile {
+      width: 240px;
+      height: 240px;
+    }
+  }
+
+  &__title {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: 700;
+    font-size: 20px;
+    padding-top: 5px;
+
+    @include onTablet {
+      font-size: 10px;
+    }
+
+    @include onMobile {
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 105%;
+    }
+  }
+
+  &__description {
+     font-family: Montserrat;
+      font-size: 15px;
+      line-height: 22px;
+      font-weight: 400;
+      text-align: center;
+
+    
+
+    @include onTablet {
+      font-size: 10px;
+      line-height: 15px;
+    }
+
+    @include onMobile {
+    
+      font-size: 15px;
+      line-height: 22px;
+    }
+  }
+}
