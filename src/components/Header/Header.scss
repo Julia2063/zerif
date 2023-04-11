@@ -102,6 +102,7 @@
 .language {
   display: flex;
   justify-content: end;
+  cursor: pointer;
 
   @include onTablet {
     display: none;

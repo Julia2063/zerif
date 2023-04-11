@@ -109,7 +109,10 @@ export const Header = ({ setProductCategory }) => {
             </button>
           </div>
           <div className={classNames({onMobile: isSearch})} >
-            <Link to={'/'} onClick={handleClose}>
+            <Link to={'/'} onClick={() => {
+              handleClose();
+              handleCloseSelectDropdown();
+            }}>
               <img
                 className="header__logo"
                 src={require('../../images/HomePage/zerifIcon.png')}
@@ -257,7 +260,9 @@ export const Header = ({ setProductCategory }) => {
             </Link>
           </div>
 
-          <div className="language select">
+          <div className="language select" onClick={() => {
+            handleCloseSelectDropdown();
+          }}>
             <p className="language__text">Ru</p>
             <img 
               src={downIcon} 
