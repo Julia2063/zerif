@@ -300,7 +300,7 @@ export const Header = ({ setProductCategory }) => {
             <div onClick={() => {
               handleCloseSelectDropdown();
               handleClose();         
-            }}>git 
+            }}>
               <PageNavLink
                 to={'/contacts'}
                 text="Контакты"
