@@ -245,14 +245,20 @@ export const Header = ({ setProductCategory }) => {
             />
           </button>
           <div className="desctopLinksBurger">
-            <div onClick={handleCloseSelectDropdown}>
+            <div onClick={() => {
+              handleCloseSelectDropdown();
+              handleClose();         
+            }}>
               <PageNavLink
                 to={'/'}
                 text="Главная"
                 
               />
             </div>
-            <div  onClick={handleCloseSelectDropdown}>
+            <div onClick={() => {
+              handleCloseSelectDropdown();
+              handleClose();         
+            }}>
               <PageNavLink
                 to={'/popular'}
                 text="Популярное"
@@ -291,7 +297,10 @@ export const Header = ({ setProductCategory }) => {
             
             
             
-            <div onClick={handleCloseSelectDropdown}>
+            <div onClick={() => {
+              handleCloseSelectDropdown();
+              handleClose();         
+            }}>git 
               <PageNavLink
                 to={'/contacts'}
                 text="Контакты"
