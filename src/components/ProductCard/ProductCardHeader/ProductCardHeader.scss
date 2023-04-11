@@ -58,14 +58,14 @@
 
   &__price {
     
-    font-size: 20px;
-    line-height: 21px;
+    font-size: 24px;
     font-weight: 500;
 
-    margin-bottom: 48px;
+    margin-bottom: 30px;
 
     @include onDesktop {
       font-size: 18px;
+      line-height: 23px;
 
       margin-bottom: 35px;
     }
@@ -76,17 +76,19 @@
     }
 
     @include onMobile {
+      font-size: 20px;
+      line-height: 26px;
+
       margin-bottom: 24px;
-  
     }
   }
 
   &__descriptionTitle {
     font-weight: 500;
     font-size: 24px;
-    line-height: 36px;
+    line-height: 26px;
 
-    margin-bottom: 4px;
+    margin-bottom: 20px;
 
     @include onDesktop {
       font-size: 20px;
@@ -96,13 +98,18 @@
       font-size: 15px;
       line-height: 23px;
     }
+
+    @include onMobile {
+      font-size: 20px;
+      line-height: 26px;
+    }
   }
 
   &__description {
     font-size: 18px;
     line-height: 23px;
 
-    margin-bottom: 4px;
+    margin-bottom: 30px;
 
     @include onDesktop {
       font-size: 18px;
@@ -115,17 +122,17 @@
     }
 
     @include onMobile {
-      font-size: 11px;
-      line-height: 15px;
+      font-size: 16px;
+      line-height: 18px;
     }
   }
 
   &__weight {
     
-    font-size: 24px;
-    line-height: 36px;
+    font-size: 18px;
+    line-height: 23px;
 
-    margin-bottom: 18px;
+    margin-bottom: 30px;
 
     @include onDesktop {
       font-size: 20px;
@@ -140,7 +147,10 @@
     }
     
     @include onMobile {
-    margin-bottom: 12px;
+      font-size: 16px;
+      line-height: 18px;
+
+     margin-bottom: 30px;
    
     }
 
@@ -149,15 +159,19 @@
 
   &__taste {
     font-size: 18px;
+    line-height: 23px;
 
-    margin-bottom: 40px;
+    margin-bottom: 30px;
 
       @include onTablet {
       font-size: 13px;
       line-height: 23px;
-
-      margin-bottom: 25px;
     
+    }
+
+    @include onMobile {
+      font-size: 16px;
+      line-height: 18px;
     }
 
   }
@@ -178,7 +192,7 @@
       background-color: #FFF;
       border: none;
       font-weight: 400;
-      font-size: 23px;
+      font-size: 24px;
       line-height: 27px;
 
       @include onDesktop {
@@ -193,7 +207,10 @@
    
     }
     @include onMobile {
+      font-size: 16px;
+      line-height: 18px;
       background-color: #ebc6a8;
+      
     }
 
   }
@@ -213,14 +230,15 @@
       }
       
     @include onMobile {
-      
+      font-size: 20px;
+      line-height: 26px;
       background-color: #ebc6a8;
     }
 
   }
 
   &__counterTitle {
-    
+    font-family: Georgia, 'Times New Roman', Times, serif;
       text-align: center;
       align-items: center;
 

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 export const Basket = () => {
   return (
     <div className="basket">
-      <p className="basket__title">Корзина</p>
+      <h1 className="basket__title">Корзина</h1>
       <div className="basketBox">
         <div className="basketBlock1">
           <div className="basketBlock1__item">

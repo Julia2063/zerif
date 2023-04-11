@@ -14,10 +14,6 @@
     padding: 0 30px;
   }
 
-  @include onMobile {
-    padding: 0 15px;
-
-  }
 
   &__nav {
 
@@ -84,6 +80,7 @@
     width: max-content;
     padding: 0;
     gap: 0;
+    margin: 0 auto;
 
     & a {
       display: none;
@@ -211,6 +208,7 @@
 .burgerButton {
   background: none;
   border: none;
+  margin-right: 27px;
 }
 
 .burgerLinks {
@@ -292,11 +290,12 @@
     @include onTablet {
       width: 200px;
       margin-right: 10px;
+      margin-left: auto;
     }
 
     @include onMobile {
-    
-      width:  47vw;
+      
+      width:  50vw;
       
     }
   }

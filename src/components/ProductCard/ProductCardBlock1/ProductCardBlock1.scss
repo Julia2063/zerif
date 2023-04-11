@@ -69,17 +69,12 @@
   }
 
   &__text {
-    font-size: 24px;
-    line-height: 30px;
-
-    @include onDesktop {
-      font-size: 20px;
-      line-height: 22px;
-    }
+    font-size: 18px;
+    line-height: 23px;
  
     @include onMobile {
-      font-size: 24px;
-      line-height: 30px;
+      font-size: 16px;
+      line-height: 18px;
     
     }
 
