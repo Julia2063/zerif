@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import { React, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Header.scss';
 
@@ -73,10 +73,31 @@ export const Header = ({ setProductCategory }) => {
     setIsSearch(!isSearch);
   };
 
+  useEffect(()  => {
+    if (isOpen) {
+      document.body.classList.add('overflowHidden');
+
+    } else {
+      document.body.classList.remove('overflowHidden');
+    }
+    
+  }, [isOpen]);
+
 
   return (
     <>
+      
+      
       <header className="header">
+        {(isOpen || isCategoryOpen) && (
+          <div
+            className="header__overlay"
+            onClick={() => {
+              handleClose();
+              handleCloseSelectDropdown();
+            }}
+          />
+        )}
         <nav className="header__nav">
           <div className={classNames('burgLog', {onMobile: isSearch})}>
             <button onClick={handleOpen} className="burgerButton">
@@ -88,7 +109,7 @@ export const Header = ({ setProductCategory }) => {
             </button>
           </div>
           <div className={classNames({onMobile: isSearch})} >
-            <Link to={'/'}>
+            <Link to={'/'} onClick={handleClose}>
               <img
                 className="header__logo"
                 src={require('../../images/HomePage/zerifIcon.png')}
@@ -192,7 +213,11 @@ export const Header = ({ setProductCategory }) => {
           
           <div className="iconBox">
             {!isSearch && (
-              <Link onClick={searchOpen}>
+              <Link onClick={() => {
+                searchOpen();
+                handleClose();
+                handleCloseSelectDropdown();
+              } }>
                 <img
                   src={require('../../images/HomePage/searchIcon.png')}
                   alt="search"
@@ -201,21 +226,30 @@ export const Header = ({ setProductCategory }) => {
             )}
             
 
-            <Link to={'/phone'}>
+            <Link to={'/phone'} onClick={() => {
+              handleClose();
+              handleCloseSelectDropdown();
+            }}>
               <img
                 src={require('../../images/HomePage/phoneIcon.png')}
                 alt="phone"
               />
             </Link>
 
-            <Link to={'/account'}>
+            <Link to={'/account'} onClick={() => {
+              handleClose();
+              handleCloseSelectDropdown();
+            }}>
               <img
                 src={require('../../images/HomePage/personIcon.png')}
                 alt="account"
               />
             </Link>
 
-            <Link to={'/basket'}>
+            <Link to={'/basket'} onClick={() => {
+              handleClose();
+              handleCloseSelectDropdown();
+            }}>
               <img
                 src={require('../../images/HomePage/basketIcon.png')}
                 alt="basket"
@@ -236,36 +270,33 @@ export const Header = ({ setProductCategory }) => {
       </header>
 
       {isOpen && (
+        
+         
         <div className="burgerMenu">
           <button className="closeButton">
             <img
               src={require('../../images/HomePage/closeIcon.png')}
               alt="close button"
-              onClick={handleClose}
-            />
+              onClick={handleClose} />
           </button>
           <div className="desctopLinksBurger">
             <div onClick={() => {
               handleCloseSelectDropdown();
-              handleClose();         
-            }}>
+              handleClose();
+            } }>
               <PageNavLink
                 to={'/'}
-                text="Главная"
-                
-              />
+                text="Главная" />
             </div>
             <div onClick={() => {
               handleCloseSelectDropdown();
-              handleClose();         
-            }}>
+              handleClose();
+            } }>
               <PageNavLink
                 to={'/popular'}
-                text="Популярное"
-               
-              />
+                text="Популярное" />
             </div>
-            <div 
+            <div
               onClick={handleOnClickSelect}
               className="select--burger"
               onKeyDown={handleCloseSelectDropdown}
@@ -273,8 +304,7 @@ export const Header = ({ setProductCategory }) => {
               <PageNavLink
                 text="Товары"
                 to="/categories"
-                img={isCategoryOpen ? upIcon : downIcon}
-              />
+                img={isCategoryOpen ? upIcon : downIcon} />
               {isCategoryOpen && (
                 <div className="select__selectDropdown">
                   {categories.map(el => {
@@ -285,8 +315,8 @@ export const Header = ({ setProductCategory }) => {
                         onClick={() => {
                           handleSelectCategory(el);
                           setIsOpen(false);
-                        }}
-                      > 
+                        } }
+                      >
                         {`- ${el[0]}`}
                       </div>
                     );
@@ -294,49 +324,44 @@ export const Header = ({ setProductCategory }) => {
                 </div>
               )}
             </div>
-            
-            
-            
+
+
+
             <div onClick={() => {
               handleCloseSelectDropdown();
-              handleClose();         
-            }}>
+              handleClose();
+            } }>
               <PageNavLink
                 to={'/contacts'}
-                text="Контакты"
-                
-              />
+                text="Контакты" />
             </div>
             {isSearch && (
               <div className="search">
                 <form action="">
-                  <input 
-                    type="text" 
-                    className="search__input" 
+                  <input
+                    type="text"
+                    className="search__input"
                     autoFocus
                     onKeyDown={(e) => handleKeyDown(e)}
                     onBlur={handleBlur}
                     value={query}
-                    onChange={(e) => searchOnChange(e)}
-                  />
+                    onChange={(e) => searchOnChange(e)} />
                 </form>
                 {query.length > 0 && (
                   <div className="search__list">
                     <div className="search__list-item">
-                      <img 
+                      <img
                         src={require('../../images/BasketPage/productImage.png')}
-                        alt="" className="search__list-image"
-                      />
+                        alt="" className="search__list-image" />
                       <div className="search__list-text">
                         <p className="search__list-title">Торт с ягодами</p>
                         <p className="search__list-price">50$</p>
                       </div>
                     </div>
                     <div className="search__list-item">
-                      <img 
+                      <img
                         src={require('../../images/BasketPage/productImage.png')}
-                        alt="" className="search__list-image"
-                      />
+                        alt="" className="search__list-image" />
                       <div className="search__list-text">
                         <p className="search__list-title">Торт пряничный</p>
                         <p className="search__list-price">40$</p>
@@ -348,6 +373,7 @@ export const Header = ({ setProductCategory }) => {
             )}
           </div>
         </div>
+    
       )}
     </>
   );
