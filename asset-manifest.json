@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/zerif/static/css/main.b2400e49.css",
+    "main.css": "/zerif/static/css/main.5e9ebed2.css",
     "main.js": "/zerif/static/js/main.97584b0f.js",
     "static/js/787.044d8b7e.chunk.js": "/zerif/static/js/787.044d8b7e.chunk.js",
     "static/media/formPieNew2.png": "/zerif/static/media/formPieNew2.8f4ee826acf2f4f898bf.png",
@@ -60,12 +60,12 @@
     "index.html": "/zerif/index.html",
     "static/media/upIcon.svg": "/zerif/static/media/upIcon.f0c879dc4eada967a4396651329ad3f2.svg",
     "static/media/downIcon.svg": "/zerif/static/media/downIcon.03f4ac5120a63ce59cb8a51958771e10.svg",
-    "main.b2400e49.css.map": "/zerif/static/css/main.b2400e49.css.map",
+    "main.5e9ebed2.css.map": "/zerif/static/css/main.5e9ebed2.css.map",
     "main.97584b0f.js.map": "/zerif/static/js/main.97584b0f.js.map",
     "787.044d8b7e.chunk.js.map": "/zerif/static/js/787.044d8b7e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b2400e49.css",
+    "static/css/main.5e9ebed2.css",
     "static/js/main.97584b0f.js"
   ]
 }
