@@ -15,6 +15,7 @@
     position: absolute;
     top: 380px;
     left: 120px;
+    z-index: 100;
 
     @include onDesktop {
       left: 100px;

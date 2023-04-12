@@ -1,10 +1,50 @@
 import { React } from 'react';
 import '../Main/Main.scss';
-import '../../../styles/max1440.scss';
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination, Autoplay } from 'swiper';
+
 
 export const Main = () => {
   return (
     <div className="main">
+      <div className="main__swiper"> 
+        <Swiper
+          slidesPerView={1}
+          spaceBetween={10}
+          pagination={{
+            clickable: true,
+          }}
+          autoplay= {{
+            delay: 5000,
+            disableOnInteraction: false,
+          }}
+          loop={true}
+         
+      
+        
+          modules={[Pagination, Autoplay]}
+        
+        >
+       
+          <SwiperSlide>
+            <img
+              src={require('../../../images/HomePage/headerDescBgrnd.png')}
+              alt=""
+              className="swiper__img"
+            />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img
+              src={require('../../../images/HomePage/headerDescBgrnd.png')}
+              alt=""
+              className="swiper__img"
+            />
+          </SwiperSlide>
+        
+        </Swiper>
+      </div>
+      
       <div className="main__block">
         <h3 className="h3">Lorem ipsum <br />Dolor sit amet</h3>
         <p className="p">

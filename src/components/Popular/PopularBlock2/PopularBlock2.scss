@@ -14,10 +14,11 @@
     padding-left: 80px;
   }
   @include onTablet {
-    height: 70vh;
-    padding-top: 100px;
+    height: 60vh;
+    padding-top: 150px;
   }
   @include onMobile {
+    height: 80vh;
     padding: 90px 40px 0;
   }
 

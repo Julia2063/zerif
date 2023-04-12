@@ -1,9 +1,10 @@
 import React from 'react';
 import '../Body2/Body2.scss';
 
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper';
 import { body2Api } from '../../../API/Body2API';
-import leftArrow from '../../../images/HomePage/leftSlide.png';
-import rightArrow from '../../../images/HomePage/rightSlide.png';
+
 
 export const Body2 = () => {
   return (
@@ -11,39 +12,64 @@ export const Body2 = () => {
       <p className="body2__title1">Рекомендуем</p>
       <p className="body2__title2">Торты на любой вкус</p>
 
+      
       <div className="container2">
-        <div className="container2__slider">
-          <button className="container2__button">
-            <img src={leftArrow} alt="leftArrow" />
-          </button>
-          {body2Api.map((card) => (
-            <div className="card2" key={card.id}>
-              <img
-                src={require(`../../../images/HomePage/body2/${card.id}.png`)}
-                alt="card photo"
-                className="card2__photo"
-              />
-              <p className="card2__title">{card.title}</p>
-              <p className="card2__description">{card.description}</p>
-            </div>
+        <Swiper
+          slidesPerView={3}
+          spaceBetween={80}
+          breakpoints={{
+            1: {
+              slidesPerView: 1,
+              spaceBetween: 50,
+            },
+            768: {
+              slidesPerView: 2,
+              spaceBetween: 40,
+            },
+            1000: {
+              slidesPerView: 3,
+              spaceBetween: 50,
+            },
+            1200: {
+              slidesPerView: 3,
+              spaceBetween: 90,
+            },
+          }}
+          navigation
+          modules={[Navigation]}
+          className="body2__slider"
+        >
+          
+          {body2Api.map((product) => (
+            <SwiperSlide key={product.id}  >
+              <div className="body2__slider-card">
+                <img
+                  src={require(`../../../images/HomePage/body2/${product.id}.png`)}
+                  alt=""
+                />
+                <p className="body2__slider-title">{product.title}</p>
+                <p className="body2__slider-description">{product.description}</p> 
+              </div>
+             
+            </SwiperSlide>
           ))}
-          <button className="container2__button">
-            <img src={rightArrow} alt="rightArrow" />
-          </button>
-        </div>
+        </Swiper>
+      </div>
+     
+        
 
-        <div className="container2__mobile">
-          <div className="card2">
-            <img
-              src={require(`../../../images/HomePage/body2/${body2Api[0].id}.png`)}
-              alt="card photo"
-              className="card2__photo"
-            />
-            <p className="card2__title">{body2Api[0].title}</p>
-            <p className="card2__description">{body2Api[0].description}</p>
-          </div>
+      <div className="container2--mobile">
+        <div className="container2--mobile-card">
+          <img
+            src={require(`../../../images/HomePage/body2/${body2Api[0].id}.png`)}
+            alt="card photo1"
+            className="container2--mobile-photo"
+          />
+          <p className="container2--mobile-title">{body2Api[0].title}</p>
+          <p className="container2--mobile-description">{body2Api[0].description}</p>
         </div>
       </div>
+     
         
 
       <button className="allProducts-button">
