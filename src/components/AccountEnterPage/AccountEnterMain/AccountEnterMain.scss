@@ -160,6 +160,8 @@
 
       @include onMobile {
         font-family: Montserrat, sans-serif;
+        font-size: 16px;
+        line-height: 18px;
       }
 
       &::before {
@@ -174,6 +176,10 @@
       top: -2px;
       left: 0;
 
+      @include onMobile {
+        width: 20px;
+        height: 22px;
+      }
      
       }
     }
