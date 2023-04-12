@@ -26,15 +26,12 @@ export const AccountEnterMain = () => {
           placeholder="пароль"
           className="accountEnterMain__form-input"
         />
-        <div className="accountEnterMain__checkbox">
-          <input type="checkbox" id="remember-password" />
-          <label 
-            htmlFor="remember-password" 
-            className="checkboxText"
-          >
-              Запомнить меня
-          </label>
-        </div>
+
+        <label className="accountEnterMain__checkbox">
+          <input type="checkbox"/>
+          <span>Запомнить меня</span>
+        </label>
+
         <button className="accountEnterMain__submitButton">
           {' '}
           <Link to={'/account/information'} className="linkForPresentation">

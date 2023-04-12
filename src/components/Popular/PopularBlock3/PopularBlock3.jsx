@@ -1,9 +1,10 @@
 import React from 'react';
 import '../PopularBlock3/PopularBlock3.scss';
-import '../../../styles/max1440.scss';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Scrollbar } from 'swiper';
 import { body1Api } from '../../../API/Body1API';
+
+import '../../../styles/swiperScrollBar.scss';
 
 
 export const PopularBlock3 = () => {

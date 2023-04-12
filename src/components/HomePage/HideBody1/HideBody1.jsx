@@ -1,6 +1,5 @@
 import React from 'react';
 import '../HideBody1/HideBody1.scss';
-import '../../../styles/max1440.scss';
 
 export const HideBody1 = () => {
   return (

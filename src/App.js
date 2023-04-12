@@ -11,7 +11,7 @@ import { AccountInformationPage } from './Pages/AccountInformationPage';
 import { BasketPage } from './Pages/BasketPage';
 import { BasketOrderPage } from './Pages/BasketOrderPage';
 import { Header } from './components/Header';
-import { Footer } from './components/HomePage/Footer/Footer';
+import { Footer } from './components/Footer/';
 
 import ScrollToTop from './components/ScrollToTop';
 

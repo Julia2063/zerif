@@ -47,9 +47,6 @@
     }
 
     @include onTablet {
-      position: absolute;
-      background-image: url('../../../images/HomePage/leftCookie.png');
-      background-repeat: repeat-y;
       background-size: 90%;
       width: 21%;
       height: 100%;
@@ -72,9 +69,6 @@
     }
 
     @include onTablet {
-      position: absolute;
-      background-image: url('../../../images/HomePage/rightCookie.png');
-      background-repeat: repeat-y;
       background-size: 55%;
       width: 31%;
       height: 100%;

@@ -145,6 +145,8 @@
 .container2 {
   width: 100%;
 
+  margin-bottom: 90px;
+
 
   @include onMobile {
     display: none;

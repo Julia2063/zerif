@@ -1,6 +1,6 @@
 import React from 'react';
 import '../PopularBlock2/PopularBlock2.scss';
-import '../../../styles/max1440.scss';
+
 
 export const PopularBlock2 = () => {
   return (

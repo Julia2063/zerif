@@ -1,11 +1,11 @@
-@import "../../../styles/mixines.scss";
+@import "../../styles/mixines.scss";
 
 .footer {
     font-family: Montserrat, sans-serif;
     color: #fff7f1;
 
     height: 470px;
-    background-image: url("../../../images/HomePage/GradientFooterDesc.png");
+    background-image: url("../../images/HomePage/GradientFooterDesc.png");
     background-size: cover;
     padding: 100px;
     display: grid;
@@ -23,7 +23,7 @@
  
 
   @include onMobile {
-    background-image: url("../../../images/HomePage/GradientFooter.png");
+    background-image: url("../../images/HomePage/GradientFooter.png");
     padding: 43px 32px 43px 32px;
     display: flex;
     flex-direction: column;

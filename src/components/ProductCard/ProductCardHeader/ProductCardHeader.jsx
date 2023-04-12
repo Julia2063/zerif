@@ -9,6 +9,8 @@ import success from '../../../images/BasketPage/success.svg';
 
 import 'swiper/scss';
 
+import '../../../styles/swiperScrollBar.scss';
+
 
 export const ProductCardHeader = () => {
   const [isProductAdd, setIsProductAdd] = useState(false);

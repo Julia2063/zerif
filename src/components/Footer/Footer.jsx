@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../Footer/Footer.scss';
+import './Footer.scss';
 
 export const Footer = () => {
   return (
@@ -8,7 +8,7 @@ export const Footer = () => {
       <div className="footer__block1">
         <Link to={'/'}>
           <img
-            src={require('../../../images/Footer/Logo.png')}
+            src={require('../../images/Footer/Logo.png')}
             alt="logo image"
             className="footer__block1--iconDesc"
           />
@@ -21,35 +21,35 @@ export const Footer = () => {
         <div className="footer__block1--links">
           <Link to={''}>
             <img
-              src={require('../../../images/HomePage/viberIcon.png')}
+              src={require('../../images/HomePage/viberIcon.png')}
               alt="viber icon"
               className="iconFrame"
             />
           </Link>
           <Link to={''}>
             <img
-              src={require('../../../images/HomePage/facebookIcon.png')}
+              src={require('../../images/HomePage/facebookIcon.png')}
               alt="facebook icon"
               className="iconFrame"
             />
           </Link>
           <Link to={''}>
             <img
-              src={require('../../../images/HomePage/youtubeIcon.png')}
+              src={require('../../images/HomePage/youtubeIcon.png')}
               alt="youtube icon"
               className="iconFrame"
             />
           </Link>
           <Link to={''}>
             <img
-              src={require('../../../images/HomePage/watsapIcon.png')}
+              src={require('../../images/HomePage/watsapIcon.png')}
               alt="watsap icon"
               className="iconFrame"
             />
           </Link>
           <Link to={''}>
             <img
-              src={require('../../../images/HomePage/telegramIcon.png')}
+              src={require('../../images/HomePage/telegramIcon.png')}
               alt="telegram icon"
               className="iconFrame"
             />

@@ -5,6 +5,7 @@ import { Scrollbar } from 'swiper';
 import { body1Api } from '../../../API/Body1API';
 
 import 'swiper/scss';
+import '../../../styles/swiperScrollBar.scss';
 
 
 export const PopularBlock1 = () => {

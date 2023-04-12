@@ -1,6 +1,6 @@
 import React from 'react';
 import '../Body1/Body1.scss';
-import '../../../styles/max1440.scss';
+
 import { body1Api } from '../../../API/Body1API';
 
 export const Body1 = () => {
@@ -16,7 +16,7 @@ export const Body1 = () => {
           <div key={card.id} className="card">
             <img
               src={require(`../../../images/HomePage/body1/${card.id}.png`)}
-              alt="card image"
+              alt="card image1"
               className="card__photo"
             />
             <h1 className="card__title">{card.title}</h1>

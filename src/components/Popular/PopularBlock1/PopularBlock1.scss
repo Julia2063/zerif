@@ -14,6 +14,14 @@
   
   }
 
+  & .swiper{
+    margin-bottom: 84px;
+  
+    &-wrapper {
+      margin-bottom: 50px;
+    }
+  
+  }
 }
 
 .swiperBox1 {
@@ -63,59 +71,5 @@
   }
 }
 
-.swiper{
-  margin-bottom: 84px;
 
-  &-wrapper {
-    margin-bottom: 50px;
-  }
-
-  .swiper-scrollbar {
-    border-radius: var(--swiper-scrollbar-border-radius, 10px);
-    position: relative;
-    -ms-touch-action: none;
-    background: rgba(235, 198, 168, 1);
-    ;
-    .swiper-scrollbar-disabled > &,
-    &.swiper-scrollbar-disabled {
-      display: none !important;
-    }
-    .swiper-horizontal > &,
-    &.swiper-scrollbar-horizontal {
-      position: absolute;
-      left: 0;
-      bottom: var(--swiper-scrollbar-bottom, 4px);
-      top: var(--swiper-scrollbar-top, auto);
-      z-index: 50;
-      height: 2px;
-      width: 100%;
-    }
-    .swiper-vertical > &,
-    &.swiper-scrollbar-vertical {
-      position: absolute;
-      left: var(--swiper-scrollbar-left, auto);
-      right: var(--swiper-scrollbar-right, 4px);
-      top: var(--swiper-scrollbar-sides-offset, 1%);
-      z-index: 50;
-      width: 100%;
-      height: calc(100% - 2 * var(--swiper-scrollbar-sides-offset, 1%));
-    }
-  }
-  .swiper-scrollbar-drag {
-    height: 100%;
-    width: 100%;
-    position: relative;
-    background: rgba(144, 88, 75, 1);
-    ;
-    border-radius: var(--swiper-scrollbar-border-radius, 10px);
-    left: 0;
-    top: 0;
-  }
-  .swiper-scrollbar-cursor-drag {
-    cursor: move;
-  }
-  .swiper-scrollbar-lock {
-    display: none;
-  }
-}
 
