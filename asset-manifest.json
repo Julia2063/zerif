@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/zerif/static/css/main.470f9f0a.css",
-    "main.js": "/zerif/static/js/main.7177017f.js",
+    "main.css": "/zerif/static/css/main.ee7ec184.css",
+    "main.js": "/zerif/static/js/main.e59e610d.js",
     "static/js/787.044d8b7e.chunk.js": "/zerif/static/js/787.044d8b7e.chunk.js",
     "static/media/formPieNew2.png": "/zerif/static/media/formPieNew2.8f4ee826acf2f4f898bf.png",
     "static/media/GradientBody3Desc.png": "/zerif/static/media/GradientBody3Desc.db564e84eb1590b2ed95.png",
@@ -56,17 +56,23 @@
     "static/media/sideImg4.png": "/zerif/static/media/sideImg4.20f00c3531c56dc2ecd4.png",
     "static/media/sideImg1.png": "/zerif/static/media/sideImg1.f9efaf674d653952f3bf.png",
     "static/media/productImage.png": "/zerif/static/media/productImage.c18b9e817a14921d4aa5.png",
+    "static/media/closeIcon.svg": "/zerif/static/media/closeIcon.1aa20d4a4acad79e768d0a95d8b78f54.svg",
+    "static/media/personIcon.svg": "/zerif/static/media/personIcon.d21dce474c4d3a10e0bbaaf5f326a3d7.svg",
+    "static/media/basketIcon.svg": "/zerif/static/media/basketIcon.4311903138d92cdc989ca87cadeb5e3e.svg",
+    "static/media/burger.svg": "/zerif/static/media/burger.723f62e2cb36544eb51c38bde715e633.svg",
+    "static/media/searchIcon.svg": "/zerif/static/media/searchIcon.2e8ac97e82a60de1595f3e116a5875bc.svg",
     "static/media/success.svg": "/zerif/static/media/success.7032386d9d570afd59fb246c4ad79224.svg",
+    "static/media/phoneIcon.svg": "/zerif/static/media/phoneIcon.bb9e9e2b1c1bb17b55bcd3b03b4a709c.svg",
     "index.html": "/zerif/index.html",
     "static/media/upIcon.svg": "/zerif/static/media/upIcon.f0c879dc4eada967a4396651329ad3f2.svg",
     "static/media/downIcon.svg": "/zerif/static/media/downIcon.03f4ac5120a63ce59cb8a51958771e10.svg",
     "static/media/check.svg": "/zerif/static/media/check.70df0e1628ffdfd6cee5.svg",
-    "main.470f9f0a.css.map": "/zerif/static/css/main.470f9f0a.css.map",
-    "main.7177017f.js.map": "/zerif/static/js/main.7177017f.js.map",
+    "main.ee7ec184.css.map": "/zerif/static/css/main.ee7ec184.css.map",
+    "main.e59e610d.js.map": "/zerif/static/js/main.e59e610d.js.map",
     "787.044d8b7e.chunk.js.map": "/zerif/static/js/787.044d8b7e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.470f9f0a.css",
-    "static/js/main.7177017f.js"
+    "static/css/main.ee7ec184.css",
+    "static/js/main.e59e610d.js"
   ]
 }
