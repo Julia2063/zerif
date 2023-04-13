@@ -9,7 +9,7 @@
     background-size: cover;
     padding: 100px;
     display: grid;
-    grid-template-columns: 2fr 1fr 1.5fr 1.5fr;
+    grid-template-columns: 3fr 1fr 1.5fr 1.5fr;
     gap: 50px;
 
     @include onDesktop {
@@ -36,6 +36,11 @@
 
   &__block1 {
 
+    @include onMobile {
+      display: flex;
+      flex-direction: column;
+    }
+
     &--iconDesc {
       display: block;
       width: 215px;
@@ -46,7 +51,7 @@
         margin-bottom: 29px;
       }
       @include onMobile {
-        width: 88px;
+        width: 88px; 
       }
     }
 
@@ -79,6 +84,7 @@
         justify-content: space-between;
         gap: 12%;
         margin-bottom: 17px;
+        align-self: center;
       }
 
     }

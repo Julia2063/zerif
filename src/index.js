@@ -2,14 +2,19 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './styles/index.scss';
 import { HashRouter as Router} from 'react-router-dom';
+import { AppProvider } from './components/AppProvider';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+
+import './firebase';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Router>
-      <App />
+      <AppProvider>
+        <App />
+      </AppProvider>
     </Router>
   </React.StrictMode>
 );

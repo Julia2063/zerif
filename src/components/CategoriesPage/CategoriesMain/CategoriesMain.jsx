@@ -1,16 +1,40 @@
-import { React } from 'react';
+import { React, useEffect, useState } from 'react';
 import '../CategoriesMain/CategoriesMain.scss';
 import { Link } from 'react-router-dom';
+import classNames from 'classnames';
 import { categoriesApi } from '../../../API/deserts';
 
 export const CategoriesMain = () => {
-  const paginationCount = [1, 2, 3, 4, 5];
+  const [products, setProducts] = useState(categoriesApi);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [productsPerPage] = useState(6);
+  const paginationCount = [];
+
+ 
+  for (let i = 1; i <= Math.ceil(categoriesApi.length / productsPerPage); i++) {
+    paginationCount.push(i);
+  }
+  
+  
+
+  useEffect(() => {
+    const lastProductIndex = currentPage * productsPerPage;
+    const firstProductIndex = lastProductIndex - productsPerPage;
+   
+    const currentProducts = categoriesApi.slice(firstProductIndex, lastProductIndex);
+
+    setProducts(currentProducts);
+
+  }, [currentPage]);
+ 
+  const paginate = pageNumber => setCurrentPage(pageNumber);
+
   return (
     <div className="categoriesMain">
       
       <p className="categoriesMain__title">Товары / десерты</p>
       <div className="categoriesMain__boxDisplay">
-        {categoriesApi.map((product) => (
+        {products.map((product) => (
           <Link to={`${ product.id}`} key={product.id}>
             <div className="categoriesMain__box" >
               <img
@@ -26,18 +50,27 @@ export const CategoriesMain = () => {
         ))}
       </div>
 
-      <div className="categoriesMain__pagination">
-        <div className="categoriesMain__pagination-item categoriesMain__pagination-item--active">
-          {paginationCount[0]}
+      {paginationCount.length > 1 && (
+        <div className="categoriesMain__pagination">
+  
+          {paginationCount.map(el => {
+            return (
+              <div 
+                className={classNames(
+                  'categoriesMain__pagination-item', 
+                  {'categoriesMain__pagination-item--active': currentPage === el}
+                )}
+              
+                key={el}
+                onClick={() => paginate(el)}
+              >
+                {el}
+              </div>
+            );
+          })}
         </div>
-        {paginationCount.slice(1).map(el => {
-          return (
-            <div className="categoriesMain__pagination-item" key={el}>
-              {el}
-            </div>
-          );
-        })}
-      </div>
+      )}
+      
     </div>
   );
 };

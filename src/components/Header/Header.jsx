@@ -1,11 +1,20 @@
 import { React, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import classNames from 'classnames';
+import { PageNavLink } from '../PageNavLink';
 import './Header.scss';
 
-import classNames from 'classnames';
+
 import downIcon from '../../images/HomePage/downIcon.svg';
 import upIcon from '../../images/HomePage/upIcon.svg';
-import { PageNavLink } from '../PageNavLink';
+import search from '../../images/HomePage/searchIcon.svg';
+import phone from '../../images/HomePage/phoneIcon.svg';
+import persone from '../../images/HomePage/personIcon.svg';
+import basket from '../../images/HomePage/basketIcon.svg';
+import burger from '../../images/HomePage/burger.svg';
+import close from '../../images/HomePage/closeIcon.svg';
+
+
 
 export const Header = ({ setProductCategory }) => {
   const [isCategoryOpen, setIsCategoryOpen] = useState(false);
@@ -33,6 +42,7 @@ export const Header = ({ setProductCategory }) => {
 
   const handleSelectCategory = (el) => {
     setProductCategory(el[1]);
+    setIsCategoryOpen(false);
   };
 
   const handleKeyDown = (event) => {
@@ -86,8 +96,6 @@ export const Header = ({ setProductCategory }) => {
 
   return (
     <>
-      
-      
       <header className="header">
         {(isOpen || isCategoryOpen) && (
           <div
@@ -102,7 +110,7 @@ export const Header = ({ setProductCategory }) => {
           <div className={classNames('burgLog', {onMobile: isSearch})}>
             <button onClick={handleOpen} className="burgerButton">
               <img
-                src={require('../../images/HomePage/burger.png')}
+                src={burger}
                 alt="burger menu"
                 className="header__burger"
               />
@@ -137,7 +145,6 @@ export const Header = ({ setProductCategory }) => {
               />
             </div>
             <div 
-              onClick={handleOnClickSelect}
               className="select"
               onKeyDown={handleCloseSelectDropdown}
             >
@@ -145,6 +152,7 @@ export const Header = ({ setProductCategory }) => {
                 text="Товары"
                 to="/categories"
                 img={(downIcon)}
+                handleClick={handleOnClickSelect}
               />
               
               {isCategoryOpen && (
@@ -220,9 +228,9 @@ export const Header = ({ setProductCategory }) => {
                 searchOpen();
                 handleClose();
                 handleCloseSelectDropdown();
-              } }>
+              }}>
                 <img
-                  src={require('../../images/HomePage/searchIcon.png')}
+                  src={search}
                   alt="search"
                 />
               </Link>
@@ -234,7 +242,7 @@ export const Header = ({ setProductCategory }) => {
               handleCloseSelectDropdown();
             }}>
               <img
-                src={require('../../images/HomePage/phoneIcon.png')}
+                src={phone}
                 alt="phone"
               />
             </Link>
@@ -244,7 +252,7 @@ export const Header = ({ setProductCategory }) => {
               handleCloseSelectDropdown();
             }}>
               <img
-                src={require('../../images/HomePage/personIcon.png')}
+                src={persone}
                 alt="account"
               />
             </Link>
@@ -254,7 +262,7 @@ export const Header = ({ setProductCategory }) => {
               handleCloseSelectDropdown();
             }}>
               <img
-                src={require('../../images/HomePage/basketIcon.png')}
+                src={basket}
                 alt="basket"
               />
             </Link>
@@ -280,7 +288,7 @@ export const Header = ({ setProductCategory }) => {
         <div className="burgerMenu">
           <button className="closeButton">
             <img
-              src={require('../../images/HomePage/closeIcon.png')}
+              src={close}
               alt="close button"
               onClick={handleClose} />
           </button>
@@ -302,14 +310,18 @@ export const Header = ({ setProductCategory }) => {
                 text="Популярное" />
             </div>
             <div
-              onClick={handleOnClickSelect}
               className="select--burger"
               onKeyDown={handleCloseSelectDropdown}
+              onClick={() => {
+                toggle();
+              }}
             >
               <PageNavLink
                 text="Товары"
                 to="/categories"
-                img={isCategoryOpen ? upIcon : downIcon} />
+                img={isCategoryOpen ? upIcon : downIcon}
+                handleClick={handleOnClickSelect}
+              />
               {isCategoryOpen && (
                 <div className="select__selectDropdown">
                   {categories.map(el => {

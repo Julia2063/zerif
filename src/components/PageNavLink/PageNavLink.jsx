@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 import './PageNavLink.scss';
 
-export const PageNavLink = ({ to, text, img }) => (
+export const PageNavLink = ({ to, text, img, handleClick }) => (
   <NavLink
     to={to}
     className={({ isActive }) => classNames(
@@ -12,10 +12,12 @@ export const PageNavLink = ({ to, text, img }) => (
   >
     <p>{text}</p> 
     {img && (
-      <img 
-        src={img} 
-        alt="arrowDown" 
-      />
+      <button onClick={handleClick}>
+        <img 
+          src={img} 
+          alt="arrowDown" 
+        />
+      </button>
     )}
     
   </NavLink>

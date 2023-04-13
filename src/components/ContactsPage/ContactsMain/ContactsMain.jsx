@@ -1,6 +1,12 @@
 import { React } from 'react';
 import '../ContactsMain/ContactsMain.scss';
 
+import viber from '../../../images/Contacts/viberIcon.svg';
+import facebook from '../../../images/Contacts/facebookIcon.svg';
+import youtube from '../../../images/Contacts/youtubeIcon.svg';
+import watsap from '../../../images/Contacts/watsapIcon.svg';
+import telegram from '../../../images/Contacts/telegramIcon.svg';
+
 export const ContactsMain = () => {
   return (
     <div className="contactsMain">
@@ -19,39 +25,34 @@ export const ContactsMain = () => {
         <p className="contactsMain__content--font1 contTitle">Соцсети:</p>
         <nav className="contactsMain__content--nav">
           <a href="">
-            {' '}
             <img
-              src={require('../../../images/Contacts/viberIcon.png')}
+              src={viber}
               alt=""
-            />{' '}
+            />
           </a>
           <a href="">
-            {' '}
             <img
-              src={require('../../../images/Contacts/facebookIcon.png')}
+              src={facebook}
               alt=""
-            />{' '}
+            />
           </a>
           <a href="">
-            {' '}
             <img
-              src={require('../../../images/Contacts/youtubeIcon.png')}
+              src={youtube}
               alt=""
-            />{' '}
+            />
           </a>
           <a href="">
-            {' '}
             <img
-              src={require('../../../images/Contacts/watsapIcon.png')}
+              src={watsap}
               alt=""
-            />{' '}
+            />
           </a>
           <a href="">
-            {' '}
             <img
-              src={require('../../../images/Contacts/telegramIcon.png')}
+              src={telegram}
               alt=""
-            />{' '}
+            />
           </a>
         </nav>
       </div>

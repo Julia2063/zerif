@@ -2,6 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Footer.scss';
 
+import viber from '../../images/HomePage/viberIcon.svg';
+import facebook from '../../images/HomePage/facebookIcon.svg';
+import youtube from '../../images/HomePage/youtubeIcon.svg';
+import watsap from '../../images/HomePage/watsapIcon.svg';
+import telegram from '../../images/HomePage/telegramIcon.svg';
+
 export const Footer = () => {
   return (
     <div className="footer">
@@ -9,7 +15,7 @@ export const Footer = () => {
         <Link to={'/'}>
           <img
             src={require('../../images/Footer/Logo.png')}
-            alt="logo image"
+            alt="logo image1"
             className="footer__block1--iconDesc"
           />
         </Link>
@@ -21,35 +27,35 @@ export const Footer = () => {
         <div className="footer__block1--links">
           <Link to={''}>
             <img
-              src={require('../../images/HomePage/viberIcon.png')}
+              src={viber}
               alt="viber icon"
               className="iconFrame"
             />
           </Link>
           <Link to={''}>
             <img
-              src={require('../../images/HomePage/facebookIcon.png')}
+              src={facebook}
               alt="facebook icon"
               className="iconFrame"
             />
           </Link>
           <Link to={''}>
             <img
-              src={require('../../images/HomePage/youtubeIcon.png')}
+              src={youtube}
               alt="youtube icon"
               className="iconFrame"
             />
           </Link>
           <Link to={''}>
             <img
-              src={require('../../images/HomePage/watsapIcon.png')}
+              src={watsap}
               alt="watsap icon"
               className="iconFrame"
             />
           </Link>
           <Link to={''}>
             <img
-              src={require('../../images/HomePage/telegramIcon.png')}
+              src={telegram}
               alt="telegram icon"
               className="iconFrame"
             />

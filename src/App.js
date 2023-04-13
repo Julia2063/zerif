@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './styles/App.scss';
 import { HomePage } from './Pages/HomePage';
@@ -12,13 +12,18 @@ import { BasketPage } from './Pages/BasketPage';
 import { BasketOrderPage } from './Pages/BasketOrderPage';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer/';
+import { AppContext } from './components/AppProvider';
 
 import ScrollToTop from './components/ScrollToTop';
 
 function App () {
   const [productCategory, setProductCategory] = useState(null);
 
+  const { user } = useContext(AppContext);
+
+  console.log(user);
   console.log(productCategory);
+
 
   return (
     <div className="app">
@@ -34,7 +39,7 @@ function App () {
           <Route path=":slug" element={<ProductCardPage />} />
         </Route>
         <Route path="/contacts" element={<ContactsPage />}/>
-        <Route path="/account" element={<AccountEnterPage />}/>
+        <Route path="/account" element={user ? <AccountInformationPage /> : <AccountEnterPage />}/>
         <Route 
           path="/account/information" 
           element={<AccountInformationPage />}

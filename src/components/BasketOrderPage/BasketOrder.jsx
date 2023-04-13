@@ -42,7 +42,7 @@ export const BasketOrder = () => {
           <label className="basketOrder__label">
             Оплата
             <label className="basketOrder__radio">
-              <input type="radio" value="card" name="payment" />
+              <input type="radio" value="card" name="payment" checked/>
               <span>Карта</span>
             </label>
             <label className="basketOrder__radio">

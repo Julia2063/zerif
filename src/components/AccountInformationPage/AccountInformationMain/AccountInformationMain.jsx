@@ -1,11 +1,44 @@
-import React, { useState}  from 'react';
+import React, { useState, useContext}  from 'react';
+import { getAuth, signOut } from 'firebase/auth';
 import '../AccountInformationMain/AccountInformationMain.scss';
 import classNames from 'classnames';
+
+import pencil from '../../../images/AccountInformation/penIcon.svg';
+import { Modal } from '../../Modal/Modal';
+import { AppContext } from '../../AppProvider';
 
 
 export const AccountInformationMain = () => {
   const [informationTab, setImformationTab] = useState(true);
   const [ordersTab, setOrdersTab] = useState(false);
+  const [isModal, setIsModal] = useState(false);
+  const [errorTitle, setErrorTitle] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const { setUser } = useContext(AppContext);
+
+ 
+
+  const auth = getAuth();
+
+
+  const handleSignOut = () => {
+    signOut(auth).then(() => {
+      setIsModal(true);
+      setErrorTitle('Success');
+      setErrorMessage('SignOut was successful');
+     
+      setTimeout(() => {
+        setUser(null);
+       
+      }, 5000);
+
+    }).catch((error) => {
+      setIsModal(true);
+      setErrorTitle('Something went wrong...');
+      setErrorMessage(error.message);
+    });
+  };
 
   const setCurrentInformationTab = () => {
     setOrdersTab(false);
@@ -17,7 +50,10 @@ export const AccountInformationMain = () => {
     setOrdersTab(true);
   };
 
-  
+  const handleModal = () => {
+    setIsModal(!isModal);
+  };
+
 
   return (
     <div className="accountInformationMain">
@@ -26,6 +62,7 @@ export const AccountInformationMain = () => {
         <h1>Личный кабинет</h1>
         <button 
           className="accountInformationMain__tabs-item accountInformationMain__tabs-item--mobile"
+          onClick={handleSignOut}
         >
             Выход
         </button>
@@ -53,6 +90,7 @@ export const AccountInformationMain = () => {
         </button>
         <button 
           className="accountInformationMain__tabs-item accountInformationMain__tabs-item--desktop"
+          onClick={handleSignOut}
         >
             Выход
         </button>
@@ -64,7 +102,7 @@ export const AccountInformationMain = () => {
             <div className="infoDisplay__block-title">
               ФИО
               <img
-                src={require('../../../images/AccountInformation/penIcon.png')}
+                src={pencil}
                 alt=""
                 className="penIcon"
               />
@@ -79,7 +117,7 @@ export const AccountInformationMain = () => {
             <div className="infoDisplay__block-title">
             Email
               <img
-                src={require('../../../images/AccountInformation/penIcon.png')}
+                src={pencil}
                 alt=""
                 className="penIcon"
               />
@@ -92,7 +130,7 @@ export const AccountInformationMain = () => {
             <div className="infoDisplay__block-title">
               Телефон
               <img
-                src={require('../../../images/AccountInformation/penIcon.png')}
+                src={pencil}
                 alt=""
                 className="penIcon"
               />
@@ -105,7 +143,7 @@ export const AccountInformationMain = () => {
             <div className="infoDisplay__block-title">
               Адрес доставки
               <img
-                src={require('../../../images/AccountInformation/penIcon.png')}
+                src={pencil}
                 alt=""
                 className="penIcon"
               />
@@ -155,7 +193,13 @@ export const AccountInformationMain = () => {
           
         </table>
       )}
-      
+      {isModal && (
+        <Modal
+          title={errorTitle} 
+          message={errorMessage}
+          handleModal={handleModal} 
+        />
+      )}
     </div>
   );
 };
