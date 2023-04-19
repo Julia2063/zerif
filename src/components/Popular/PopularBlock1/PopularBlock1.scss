@@ -1,11 +1,17 @@
 @import "../../../styles/mixines.scss";
 
 .popularBlock1 {
-   background-image: url("../../../images/Popular/GradientBlock3.png");
-    background-size: cover;
-    width: 100%;
-    height: min-content;
-    padding: 120px 120px 90px 120px;
+  background-image: url("../../../images/Popular/GradientBlock3.png");
+  background-size: cover;
+  width: 100%;
+  height: min-content;
+  padding: 120px 120px 90px 120px;
+
+  @include onDesktop {
+    padding: 120px 80px 60px 80px;
+  }
+
+
 
   @include onMobile {
     background-image: url("../../../images/Popular/GradientBlock1.png");

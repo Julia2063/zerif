@@ -13,6 +13,8 @@
     display: flex;
     flex-direction: column;
 
+    
+
   @include onMobile {
     display: block;
     background-image: none;
@@ -82,7 +84,7 @@
 
   &__item {
     display: grid;
-    grid-template-columns: 0.5fr 7fr 1fr 1fr;
+    grid-template-columns: 0.5fr 6fr 2fr 1fr;
     gap: 16px;
     align-items: center;
     margin-bottom: 25px;
@@ -139,6 +141,7 @@
     font-size: 20px;
     color: #431F1D;
     justify-self: end;
+    display: flex;
 
   }
 

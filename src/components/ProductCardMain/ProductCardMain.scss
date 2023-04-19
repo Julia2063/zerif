@@ -1,26 +1,35 @@
-@import "../../../styles/mixines.scss";
+@import "../../styles/mixines.scss";
 
-.productCardHeader {
-  
-  
+.productCardMain {
   padding: 50px 120px 66px 120px;
 
   font-family: Montserrat, sans-serif;
-  
+  display: flex;
+  flex-direction: column;
+  gap: 110px;
 
+  background-image: url('../../images/Categories/gradient.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  
   @include onDesktop {
     padding: 50px 80px 66px 80px;
+
+    gap: 80px;
   }
 
  
 
   @include onMobile {
+    background-image: none;
+    background: #fff7f1;
    
     padding: 30px 30px 82px 30px;
   }
+}
 
-
-
+.productCardHeader {
+  
   &__title {
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 20px;
@@ -220,6 +229,7 @@
       border: none;
       font-size: 24px;
       line-height: 27px;
+      padding: 0;
 
       @include onDesktop {
         font-size: 18px;
@@ -390,27 +400,24 @@
     width: 100%;
     height: 100%;
   
-    
-  
-    &__img {
-      width: 100%;
-  
-      & img {
-        height: 512px;
+      &__img {
         width: 100%;
-        object-fit: cover;
+   
+        & img {
+          height: 512px;
+          width: 100%;
+          object-fit: cover;
   
-        @include onDesktop {
-          height: 450px;
-        }
+          @include onDesktop {
+            height: 450px;
+          }
   
-        @include onTablet {
-          height: 350px;
+          @include onTablet {
+            height: 350px;
+          }
         }
       }
-     
     }
-  }
   }
 
   &__photo-mobile {
@@ -421,7 +428,6 @@
       margin-bottom: 52px;
     }
   }
- 
 }
 
 .counterBox {
@@ -447,4 +453,155 @@
  
   }
 }
+
+.productCardBlock1 {
+  
+  color: rgba(112, 112, 112, 1);
+
+  &__tabs {
+    display: flex;
+    gap: 70px;
+
+    margin-bottom: 30px;
+
+    @include onMobile {
+      gap: 9px;
+    }
+
+    &-button {
+      font-family: inherit;
+      color: inherit;
+      background: none;
+      border: none;
+      font-size: 24px;
+      line-height: 26px;
+      padding-bottom: 12px;
+      cursor: pointer;
+
+      @include onDesktop {
+        font-size: 20px;
+        line-height: 22px;
+      }
+
+      &--active {
+         color: rgba(0, 0, 0, 1);
+         border-bottom: 1px solid rgba(0, 0, 0, 1);
+
+      }
+
+      &--mobile {
+        display: none;
+
+        @include onMobile {
+          display: block;
+        }
+      }
+
+      &--desktop {
+        @include onMobile {
+          display: none;
+        }
+      }
+    }
+  }
+
+  &__text {
+    font-size: 18px;
+    line-height: 23px;
+ 
+    @include onMobile {
+      font-size: 16px;
+      line-height: 18px;
+    }
+  }
+}
+
+.productCardBlock2 {
+
+  &__title1 {
+    font-family: Montserrat, sans-serif;
+    font-size: 24px;
+    line-height: 35px;
+    
+    margin-bottom: 43px;
+  }
+
+  &__img {
+    width: 310px;
+
+    margin-bottom: 37px;
+
+     @include onDesktop {
+      width: 270px;
+    }
+
+     @include onTablet {
+      width: 200px;
+    }
+
+    @include onMobile {
+      width: 100%;
+    }
+
+  }
+
+  &__title2 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: 700;
+    font-size: 18px;
+    text-transform: uppercase;
+
+    margin-bottom: 15.6px;
+
+    @include onTablet {
+      font-size: 16px;
+    }
+
+  
+    @include onMobile {
+   
+      font-size: 18px;
+
+    }
+  }
+
+  &__price {
+    color: #A18A68;
+    font-family: Montserrat, sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+
+  }
+}
+
+.desktop {
+
+  @include onMobile {
+    display: none;
+  }
+}
+
+.display {
+  display: flex;
+  justify-content: space-between;
+  gap: 105px;
+
+  @include onTablet {
+    gap: 80px;
+  }
+
+  @include onMobile {
+    display: none;
+  }
+
+  &--onMobile {
+    display: none;
+
+    @include onMobile {
+      display: block;
+    }
+  }
+}
+
 

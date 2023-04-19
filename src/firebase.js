@@ -1,6 +1,6 @@
-
-import { initializeApp } from 'firebase/app';
 import { getAnalytics } from 'firebase/analytics';
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/firestore';
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -13,5 +13,7 @@ const firebaseConfig = {
 };
 
 
-const app = initializeApp(firebaseConfig);
+const app = firebase.initializeApp(firebaseConfig);
+
 const analytics = getAnalytics(app);
+export const db = app.firestore();

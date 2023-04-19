@@ -249,6 +249,13 @@
   display: flex;
   gap: 45px;
 
+  & a {
+    display: flex;
+    gap: 5px;
+    font-size: 15px;
+    line-height: 105%;
+  }
+
   
 
   @include onDesktop {

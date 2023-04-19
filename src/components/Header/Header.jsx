@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from 'react';
+import { React, useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import { PageNavLink } from '../PageNavLink';
@@ -13,6 +13,8 @@ import persone from '../../images/HomePage/personIcon.svg';
 import basket from '../../images/HomePage/basketIcon.svg';
 import burger from '../../images/HomePage/burger.svg';
 import close from '../../images/HomePage/closeIcon.svg';
+import { AppContext } from '../AppProvider';
+import { Modal } from '../Modal/Modal';
 
 
 
@@ -23,6 +25,16 @@ export const Header = ({ setProductCategory }) => {
   const [isSearch, setIsSearch] = useState(false);
   const [query, setQuery] = useState('');
 
+  const { cart } = useContext(AppContext);
+
+  const [cartCount, setCartCount] = useState(cart.length);
+
+  const [isModal, setIsModal] = useState(false);
+  const [modalTitle, setModalTitle] = useState('');
+  const [modalMessage, setModalMessage] = useState('');
+
+  console.log(cart);
+
   const categories = [
     ['десерты', 'desert'],
     ['торты', 'cakes'],
@@ -31,6 +43,11 @@ export const Header = ({ setProductCategory }) => {
     ['конфеты и шоколад', 'candy and chocolate'],
     ['мороженое', 'ice cream'],
   ];
+
+  
+  const handleModal = () => {
+    setIsModal(!isModal);
+  };
 
   const toggle = () => {
     setIsCategoryOpen(!isCategoryOpen);
@@ -93,6 +110,19 @@ export const Header = ({ setProductCategory }) => {
     
   }, [isOpen]);
 
+  useEffect(() => {
+    setCartCount(cart.length);
+  }, [cart]);
+
+  const handleBasketClick = () => {
+    handleClose();
+    handleCloseSelectDropdown();
+    if (cart.length === 0) {
+      setIsModal(true);
+      setModalTitle('Basket error');
+      setModalMessage('Basket is empty!');
+    }
+  };
 
   return (
     <>
@@ -257,14 +287,13 @@ export const Header = ({ setProductCategory }) => {
               />
             </Link>
 
-            <Link to={'/basket'} onClick={() => {
-              handleClose();
-              handleCloseSelectDropdown();
-            }}>
+            <Link to={'/basket'} onClick={handleBasketClick}>
               <img
                 src={basket}
                 alt="basket"
               />
+              {cartCount > 0 && <p>{cartCount}</p>}
+              
             </Link>
           </div>
 
@@ -391,6 +420,13 @@ export const Header = ({ setProductCategory }) => {
           </div>
         </div>
     
+      )}
+      {isModal && (
+        <Modal
+          title={modalTitle} 
+          message={modalMessage}
+          handleModal={handleModal} 
+        />
       )}
     </>
   );

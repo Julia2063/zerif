@@ -3,8 +3,6 @@ import { Basket } from '../components/BasketPage/Basket';
 
 export const BasketPage = () => {
   return (
-    <>
-      <Basket />
-    </>
+    <Basket />
   );
 };

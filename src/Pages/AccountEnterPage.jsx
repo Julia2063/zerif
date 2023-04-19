@@ -3,10 +3,10 @@ import { AccountEnterMain }
   from '../components/AccountEnterPage/AccountEnterMain/AccountEnterMain';
 
 
-export const AccountEnterPage = () => {
+export const AccountEnterPage = ({ isRegister }) => {
   return (
    
-    <AccountEnterMain />
+    <AccountEnterMain isRegister={isRegister}/>
    
   );
 };

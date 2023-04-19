@@ -37,11 +37,7 @@
     font-size: 20px;
     line-height: 21px;
     text-transform: uppercase;
-
-    
     }
-    
-
   }
 
   &__tabs {
@@ -124,6 +120,23 @@
 
     & td {
       color: rgba(8, 9, 11, 0.5);
+
+      & button {
+        border: none;
+        background: none;
+        font-size: 16px;
+        line-height: 27px;
+
+        @include onTablet {
+          font-size: 12px;
+          line-height: 18px;
+          
+        }
+        @include onMobile {
+          font-size: 16px;
+          line-height: 27px;
+        }
+      }
     }
 
 
@@ -172,6 +185,20 @@
         padding-bottom: 5px;
         border-bottom: 1px solid #000;
       }
+    }
+
+    & button {
+      border: none;
+      background: none;
+    }
+
+    &-input {
+      border: none;
+      outline: none;
+      width: 100%;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      font-size: 20px;
+      line-height: 21px;
     }
   }
 }

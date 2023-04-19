@@ -49,6 +49,9 @@
     height: 46px;
     border: none;
     outline: none;
+    font-size: 20px;
+    line-height: 21px;
+    padding: 0 10px;
     @include onMobile {
       width: 100%;
       height: 46px;

@@ -1,6 +1,7 @@
-import React, { useContext, useState } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import './styles/App.scss';
+import { getAuth } from 'firebase/auth';
 import { HomePage } from './Pages/HomePage';
 import { PopularPage } from './Pages/PopularPage';
 import { ProductCardPage } from './Pages/ProductCardPage';
@@ -15,12 +16,48 @@ import { Footer } from './components/Footer/';
 import { AppContext } from './components/AppProvider';
 
 import ScrollToTop from './components/ScrollToTop';
+import { useLocalStorage } from './helpers/useLocalStorage';
+import { getCollectionWhereKeyValue } from './helpers/firebaseControls';
+
+
 
 function App () {
+  const auth = getAuth();
   const [productCategory, setProductCategory] = useState(null);
 
-  const { user } = useContext(AppContext);
+  const { user, setCart, setUser, userInfo, setUserInfo } = useContext(AppContext);
+  const [cartLocalStorage] = useLocalStorage('cart', []);
 
+  const fetchData = async () => {
+    try {
+      const currentUserInfo = 
+        await getCollectionWhereKeyValue('users', 'uid', auth.currentUser.uid);
+      setUserInfo(currentUserInfo[0]);
+      console.log('hgvhjbvj');
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      if(user) {
+        return setUser(user);
+      }
+    });
+
+    setTimeout(() => {
+      fetchData();
+    }, 1000);
+  }, [auth.currentUser]);
+
+  console.log(userInfo);
+  
+  useEffect(() => {
+    setCart(cartLocalStorage);
+  }, [cartLocalStorage]);
+  
   console.log(user);
   console.log(productCategory);
 
@@ -39,11 +76,20 @@ function App () {
           <Route path=":slug" element={<ProductCardPage />} />
         </Route>
         <Route path="/contacts" element={<ContactsPage />}/>
-        <Route path="/account" element={user ? <AccountInformationPage /> : <AccountEnterPage />}/>
         <Route 
-          path="/account/information" 
-          element={<AccountInformationPage />}
-        />
+          path="/account" 
+        >
+          <Route 
+            index
+            element={
+              user ? <AccountInformationPage /> : <Navigate to="/account/registration" replace />
+            }
+          />
+
+          <Route path="/account/login" element={<AccountEnterPage isRegister={false}/>} />
+          <Route path="/account/registration" element={<AccountEnterPage isRegister={true}/>} />
+
+        </Route>
         <Route path="/basket">
           <Route index element={<BasketPage/>} />
           <Route path="/basket/order" element={<BasketOrderPage />}/>

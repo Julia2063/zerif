@@ -8,6 +8,10 @@
   height: min-content;
   padding: 120px 120px 90px 120px;
 
+  @include onDesktop {
+    padding: 120px 80px 60px 80px;
+  }
+
   @include onMobile {
     padding: 74px 55px 74px;
     height: min-content;

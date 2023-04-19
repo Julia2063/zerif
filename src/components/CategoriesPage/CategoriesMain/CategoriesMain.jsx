@@ -1,17 +1,18 @@
 import { React, useEffect, useState } from 'react';
 import '../CategoriesMain/CategoriesMain.scss';
-import { Link } from 'react-router-dom';
 import classNames from 'classnames';
-import { categoriesApi } from '../../../API/deserts';
+import { productsApi } from '../../../API/deserts';
+import { ProductCardMini } from '../../ProductCardMini/ProductCardMini';
+
 
 export const CategoriesMain = () => {
-  const [products, setProducts] = useState(categoriesApi);
+  const [products, setProducts] = useState(productsApi);
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage] = useState(6);
   const paginationCount = [];
 
  
-  for (let i = 1; i <= Math.ceil(categoriesApi.length / productsPerPage); i++) {
+  for (let i = 1; i <= Math.ceil(productsApi.length / productsPerPage); i++) {
     paginationCount.push(i);
   }
   
@@ -21,32 +22,28 @@ export const CategoriesMain = () => {
     const lastProductIndex = currentPage * productsPerPage;
     const firstProductIndex = lastProductIndex - productsPerPage;
    
-    const currentProducts = categoriesApi.slice(firstProductIndex, lastProductIndex);
+    const currentProducts = productsApi.slice(firstProductIndex, lastProductIndex);
 
     setProducts(currentProducts);
+    window.scrollTo(0, 0);
 
   }, [currentPage]);
  
   const paginate = pageNumber => setCurrentPage(pageNumber);
+
 
   return (
     <div className="categoriesMain">
       
       <p className="categoriesMain__title">Товары / десерты</p>
       <div className="categoriesMain__boxDisplay">
-        {products.map((product) => (
-          <Link to={`${ product.id}`} key={product.id}>
-            <div className="categoriesMain__box" >
-              <img
-                src={require(`../../../images/Categories/Pagination/${product.id}.png`)}
-                alt=""
-                className="categoriesMain__img"
-              />
-              <p className="categoriesMain__productTitle">{product.title}</p>
-              <p className="categoriesMain__price">{product.price}</p>
-            </div>
-          </Link>
-         
+        {products.map(product => (
+          <ProductCardMini 
+            product={product}
+            src={require(`../../../images/Products/${product.id}.png`)}
+            path={`${ product.id}`}
+            key={product.id}
+          />
         ))}
       </div>
 
