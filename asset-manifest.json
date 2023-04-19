@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/zerif/static/css/main.e0a9578a.css",
-    "main.js": "/zerif/static/js/main.d0e85abe.js",
+    "main.css": "/zerif/static/css/main.5b900d83.css",
+    "main.js": "/zerif/static/js/main.bf990539.js",
     "static/js/787.044d8b7e.chunk.js": "/zerif/static/js/787.044d8b7e.chunk.js",
     "static/media/formPieNew2.png": "/zerif/static/media/formPieNew2.8f4ee826acf2f4f898bf.png",
     "static/media/GradientBody3Desc.png": "/zerif/static/media/GradientBody3Desc.db564e84eb1590b2ed95.png",
@@ -31,13 +31,11 @@
     "static/media/Montserrat-Regular.ttf": "/zerif/static/media/Montserrat-Regular.ceb11275ab638627a643.ttf",
     "static/media/2.png": "/zerif/static/media/2.0c0e3d042e5bcf09af1c.png",
     "static/media/8.png": "/zerif/static/media/8.fc41d05a50398151e0b7.png",
-    "static/media/sameProductPhoto2.png": "/zerif/static/media/sameProductPhoto2.7508ba7dab6bb59f2be8.png",
     "static/media/productCardPhoto.png": "/zerif/static/media/productCardPhoto.a12fbfdb66ed1823ab68.png",
     "static/media/9.png": "/zerif/static/media/9.5779804575f97712ad25.png",
-    "static/media/sameProductPhoto3.png": "/zerif/static/media/sameProductPhoto3.27f0ca04c02ca7269e9d.png",
     "static/media/1.png": "/zerif/static/media/1.0c205443a8d500e70836.png",
     "static/media/12.png": "/zerif/static/media/12.1ddb21eb3a6bfff4de0d.png",
-    "static/media/sameProductPhoto.png": "/zerif/static/media/sameProductPhoto.1ddb21eb3a6bfff4de0d.png",
+    "static/media/undefined.png": "/zerif/static/media/undefined.1ddb21eb3a6bfff4de0d.png",
     "static/media/6.png": "/zerif/static/media/6.418c7dcc99a501f3d130.png",
     "static/media/7.png": "/zerif/static/media/7.4aad68ebda14becf7845.png",
     "static/media/10.png": "/zerif/static/media/10.147ba5afd82b1e232aad.png",
@@ -74,12 +72,12 @@
     "static/media/upIcon.svg": "/zerif/static/media/upIcon.f0c879dc4eada967a4396651329ad3f2.svg",
     "static/media/downIcon.svg": "/zerif/static/media/downIcon.03f4ac5120a63ce59cb8a51958771e10.svg",
     "static/media/check.svg": "/zerif/static/media/check.70df0e1628ffdfd6cee5.svg",
-    "main.e0a9578a.css.map": "/zerif/static/css/main.e0a9578a.css.map",
-    "main.d0e85abe.js.map": "/zerif/static/js/main.d0e85abe.js.map",
+    "main.5b900d83.css.map": "/zerif/static/css/main.5b900d83.css.map",
+    "main.bf990539.js.map": "/zerif/static/js/main.bf990539.js.map",
     "787.044d8b7e.chunk.js.map": "/zerif/static/js/787.044d8b7e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e0a9578a.css",
-    "static/js/main.d0e85abe.js"
+    "static/css/main.5b900d83.css",
+    "static/js/main.bf990539.js"
   ]
 }
