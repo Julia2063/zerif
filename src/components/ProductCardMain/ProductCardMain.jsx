@@ -64,6 +64,7 @@ export const ProductCardMain = () => {
 
     const newSameProducts = productsApi.slice(start, start + 3);
     setSameProducts(newSameProducts);
+    setProductCount(1);
   }, [slug]);
 
   const navigate = useNavigate();
