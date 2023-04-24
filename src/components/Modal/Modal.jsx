@@ -1,30 +1,32 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './Modal.scss';
 
 import cross from '../../images/AccountInformation/cross__white.svg';
-import { productsApi } from '../../API/deserts';
+import { AppContext } from '../AppProvider';
 
 export const Modal = ({ title, message, handleModal }) => {
+
+  const { productsApi } = useContext(AppContext);
 
   const rightMessage = (message) => {
     return Array.isArray(message) 
       ? message.map(el => {
         return(
-          <div>
+          <div key={el.id} className="modal__body-text">
             <img 
-              src={require(`../../images/Products/${el.id}.png`)}
+              src={productsApi.find(e => e.id === el.id).image}
               alt=""
             />
             {Object.entries(el).sort((a, b) => a[0].length - b[0].length || a[1] - b[1]).map(e => {
               switch (e[0]) {
               case 'id':
-                return <span>{productsApi.find(l => e[1] === l.id ).title}</span>;
+                return <span key={e[0]}>{productsApi.find(l => e[1] === l.id ).title}</span>;
 
               case 'price':
-                return <span>{`$ ${e[1]}`}</span>;
+                return <span key={e[0]}>{`$ ${e[1]}`}</span>;
 
               case 'count':
-                return <span>{`x ${e[1]}`}</span>;
+                return <span key={e[0]}>{`x ${e[1]}`}</span>;
 
               default:
                 return e[1]; 

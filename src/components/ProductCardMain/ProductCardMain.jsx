@@ -6,7 +6,6 @@ import { Scrollbar } from 'swiper';
 import { Link, useParams } from 'react-router-dom';
 import classNames from 'classnames';
 import { useNavigate } from 'react-router-dom';
-import { productsApi } from '../../API/deserts';
 import success from '../../images/BasketPage/success.svg';
 
 
@@ -17,6 +16,7 @@ import '../../styles/swiperScrollBar.scss';
 import { ProductCardMini } from '../ProductCardMini/ProductCardMini';
 import { useLocalStorage } from '../../helpers/useLocalStorage';
 import { AppContext } from '../AppProvider';
+import { PageNavigation } from '../PageNavigation/PageNavigation';
 
 
 export const ProductCardMain = () => {
@@ -36,12 +36,13 @@ export const ProductCardMain = () => {
   const [informationTab, setInformationTab] = useState(false);
 
   const [product, setProduct] = useState({});
+  const { setCart, productsApi } = useContext(AppContext);
 
   const [sameProducts, setSameProducts] = useState(productsApi.slice(0, 3));
   const [productCount, setProductCount] = useState(1);
 
   const [cartLocalStorage, setCartLocalStorage] = useLocalStorage('cart', []);
-  const { setCart } = useContext(AppContext);
+  
 
   const { slug } = useParams();
 
@@ -49,13 +50,12 @@ export const ProductCardMain = () => {
     
     const result =  Math.floor(Math.random() * (productsApi.length - 3));
 
-    console.log(result);
     return  result;
   };
   
   useEffect(() => {
     const currentProduct = productsApi.find(el => 
-      el.id === +slug);
+      el.id === slug);
 
     if (currentProduct) {
       setProduct(currentProduct);
@@ -65,7 +65,8 @@ export const ProductCardMain = () => {
     const newSameProducts = productsApi.slice(start, start + 3);
     setSameProducts(newSameProducts);
     setProductCount(1);
-  }, [slug]);
+
+  }, [slug, productsApi]);
 
   const navigate = useNavigate();
 
@@ -115,12 +116,11 @@ export const ProductCardMain = () => {
     handleAdd();
   };
 
-
   return (
     <div className="productCardMain">
+     
       <div className="productCardHeader">
-        
-        <p className="productCardHeader__title">Товары / десерты</p>
+        <PageNavigation />
         <div className="desktopDisplay">
           <div className="desktopDisplay__photoZone">
             <Swiper
@@ -137,14 +137,14 @@ export const ProductCardMain = () => {
             >
               <SwiperSlide className="swiper__img">
                 <img
-                  src={require(`../../images/Products/${product.id}.png`)}
+                  src={product.image}
                   alt=""
                   
                 />
               </SwiperSlide>
               <SwiperSlide  className="swiper__img">
                 <img
-                  src={require('../../images/ProductCard/productCardPhoto.png')}
+                  src={product.image}
                   alt=""
                  
                 />
@@ -172,7 +172,7 @@ export const ProductCardMain = () => {
             />
           </div>
           <img
-            src={require('../../images/ProductCard/productCardPhoto.png')}
+            src={product.image}
             alt="small pie image5"
             className="desktopDisplay__photo-mobile"
           />
@@ -286,7 +286,6 @@ export const ProductCardMain = () => {
               >
                 <ProductCardMini 
                   product={el}
-                  src={require(`../../images/Products/${el.id}.png`)}
                 />
               </div>
            
@@ -298,8 +297,7 @@ export const ProductCardMain = () => {
         
           <ProductCardMini 
             product={productsApi[0]}
-            src={require(`../../images/Products/${productsApi[0].id}.png`)}
-            path={`${ productsApi[0].id}`}
+            path={`${ productsApi[0]?.id}`}
           />
        
         </div>

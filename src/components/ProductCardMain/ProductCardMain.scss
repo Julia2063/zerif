@@ -46,6 +46,10 @@
 
     margin-bottom: 34px;
 
+    &:first-letter {
+      text-transform: uppercase;
+    }
+
     @include onDesktop {
       font-size: 30px;
 

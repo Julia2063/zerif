@@ -75,7 +75,7 @@ export const Footer = () => {
           </Link>
         </div>
         <div className="divForLink">
-          <Link to={'/products'} className="oneMoreFooter__link">
+          <Link to={'/categories'} className="oneMoreFooter__link">
             Товары
           </Link>
         </div>

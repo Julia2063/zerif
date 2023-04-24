@@ -7,7 +7,7 @@ import './Header.scss';
 
 import downIcon from '../../images/HomePage/downIcon.svg';
 import upIcon from '../../images/HomePage/upIcon.svg';
-import search from '../../images/HomePage/searchIcon.svg';
+import searchIcon from '../../images/HomePage/searchIcon.svg';
 import phone from '../../images/HomePage/phoneIcon.svg';
 import persone from '../../images/HomePage/personIcon.svg';
 import basket from '../../images/HomePage/basketIcon.svg';
@@ -24,25 +24,27 @@ export const Header = ({ setProductCategory }) => {
   
   const [isSearch, setIsSearch] = useState(false);
   const [query, setQuery] = useState('');
+  const [search, setSearch] = useState([]);
 
-  const { cart } = useContext(AppContext);
+  const { cart, productsApi, language, setLanguage } = useContext(AppContext);
 
   const [cartCount, setCartCount] = useState(cart.length);
 
   const [isModal, setIsModal] = useState(false);
   const [modalTitle, setModalTitle] = useState('');
   const [modalMessage, setModalMessage] = useState('');
-
-  console.log(cart);
+  const [isLanguagesSelectOpen, setIsLanguagesSelectOpen] = useState(false);
 
   const categories = [
     ['десерты', 'desert'],
     ['торты', 'cakes'],
     ['выпечка', 'bakery'],
-    ['клубника и фрукты в шоколаде', 'strawberries and fruits in chocolate'],
-    ['конфеты и шоколад', 'candy and chocolate'],
-    ['мороженое', 'ice cream'],
+    ['клубника и фрукты в шоколаде', 'in-chocolate'],
+    ['конфеты и шоколад', 'candy-and-chocolate'],
+    ['мороженое', 'ice-cream'],
   ];
+
+  const languages = ['en', 'ru'];
 
   
   const handleModal = () => {
@@ -70,11 +72,6 @@ export const Header = ({ setProductCategory }) => {
         setIsCategoryOpen(false);
       }
     }
-  };
-
-  const handleBlur = () => {
-    setIsSearch(false);
-    setQuery('');
   };
 
   const handleCloseSelectDropdown = () => {
@@ -122,6 +119,19 @@ export const Header = ({ setProductCategory }) => {
       setModalTitle('Basket error');
       setModalMessage('Basket is empty!');
     }
+  };
+
+  useEffect(() => {
+    const searchResult =  productsApi
+      .filter(el => el.title.toLowerCase().includes(query.toLowerCase()));
+    if (query.length > 0) {
+      setSearch(searchResult);
+    }
+  }, [query]);
+
+  const handleSelectLanguage = (el) => {
+    setLanguage(el);
+    setIsLanguagesSelectOpen(false);
   };
 
   return (
@@ -189,12 +199,15 @@ export const Header = ({ setProductCategory }) => {
                 <div className="select__selectDropdown">
                   {categories.map(el => {
                     return (
-                      <div
-                        className="select__selectDropdown-item"
-                        key={el}
-                        onClick={() => handleSelectCategory(el)}
-                      > 
-                        {`- ${el[0]}`}
+                      <div className="select__selectDropdown-item" key={el[1]}>
+                        <Link
+                          to={`/categories/${el[1]}`}
+                          
+                          key={el}
+                          onClick={() => handleSelectCategory(el)}
+                        > 
+                          {`- ${el[0]}`}
+                        </Link>
                       </div>
                     );
                   })}
@@ -210,45 +223,44 @@ export const Header = ({ setProductCategory }) => {
             </div>
             {isSearch && (
               <div className="search">
-                <form action="">
-                  <input 
-                    type="text" 
-                    className="search__input" 
-                    autoFocus
-                    onKeyDown={(e) => handleKeyDown(e)}
-                    onBlur={handleBlur}
-                    value={query}
-                    onChange={(e) => searchOnChange(e)}
-                  />
-                </form>
-                {query.length > 0 && (
+                <input 
+                  type="text" 
+                  className="search__input" 
+                  autoFocus
+                  onKeyDown={(e) => handleKeyDown(e)}
+                  value={query}
+                  onChange={(e) => searchOnChange(e)}
+                />
+                {(query.length > 0 && search.length > 0) && (
                   <div className="search__list">
-                    <div className="search__list-item">
-                      <img 
-                        src={require('../../images/BasketPage/productImage.png')}
-                        alt="" className="search__list-image"
-                      />
-                      <div className="search__list-text">
-                        <p className="search__list-title">Торт с ягодами</p>
-                        <p className="search__list-price">50$</p>
-                      </div>
-                    </div>
-                    <div className="search__list-item">
-                      <img 
-                        src={require('../../images/BasketPage/productImage.png')}
-                        alt="" className="search__list-image"
-                      />
-                      <div className="search__list-text">
-                        <p className="search__list-title">Торт пряничный</p>
-                        <p className="search__list-price">40$</p>
-                      </div>
-                    </div>
+                    {search.map(el => {
+                    
+                      return (
+                        <Link 
+                          to={`/categories/${el.id}`} 
+                          className="search__list-item"  
+                          onClick={() => {
+                            setQuery('');
+                            setIsSearch(false);
+                          }}
+                          key={el.id}
+                        >
+                          <img 
+                            src={el.image}
+                            alt="" className="search__list-image"
+                          />
+                          <div className="search__list-text">
+                            <p className="search__list-title">{el.title}</p>
+                            <p className="search__list-price">{`${el.price}$`}</p>
+                          </div>
+                          
+                        </Link>
+                      );
+                    })}
                   </div>
                 )}
               </div>
             )}
-
-            
           </div>
 
           
@@ -260,14 +272,14 @@ export const Header = ({ setProductCategory }) => {
                 handleCloseSelectDropdown();
               }}>
                 <img
-                  src={search}
+                  src={searchIcon}
                   alt="search"
                 />
               </Link>
             )}
             
 
-            <Link to={'/phone'} onClick={() => {
+            <Link to={'tel:+300000000000'} onClick={() => {
               handleClose();
               handleCloseSelectDropdown();
             }}>
@@ -300,20 +312,28 @@ export const Header = ({ setProductCategory }) => {
           <div className="language select" onClick={() => {
             handleCloseSelectDropdown();
           }}>
-            <p className="language__text">Ru</p>
+            <p className="language__text">{language}</p>
             <img 
               src={downIcon} 
               alt="" 
               className="language__icon"
+              onClick={() => setIsLanguagesSelectOpen(!isLanguagesSelectOpen)}
             />
+            {isLanguagesSelectOpen && (
+              <div className="language__dropdown">
+                {languages.map(el => (
+                  <div onClick={() => handleSelectLanguage(el)}>
+                    {el}
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </nav>
        
       </header>
 
       {isOpen && (
-        
-         
         <div className="burgerMenu">
           <button className="closeButton">
             <img
@@ -341,15 +361,14 @@ export const Header = ({ setProductCategory }) => {
             <div
               className="select--burger"
               onKeyDown={handleCloseSelectDropdown}
-              onClick={() => {
-                toggle();
-              }}
             >
               <PageNavLink
                 text="Товары"
                 to="/categories"
                 img={isCategoryOpen ? upIcon : downIcon}
                 handleClick={handleOnClickSelect}
+                handleClose={handleClose}
+                
               />
               {isCategoryOpen && (
                 <div className="select__selectDropdown">
@@ -358,21 +377,22 @@ export const Header = ({ setProductCategory }) => {
                       <div
                         className="select__selectDropdown-item"
                         key={el}
-                        onClick={() => {
-                          handleSelectCategory(el);
-                          setIsOpen(false);
-                        } }
+                        onClick={handleClose}
                       >
-                        {`- ${el[0]}`}
+                        <Link
+                          to={`/categories/${el[1]}`}
+                          
+                          key={el}
+                          onClick={() => handleSelectCategory(el)}
+                        > 
+                          {`- ${el[0]}`}
+                        </Link>
                       </div>
                     );
                   })}
                 </div>
               )}
             </div>
-
-
-
             <div onClick={() => {
               handleCloseSelectDropdown();
               handleClose();
@@ -381,42 +401,7 @@ export const Header = ({ setProductCategory }) => {
                 to={'/contacts'}
                 text="Контакты" />
             </div>
-            {isSearch && (
-              <div className="search">
-                <form action="">
-                  <input
-                    type="text"
-                    className="search__input"
-                    autoFocus
-                    onKeyDown={(e) => handleKeyDown(e)}
-                    onBlur={handleBlur}
-                    value={query}
-                    onChange={(e) => searchOnChange(e)} />
-                </form>
-                {query.length > 0 && (
-                  <div className="search__list">
-                    <div className="search__list-item">
-                      <img
-                        src={require('../../images/BasketPage/productImage.png')}
-                        alt="" className="search__list-image" />
-                      <div className="search__list-text">
-                        <p className="search__list-title">Торт с ягодами</p>
-                        <p className="search__list-price">50$</p>
-                      </div>
-                    </div>
-                    <div className="search__list-item">
-                      <img
-                        src={require('../../images/BasketPage/productImage.png')}
-                        alt="" className="search__list-image" />
-                      <div className="search__list-text">
-                        <p className="search__list-title">Торт пряничный</p>
-                        <p className="search__list-price">40$</p>
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </div>
-            )}
+
           </div>
         </div>
     

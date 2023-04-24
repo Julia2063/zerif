@@ -3,20 +3,17 @@ import '../BasketPage/Basket.scss';
 import { Link, useNavigate } from 'react-router-dom';
 import { useLocalStorage } from '../../helpers/useLocalStorage';
 import { AppContext } from '../AppProvider';
-import { Modal } from '../Modal/Modal';
 
 import cross from '../../images/AccountInformation/cross__white.svg';
 
 
 export const Basket = () => {
   const [cartLocalStorage, setCartLocalStorage] = useLocalStorage('cart', []);
-  const { cart, setCart, user } = useContext(AppContext);
+  const { cart, setCart, user, productsApi } = useContext(AppContext);
   const [visibledCart, setVisibledCart] = useState([]);
   const navigate = useNavigate();
   
   const [isModal, setIsModal] = useState(false);
-  const [modalTitle, setModalTitle] = useState('');
-  const [modalMessage, setModalMessage] = useState('');
 
   const handleModal = () => {
     setIsModal(!isModal);
@@ -101,7 +98,7 @@ export const Basket = () => {
               <div className="basketBlock1__item" key={el.id}>
                 <div className="imgBlock">
                   <img
-                    src={require(`../../images/Products/${el.id}.png`)}
+                    src={productsApi.find(e => e.id === el.id)?.image}
                     alt="product image1"
                     className="basketBlock1__img"
                   />
@@ -151,7 +148,7 @@ export const Basket = () => {
         <div className="basketBlock2">
           <div className="basketBlock2__productPrice">
             <p>Товар:</p>
-            <p>{`${cart.map(el => el.price).reduce((a, b) => a + b, 0)}$`}</p>
+            <p>{`${cart.map(el => +el.price).reduce((a, b) => a + b, 0)}$`}</p>
           </div>
           <div className="basketBlock2__delivery">
             <p>Доставка:</p>
@@ -159,7 +156,7 @@ export const Basket = () => {
           </div>
           <div className="basketBlock2__fullCoast">
             <p>Всего:</p>
-            <p>{`${cart.map(el => el.price).reduce((a, b) => a + b, 0)}$`}</p>
+            <p>{`${cart.map(el => +el.price).reduce((a, b) => a + b, 0)}$`}</p>
           </div>
         </div>
       </div>

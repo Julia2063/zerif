@@ -1,0 +1,10 @@
+.reAuthForm {
+    & input {
+        color: #fff;
+        border-color: #fff;
+
+        &::placeholder {
+          color: #fff;
+        }
+      }
+}

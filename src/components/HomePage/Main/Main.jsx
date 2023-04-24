@@ -3,9 +3,17 @@ import '../Main/Main.scss';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from 'swiper';
+import { useNavigate } from 'react-router-dom';
 
 
 export const Main = () => {
+
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate('/categories');
+  };
+
   return (
     <div className="main">
       <div className="main__swiper"> 
@@ -51,7 +59,12 @@ export const Main = () => {
             Lorem ipsum dolor sit amet, Consectetur adipiscing elit Sed do
             eiusmod tempor
         </p>
-        <button className="order-button">Оформить заказ</button>
+        <button 
+          className="order-button"
+          onClick={handleClick}
+        >
+          Оформить заказ
+        </button>
       </div>
     </div>
   );

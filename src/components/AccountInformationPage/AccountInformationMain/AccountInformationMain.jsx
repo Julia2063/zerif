@@ -18,6 +18,8 @@ import {
   updateDocumentInCollection,
 } from '../../../helpers/firebaseControls';
 import { ModalWithForm } from '../../ModalWithForm';
+import { ReAuthForm } from '../../ReAuthForm';
+
 
 
 export const AccountInformationMain = () => {
@@ -149,21 +151,36 @@ export const AccountInformationMain = () => {
       }
     }
 
-    
-    try {
-      await updateDocumentInCollection('users', {...userInfo, ...newData}, userInfo.idPost);
-      setIsChangeData({
-        isNameChange: false,
-        isEmailChange: false,
-        isPhoneNumberChange: false,
-        isAddressChange: false,
-      });
-      setUserInfo({...userInfo, ...newData});
-    } catch (error) {
-      setIsModal(true);
-      setErrorTitle('Error');
-      setErrorMessage(error.message);
+    const oldUserData = Object.values({
+      name: userInfo.name,
+      email: userInfo.email,
+      phoneNumber: userInfo.phoneNumber,
+      address: userInfo.address,
+    });
+    const newUserData = Object.values(newData);
+
+    if (oldUserData.some((el, i) => el !== newUserData[i])) {
+      try {
+        await updateDocumentInCollection('users', {...userInfo, ...newData}, userInfo.idPost);
+        setIsChangeData({
+          isNameChange: false,
+          isEmailChange: false,
+          isPhoneNumberChange: false,
+          isAddressChange: false,
+        });
+        setUserInfo({...userInfo, ...newData});
+      } catch (error) {
+        setIsModal(true);
+        setErrorTitle('Error');
+        setErrorMessage(error.message);
+      }
     }
+    setIsChangeData({
+      isNameChange: false,
+      isEmailChange: false,
+      isPhoneNumberChange: false,
+      isAddressChange: false,
+    });
   };
 
   const handleOrderDetail = (el) => {
@@ -172,6 +189,12 @@ export const AccountInformationMain = () => {
     setErrorTitle('Детали заказа');
     setErrorMessage(el.orderDetails );
   };
+
+  console.log(userOrders?.sort((a, b) =>
+  {
+    // eslint-disable-next-line max-len
+    return new Date(a.dateCreating.split(' ').slice(0, 1).join('').split('-').reverse().join('-')) - new Date(b.dateCreating.split(' ').slice(0, 1).join('').split('-').reverse().join('-'));
+  }));
 
   return (
     <div className="accountInformationMain">
@@ -360,7 +383,10 @@ export const AccountInformationMain = () => {
           </thead>
           
           <tbody>
-            {userOrders.map(el => {
+            {userOrders?.sort((a, b) => {
+              // eslint-disable-next-line max-len
+              return new Date(a.dateCreating.split(' ').slice(0, 1).join('').split('-').reverse().join('-')) - new Date(b.dateCreating.split(' ').slice(0, 1).join('').split('-').reverse().join('-'));
+            }).map(el => {
               return (
                 <tr key={el.orderNumber}>
                   <td>{el.orderNumber}</td>
@@ -391,8 +417,14 @@ export const AccountInformationMain = () => {
 
       {showReAutrnticateNotification && (
         <ModalWithForm 
-          setShowReAutrnticateNotification={setShowReAutrnticateNotification}
-          setPromptForCredentials={setPromptForCredentials}
+          setShowModalWithForm={setShowReAutrnticateNotification}
+          title="To change the email, please log in again"
+          form={
+            <ReAuthForm
+              setShowModalWithForm={setShowReAutrnticateNotification}
+              setPromptForCredentials={setPromptForCredentials}
+            />
+          }
         />
       )}  
     </div>

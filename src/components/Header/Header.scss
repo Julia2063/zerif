@@ -110,12 +110,22 @@
  
   &__text {
     font-size: 20px;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
   }
 
   &__icon {
     width: 12px;
     display: inline-block;
     vertical-align: text-bottom;
+  }
+
+  &__dropdown {
+    position: absolute;
+    top: -20%;
+    left: 110%;
   }
 
 }
@@ -337,8 +347,10 @@
       top: 80px;
       left: 0;
       background: rgba(255, 247, 241, 1);
-      ;
     }
+    & a {
+        display: flex;
+      }
 
     &-item {
       display: flex;
@@ -348,6 +360,8 @@
       &:last-child {
         padding-bottom: 0;
       }
+
+      
     }
     
 
@@ -367,6 +381,10 @@
     font-family: Montserrat;
     font-size: 15px;
     line-height: 22px;
+
+    &::first-letter{
+      text-transform: uppercase;
+    }
   }
 
   &-price {
@@ -375,7 +393,7 @@
     line-height: 21px;
     color: #431F1D;
   }
-  }
+ }
 
 }
 

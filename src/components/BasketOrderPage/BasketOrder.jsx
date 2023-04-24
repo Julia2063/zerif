@@ -13,7 +13,7 @@ import { Modal } from '../Modal/Modal';
 
 export const BasketOrder = () => {
   const [cartLocalStorage, setCartLocalStorage] = useLocalStorage('cart', []);
-  const { cart, setCart, userInfo, user, setUserInfo } = useContext(AppContext);
+  const { cart, setCart, userInfo, user, setUserInfo, productsApi } = useContext(AppContext);
 
   const [isOrderSuccess, setIsOrderSuccess] = useState(false);
   const [newUserInfo, setNewUserInfo] = useState(null);
@@ -89,7 +89,7 @@ export const BasketOrder = () => {
     });
     
     const orderInfo = {
-      sum: cart.map(el => el.price).reduce((a, b) => a + b, 0),
+      sum: cart.map(el => +el.price).reduce((a, b) => a + b, 0),
       details: groupedCart.reduce(
         (res, cur) =>
           res.find((find) => JSON.stringify(find) === JSON.stringify(cur))
@@ -193,7 +193,7 @@ export const BasketOrder = () => {
                 <div className="basketBlock1__item" key={i}>
                   <div className="imgBlock">
                     <img
-                      src={require(`../../images/Products/${el.id}.png`)}
+                      src={productsApi.find(e => e.id === el.id)?.image}
                       alt="product image1"
                       className="basketBlock1__img"
                     />
@@ -226,7 +226,7 @@ export const BasketOrder = () => {
           <div className="basketBlock2">
             <div className="basketBlock2__productPrice">
               <p>Товар:</p>
-              <p>{`${cart.map(el => el.price).reduce((a, b) => a + b, 0)}$`}</p>
+              <p>{`${cart.map(el => +el.price).reduce((a, b) => a + b, 0)}$`}</p>
             </div>
             <div className="basketBlock2__delivery">
               <p>Доставка:</p>
@@ -234,7 +234,7 @@ export const BasketOrder = () => {
             </div>
             <div className="basketBlock2__fullCoast">
               <p>Всего:</p>
-              <p>{`${cart.map(el => el.price).reduce((a, b) => a + b, 0)}$`}</p>
+              <p>{`${cart.map(el => +el.price).reduce((a, b) => a + b, 0)}$`}</p>
             </div>
           </div>
         </div>

@@ -104,6 +104,14 @@
     font-size: 15px;
     line-height: 22px;
 
+    & p:first-child {
+      &:first-letter{
+        text-transform: uppercase;
+      }
+    }
+
+    
+
     @include onMobile {
       flex-direction: column;
     }

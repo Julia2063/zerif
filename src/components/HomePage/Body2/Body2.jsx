@@ -3,10 +3,17 @@ import '../Body2/Body2.scss';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
+import { useNavigate } from 'react-router-dom';
 import { body2Api } from '../../../API/Body2API';
 
 
 export const Body2 = () => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate('/categories');
+  };
+
   return (
     <div className="body2">
       <p className="body2__title1">Рекомендуем</p>
@@ -72,7 +79,10 @@ export const Body2 = () => {
      
         
 
-      <button className="allProducts-button">
+      <button 
+        className="allProducts-button"
+        onClick={handleClick}
+      >
         <span>Весь ассортимент</span>
         <p>&#10095;</p>
       </button>

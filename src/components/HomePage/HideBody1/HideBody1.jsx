@@ -1,7 +1,14 @@
 import React from 'react';
 import '../HideBody1/HideBody1.scss';
+import { useNavigate } from 'react-router-dom';
 
 export const HideBody1 = () => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate('/categories');
+  };
+
   return (
     <div className="hideBody1 onDectop">
       <div className="blockRd">
@@ -23,7 +30,12 @@ export const HideBody1 = () => {
       
       </div>
 
-      <button className="order-button hideBody1__button">оформить заказ</button>
+      <button 
+        className="order-button hideBody1__button"
+        onClick={handleClick}
+      >
+        оформить заказ
+      </button>
     </div>
   );
 };

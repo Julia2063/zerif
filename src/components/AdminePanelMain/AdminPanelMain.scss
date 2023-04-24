@@ -1,0 +1,71 @@
+@import "../../styles/mixines.scss";
+
+.adminPanelmain {
+  padding: 80px 120px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+
+  @include onMobile {
+    padding: 20px;
+  }
+
+  &__products {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+
+    &-item {
+      display: grid;
+      grid-template-columns: 1fr 7fr 1fr 2fr 3fr 3fr;
+      gap: 20px;
+      align-items: center;
+      background: #f1f1f1;
+      padding: 10px;
+      border-radius: 8px;
+      
+      &:first-child {
+        font-weight: bold;
+      }
+
+      & img {
+        height: 70px;
+      }
+
+      & button {
+        border: none;
+        height: 70%;
+        background: #fff;
+        border-radius: 8px;
+        font-family: inherit;
+        font-weight: bold;
+      }
+    }
+  }
+
+  &__button {
+    font-size: inherit;
+    
+    
+    font-weight: bold;
+    font-family: inherit;
+    border: none;
+    border-radius: 8px;
+    background:  #f1f1f1;
+
+    &--logout {
+      width: 50%;
+      height: 70px;
+    }
+
+    &--add {
+      width: 150px;
+      align-self: end;
+      height: 40px;
+    }
+  }
+  
+}

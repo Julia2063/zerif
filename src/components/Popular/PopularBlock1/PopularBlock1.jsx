@@ -1,5 +1,7 @@
 import { React } from 'react';
 import '../PopularBlock1/PopularBlock1.scss';
+
+import { useNavigate } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Scrollbar } from 'swiper';
 import { body1Api } from '../../../API/Body1API';
@@ -8,7 +10,14 @@ import 'swiper/scss';
 import '../../../styles/swiperScrollBar.scss';
 
 
+
 export const PopularBlock1 = () => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate('/categories');
+  };
+
   return (
     <div className="popularBlock1">
       <Swiper
@@ -52,7 +61,10 @@ export const PopularBlock1 = () => {
           </SwiperSlide>
         ))}
       </Swiper>
-      <button className="allProducts-button popularBlock-button">
+      <button 
+        className="allProducts-button popularBlock-button"
+        onClick={handleClick}
+      >
         <span>Весь ассортимент</span>
         <p>&#10095;</p>
       </button>

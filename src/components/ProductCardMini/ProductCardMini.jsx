@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './ProductCardMini.scss';
 
-export const ProductCardMini = ({ product, src, path}) => {
+export const ProductCardMini = ({ product, path}) => {
   return (
     <Link 
       to={path}
@@ -11,12 +11,12 @@ export const ProductCardMini = ({ product, src, path}) => {
     >
       <div className="productCardMini__box" >
         <img
-          src={src}
+          src={product?.image}
           alt=""
           className="productCardMini__img"
         />
-        <p className="productCardMini__productTitle">{product.title}</p>
-        <p className="productCardMini__price">{`$ ${product.price},00`}</p>
+        <p className="productCardMini__productTitle">{product?.title}</p>
+        <p className="productCardMini__price">{`$ ${product?.price},00`}</p>
       </div>
     </Link>
   );

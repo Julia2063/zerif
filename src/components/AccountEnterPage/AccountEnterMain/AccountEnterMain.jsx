@@ -70,8 +70,6 @@ export const AccountEnterMain = ({ isRegister }) => {
           });
           createNewUser(newUser);
           setIsModal(true);
-          setModalTitle('Success!');
-          setModalMessage('Registration completed successfully!');
           navigate('/basket');
         })
         .catch((error) => {

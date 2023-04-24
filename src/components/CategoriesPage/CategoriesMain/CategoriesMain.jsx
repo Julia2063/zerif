@@ -1,46 +1,68 @@
-import { React, useEffect, useState } from 'react';
+import { React, useContext, useEffect, useState } from 'react';
 import '../CategoriesMain/CategoriesMain.scss';
 import classNames from 'classnames';
-import { productsApi } from '../../../API/deserts';
 import { ProductCardMini } from '../../ProductCardMini/ProductCardMini';
+import { AppContext } from '../../AppProvider';
+import { PageNavigation } from '../../PageNavigation/PageNavigation';
 
 
-export const CategoriesMain = () => {
-  const [products, setProducts] = useState(productsApi);
+export const CategoriesMain = ({ productCategory }) => {
+ 
+  const [products, setProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage] = useState(6);
-  const paginationCount = [];
+  const pagination = [];
+  const [paginationCount, setPaginationCount] = useState([]);
+  const { productsApi } = useContext(AppContext);
+  
+
+  useEffect(() => {
+    setProducts(productsApi);
+  }, []);
 
  
-  for (let i = 1; i <= Math.ceil(productsApi.length / productsPerPage); i++) {
-    paginationCount.push(i);
-  }
-  
-  
 
   useEffect(() => {
     const lastProductIndex = currentPage * productsPerPage;
     const firstProductIndex = lastProductIndex - productsPerPage;
-   
-    const currentProducts = productsApi.slice(firstProductIndex, lastProductIndex);
 
-    setProducts(currentProducts);
+    if (productCategory) {
+      const visibleProducts = productsApi.filter(el => el.type === productCategory);
+      const currentProducts = visibleProducts.slice(firstProductIndex, lastProductIndex);
+
+      for (let i = 1; i <= Math.ceil(visibleProducts.length / productsPerPage); i++) {
+        pagination.push(i);
+      }
+      setPaginationCount(pagination);
+
+      setProducts(currentProducts);
+        
+    } else {
+      const currentProducts = productsApi.slice(firstProductIndex, lastProductIndex);
+
+      for (let i = 1; i <= Math.ceil(productsApi.length / productsPerPage); i++) {
+        pagination.push(i);
+      }
+
+      setPaginationCount(pagination);
+
+      setProducts(currentProducts);
+    }
+    
     window.scrollTo(0, 0);
 
-  }, [currentPage]);
+  }, [productsApi, currentPage, productCategory]);
  
   const paginate = pageNumber => setCurrentPage(pageNumber);
 
 
   return (
     <div className="categoriesMain">
-      
-      <p className="categoriesMain__title">Товары / десерты</p>
+      <PageNavigation />
       <div className="categoriesMain__boxDisplay">
         {products.map(product => (
           <ProductCardMini 
             product={product}
-            src={require(`../../../images/Products/${product.id}.png`)}
             path={`${ product.id}`}
             key={product.id}
           />

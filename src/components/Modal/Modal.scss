@@ -50,13 +50,14 @@
     &__body {
       line-height: 200%;
 
-       font-size: 16px;
+      font-size: 16px;
+      width: 80%;
 
       @include onMobile {
         font-size: 10px;
       }
 
-      & div {
+      &-text {
         display: grid;
         grid-template-columns: 1fr 4fr 1fr 1fr;
         gap: 20px;
@@ -113,15 +114,9 @@
     & form {
       display: flex;
       flex-direction: column;
+      gap: 10px;
       width: 100%;
 
-      & input {
-        color: #fff;
-        border-color: #fff;
-
-        &::placeholder {
-          color: #fff;
-        }
-      }
+      
     } 
   }

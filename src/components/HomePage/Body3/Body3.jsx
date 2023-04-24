@@ -1,9 +1,16 @@
 import React from 'react';
 import '../Body3/Body3.scss';
 
+import { useNavigate } from 'react-router-dom';
 import { body3Api } from '../../../API/Body3API';
 
 export const Body3 = () => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate('/categories');
+  };
+
   return (
     <div className="body3">
       <p className="body3__title1">Рекомендуем</p>
@@ -37,7 +44,10 @@ export const Body3 = () => {
         </div>
       </div>
 
-      <button className="allProducts-button">
+      <button 
+        className="allProducts-button"
+        onClick={handleClick}
+      >
         <span>Весь ассортимент</span>
         <p>&#10095;</p>
       </button>

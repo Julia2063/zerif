@@ -17,7 +17,8 @@ import { AppContext } from './components/AppProvider';
 
 import ScrollToTop from './components/ScrollToTop';
 import { useLocalStorage } from './helpers/useLocalStorage';
-import { getCollectionWhereKeyValue } from './helpers/firebaseControls';
+import { getCollection, getCollectionWhereKeyValue } from './helpers/firebaseControls';
+import { AdminPanelPage } from './Pages/AdminPanelPage';
 
 
 
@@ -25,15 +26,31 @@ function App () {
   const auth = getAuth();
   const [productCategory, setProductCategory] = useState(null);
 
-  const { user, setCart, setUser, userInfo, setUserInfo } = useContext(AppContext);
+  // eslint-disable-next-line max-len
+  const { user, setCart, setUser, userInfo, setUserInfo, productsApi, setProductsApi } = useContext(AppContext);
   const [cartLocalStorage] = useLocalStorage('cart', []);
+  const [isAdmin, setIsAdmin] = useState(false);
 
-  const fetchData = async () => {
+  const fetchUserData = async () => {
     try {
       const currentUserInfo = 
         await getCollectionWhereKeyValue('users', 'uid', auth.currentUser.uid);
       setUserInfo(currentUserInfo[0]);
-      console.log('hgvhjbvj');
+      const loadedProducts = 
+        await getCollection('products');
+      setProductsApi(loadedProducts);
+      console.log(productsApi);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const fetchData = async () => {
+    try {
+      const loadedProducts = 
+        await getCollection('products');
+      setProductsApi(loadedProducts);
+      console.log(productsApi);
     } catch (error) {
       console.log(error);
     }
@@ -43,61 +60,76 @@ function App () {
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       if(user) {
-        return setUser(user);
+        setUser(user);
+        fetchUserData();
+        fetchData();
+      } else {
+        fetchData();
       }
     });
 
-    setTimeout(() => {
-      fetchData();
-    }, 1000);
   }, [auth.currentUser]);
 
-  console.log(userInfo);
+  useEffect(() => {
+    setIsAdmin(userInfo?.role === 'admin');
+    
+  }, [userInfo, user]);
   
   useEffect(() => {
     setCart(cartLocalStorage);
   }, [cartLocalStorage]);
-  
-  console.log(user);
-  console.log(productCategory);
-
 
   return (
     <div className="app">
-      <Header 
-        setProductCategory={setProductCategory} 
-      />
-      <ScrollToTop />
-      <Routes>
-        <Route path="/" element={<HomePage />}/>
-        <Route path="/popular" element={<PopularPage />}/>
-        <Route path="/categories">
-          <Route index  element={<CategoriesPage />} />
-          <Route path=":slug" element={<ProductCardPage />} />
-        </Route>
-        <Route path="/contacts" element={<ContactsPage />}/>
-        <Route 
-          path="/account" 
-        >
-          <Route 
-            index
-            element={
-              user ? <AccountInformationPage /> : <Navigate to="/account/registration" replace />
-            }
-          />
+      {!isAdmin 
+        ? (
+          <><Header
+            setProductCategory={setProductCategory} />
+          <ScrollToTop />
+          <Routes>
+            <Route
+              path="*"
+              element={<Navigate to="/categories" replace />}
+            />
+            <Route path="/" element={<HomePage />} />
+            <Route path="/popular" element={<PopularPage />} />
+            <Route path="/categories">
+              <Route index element={<CategoriesPage />} />
+              <Route path={`/categories/${productCategory}`}  >
+                <Route index element={ <CategoriesPage productCategory={productCategory} />} />
+                <Route path=":slug" element={<ProductCardPage />} />
+              </Route>
+              <Route path=":slug" element={<ProductCardPage />} />
+            </Route>
+            <Route path="/contacts" element={<ContactsPage />} />
+            <Route
+              path="/account"
+            >
+              <Route
+                index
+                element={user
+                  ? <AccountInformationPage />
+                  : <Navigate to="/account/registration" replace />} />
 
-          <Route path="/account/login" element={<AccountEnterPage isRegister={false}/>} />
-          <Route path="/account/registration" element={<AccountEnterPage isRegister={true}/>} />
+              <Route path="/account/login" element={<AccountEnterPage isRegister={false} />} />
+              <Route 
+                path="/account/registration" 
+                element={<AccountEnterPage isRegister={true} />} 
+              />
 
-        </Route>
-        <Route path="/basket">
-          <Route index element={<BasketPage/>} />
-          <Route path="/basket/order" element={<BasketOrderPage />}/>
-        </Route>
+            </Route>
+            <Route path="/basket">
+              <Route index element={<BasketPage />} />
+              <Route path="/basket/order" element={<BasketOrderPage />} />
+            </Route>
 
-        
-      </Routes>
-      <Footer />
+
+          </Routes><Footer /></>
+
+        )
+        : (
+          <AdminPanelPage />
+        )}
     </div>
   );
 }
