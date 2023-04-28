@@ -1,0 +1,132 @@
+
+{  
+  "navigation": {
+    "main": "home",
+    "popular": "popular",
+    "goods": "goods",
+    "contacts": "contacts",
+    "myAccount": "my account"
+
+  },
+
+  "categories": {
+    "deserts": "deserts",
+    "cakes": "cakes",
+    "bakery": "bakery",
+    "in-chocolate": "strawberries and fruits in chocolate",
+    "candy-and-chocolate": "candy and chocolate",
+    "ice-cream": "ice cream"
+  },
+
+  "basket": {
+    "error": "Basket error",
+    "empty": "Basket is empty!"
+  },
+
+  "homePage": {
+    
+    "advantages": "advantages",
+    "why": "why us",
+    "ownProduction": "we have our own production",
+    "recommended": "recommended",
+    "allTastes": "cakes for every taste",
+    "author'sRecipes": "author's recipes",
+    "author'sDesserts": "Author's desserts",
+    "whatToChoose": "don't know what to choose?",
+    "fillForm": "fill out the form below and we will contact you!"
+  },
+
+  "form": {
+    "name": "Name:",
+    "fillName": "Enter your name",
+    "phoneNumber": "Phone:",
+    "fillPhoneNumber": "Enter your phone",
+    "send": "send"
+  },
+
+  "footer": {
+    "contacts": "Contacts:",
+    "mail": "Email:",
+    "schedule": "Schedule: ",
+    "daily": "daily",
+    "from": "from 09:00 to 21:00"
+  },
+
+  "popular": {
+    "title": "sweet novelties",
+    "birthdayCakes": "birthday cakes"
+  },
+
+  "contacts": {
+    "questions": "Any questions? Do you want to clarify the details of the order? Contact us:",
+    "feedbackForm": "feedback form:",
+    "name": "name",
+    "comments": "comment"
+  },
+
+  "account": {
+    "enter": "login",
+    "register": "registration",
+    "password": "password",
+    "remember": "remember me",
+    "registration": "register",
+    "forget": "forgot your password?",
+    "registerError": "Registration error",
+    "registerErrorMessage": "Enter email and password please!",
+    "loginError": "Login error",
+    "resetPasswordError": "Reset password error",
+    "enterEmail": "Enter your email please!",
+    "resetEmailSent": "Password reset email sent! Please check it, confirm reset and re-login! Don't forget check \"Spam\" folder!",
+    "notification": "Notification",
+    "error": "Error",
+    "something": "Something went wrong with reset password sending",
+    "information": "information",
+    "orders": "orders",
+    "logout": "logout",
+    "fullName": "full name",
+    "phoneNumber": "phone",
+    "address": "delivery address",
+    "orderNumber": "order number",
+    "date": "date",
+    "status": "status",
+    "orderPrice": "order price",
+    "actions": "actions",
+    "orderDetails": "Order details",
+    "toChangeEmail": "To change the email, please log in again",
+    "somethingTwo": "Something went wrong..."
+  },
+
+  "backet": {
+    "cart": "cart",
+    "product": "Product:",
+    "delivery": "Delivery",
+    "rates": "According to the carrier's rates",
+    "all": "total",
+    "orderError": "Order error",
+    "forOrder": "To make an order, you need",
+    "or": "or",
+    "payment": "payment",
+    "card": "Card",
+    "cash": "Cash",
+    "done": "Order is processed",
+    "errorMessage": "Fill in the fields \"Name\", \"Phone number\" and \"Delivery address\", please! This data is required to send the order."
+    
+  
+  },
+
+  "wholeRange": "whole range",
+  "orderButton": "checkout",
+  "socialMedia": "social media:",
+  "price": "price",
+  "description": "description",
+  "weight": "weight",
+  "kg": "kg",
+  "taste": "taste",
+  "addToBasket": "Add to Cart",
+  "feedback": "feedback",
+  "details": "details",
+  "moreInformation": "more information",
+  "similar": "similar products",
+  "added": "Product added to cart",
+  "goToBasket": "Go to cart"
+}
