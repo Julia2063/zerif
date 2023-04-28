@@ -40,7 +40,7 @@
     "fillName": "Введите Ваше имя",
     "phoneNumber": "Телефон:",
     "fillPhoneNumber": "Введите Ваш телефон",
-    "send": "send"
+    "send": "отправить"
   },
 
   "footer": {
@@ -69,7 +69,7 @@
     "password": "пароль",
     "remember": "запомнить меня",
     "registration": "зарегистрироваться",
-    "forget": "забыли пароль",
+    "forget": "забыли пароль?",
     "registerError": "Ошибка регистрации",
     "registerErrorMessage": "Введите свой email и пароль пожалуйста!",
     "loginError": "Ошибка входа",

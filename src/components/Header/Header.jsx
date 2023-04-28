@@ -255,7 +255,7 @@ export const Header = ({ setProductCategory }) => {
                     
                       return (
                         <Link 
-                          to={`/categories/${el.id}`} 
+                          to={`/categories/${el.path}`} 
                           className="search__list-item"  
                           onClick={() => {
                             setQuery('');
