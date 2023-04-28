@@ -194,7 +194,7 @@ export const ProductCardMain = () => {
             <p className="productCardHeader__taste">
               <b>{t('taste')}</b> 
               {` - ${getRightData(productsApi.find(el => 
-                el.path === slug), i18n.language, 'description')}`}
+                el.path === slug), i18n.language, 'taste')}`}
             </p>
             <div className="productCardHeader__basketButtons">
               <button 
