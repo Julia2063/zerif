@@ -35,7 +35,7 @@ export const PageNavigation = () => {
         const isLast = index === pathnames.length - 1;
         const currentLocation = () => {
           switch (pathname) {
-          case 'desert':
+          case 'deserts':
             return t('categories.deserts');
 
           case 'cakes':
