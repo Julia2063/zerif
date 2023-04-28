@@ -7,19 +7,19 @@ import {
   updateEmail,
 } from 'firebase/auth';
 
-import '../AccountInformationMain/AccountInformationMain.scss';
+import './AccountInformationMain.scss';
 import classNames from 'classnames';
 
 import { useTranslation } from 'react-i18next';
-import pencil from '../../../images/AccountInformation/penIcon.svg';
-import { Modal } from '../../Modal/Modal';
-import { AppContext } from '../../AppProvider';
+import pencil from '../../images/AccountInformation/penIcon.svg';
+import { Modal } from '../Modal/Modal';
+import { AppContext } from '../AppProvider';
 import { 
   getCollectionWhereKeyValue, 
   updateDocumentInCollection,
-} from '../../../helpers/firebaseControls';
-import { ModalWithForm } from '../../ModalWithForm';
-import { ReAuthForm } from '../../ReAuthForm';
+} from '../../helpers/firebaseControls';
+import { ModalWithForm } from '../ModalWithForm';
+import { ReAuthForm } from '../ReAuthForm';
 
 
 
