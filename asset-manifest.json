@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/zerif/static/css/main.cd2a41f7.css",
-    "main.js": "/zerif/static/js/main.357af1a8.js",
+    "main.css": "/zerif/static/css/main.9452da11.css",
+    "main.js": "/zerif/static/js/main.ef206a0f.js",
     "static/js/787.044d8b7e.chunk.js": "/zerif/static/js/787.044d8b7e.chunk.js",
     "static/media/formPieNew2.png": "/zerif/static/media/formPieNew2.8f4ee826acf2f4f898bf.png",
     "static/media/GradientBody3Desc.png": "/zerif/static/media/GradientBody3Desc.db564e84eb1590b2ed95.png",
@@ -67,12 +67,12 @@
     "static/media/upIcon.svg": "/zerif/static/media/upIcon.f0c879dc4eada967a4396651329ad3f2.svg",
     "static/media/downIcon.svg": "/zerif/static/media/downIcon.03f4ac5120a63ce59cb8a51958771e10.svg",
     "static/media/check.svg": "/zerif/static/media/check.70df0e1628ffdfd6cee5.svg",
-    "main.cd2a41f7.css.map": "/zerif/static/css/main.cd2a41f7.css.map",
-    "main.357af1a8.js.map": "/zerif/static/js/main.357af1a8.js.map",
+    "main.9452da11.css.map": "/zerif/static/css/main.9452da11.css.map",
+    "main.ef206a0f.js.map": "/zerif/static/js/main.ef206a0f.js.map",
     "787.044d8b7e.chunk.js.map": "/zerif/static/js/787.044d8b7e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.cd2a41f7.css",
-    "static/js/main.357af1a8.js"
+    "static/css/main.9452da11.css",
+    "static/js/main.ef206a0f.js"
   ]
 }
