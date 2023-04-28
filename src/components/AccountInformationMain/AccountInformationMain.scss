@@ -208,9 +208,13 @@
       outline: none;
       width: 100%;
       font-family: Georgia, 'Times New Roman', Times, serif;
-      height: 21px;
+      
       font-size: 20px;
       line-height: 21px;
+
+      @include onMobile {
+        height: 40px;
+      }
     }
   }
 }
