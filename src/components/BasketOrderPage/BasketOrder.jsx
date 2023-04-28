@@ -3,11 +3,18 @@ import '../BasketOrderPage/BasketOrder.scss';
 import '../BasketPage/Basket.scss';
 
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import success from '../../images/BasketPage/success.svg';
 import { useLocalStorage } from '../../helpers/useLocalStorage';
 import { AppContext } from '../AppProvider';
-import { createNewOrder, updateDocumentInCollection } from '../../helpers/firebaseControls';
+import { 
+  createNewOrder,
+  updateDocumentInCollection, 
+} from '../../helpers/firebaseControls';
 import { Modal } from '../Modal/Modal';
+
+import noPhoto from '../../images/ProductForm/noPhoto.svg';
+import { getRightData } from '../../helpers/getrRightData';
 
 
 
@@ -21,6 +28,8 @@ export const BasketOrder = () => {
   const [isModal, setIsModal] = useState(false);
   const [errorTitle, setErrorTitle] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     setNewUserInfo(userInfo);
@@ -56,9 +65,8 @@ export const BasketOrder = () => {
 
     if (Object.values(newUserInfo).some(el => el.length === 0)) {
       setIsModal(true);
-      setErrorTitle('Ошибка заказа');
-      // eslint-disable-next-line max-len
-      setErrorMessage('Заполните поля "Имя", "Номер телефона" и "Адрес доставки", пожалуйста! Эти данные необходимы для отправки заказа');
+      setErrorTitle(t('backet.orderError'));
+      setErrorMessage(t('backet.errorMessage'));
       return;
     }
 
@@ -79,13 +87,20 @@ export const BasketOrder = () => {
         setUserInfo(newUserInfo);
       } catch (error) {
         setIsModal(true);
-        setErrorTitle('Something went wrong...');
+        setErrorTitle(t('account.somethingTwo'));
         setErrorMessage(error.message);
       }
     }
 
     const groupedCart = cartLocalStorage.map((el, i, arr) => {
-      return {id: el.id, price: el.price, count: arr.filter(e => e.id === el.id).length};
+      return {
+        id: el.id, 
+        titleRu: el.ru.title, 
+        titleEn: el.en.title, 
+        titleAZ: el.az.title, 
+        price: el.price, 
+        count: arr.filter(e => e.id === el.id).length,
+      };
     });
     
     const orderInfo = {
@@ -110,7 +125,7 @@ export const BasketOrder = () => {
       
     } catch (error) {
       setIsModal(true);
-      setErrorTitle('Something went wrong...');
+      setErrorTitle(t('account.somethingTwo'));
       setErrorMessage(error.message);
     }
   }; 
@@ -123,11 +138,11 @@ export const BasketOrder = () => {
 
   return (
     <div className="basketOrder">
-      <h1 className="basketOrder__title">Оформление заказа</h1>
+      <h1 className="basketOrder__title">{t('orderButton')}</h1>
       <div className="desctopDisplay">
         <form className="basketOrderBox" onSubmit={(e) => handleSubmit(e)}>
           <label className="basketOrder__label">
-            Имя
+            {t('contacts.name')}
             <input 
               name="name"
               type="text" 
@@ -138,7 +153,7 @@ export const BasketOrder = () => {
           </label>
            
           <label className="basketOrder__label">
-             Номер телефона
+            {t('account.phoneNumber')}
             <input 
               name="phoneNumber"
               type="text" 
@@ -149,7 +164,7 @@ export const BasketOrder = () => {
           </label>
           
           <label className="basketOrder__label">
-            Адрес доставки
+            {t('account.address')}
             <input 
               name="address"
               type="text" 
@@ -160,19 +175,19 @@ export const BasketOrder = () => {
           </label>
           
           <label className="basketOrder__label">
-            Оплата
+            {t('backet.payment')}
             <label className="basketOrder__radio">
               <input type="radio" value="card" name="payment" checked/>
-              <span>Карта</span>
+              <span>{t('backet.card')}</span>
             </label>
             <label className="basketOrder__radio">
               <input type="radio" value="cash" name="payment" />
-              <span>Наличные</span>
+              <span>{t('backet.cash')}</span>
             </label>
           </label>
           
           <label className="basketOrder__label">
-            Комментарий
+            {t('contacts.comments')}
 
             <textarea
               name=""
@@ -183,7 +198,7 @@ export const BasketOrder = () => {
             ></textarea>
           </label>
           
-          <button className="basketOrder__button">Оформить заказ</button>
+          <button className="basketOrder__button">{t('orderButton')}</button>
         </form>
 
         <div className="basketBox2">
@@ -193,13 +208,13 @@ export const BasketOrder = () => {
                 <div className="basketBlock1__item" key={i}>
                   <div className="imgBlock">
                     <img
-                      src={productsApi.find(e => e.id === el.id)?.image}
+                      src={productsApi.find(e => e.id === el.id)?.image || noPhoto}
                       alt="product image1"
                       className="basketBlock1__img"
                     />
                   </div>
                   <div className="basketBlock1__title">
-                    <p>{el.title}</p>
+                    <p>{getRightData(el, i18n.language, 'title')}</p>
                   </div>
             
          
@@ -225,15 +240,15 @@ export const BasketOrder = () => {
           </div>
           <div className="basketBlock2">
             <div className="basketBlock2__productPrice">
-              <p>Товар:</p>
+              <p>{t('backet.product')}</p>
               <p>{`${cart.map(el => +el.price).reduce((a, b) => a + b, 0)}$`}</p>
             </div>
             <div className="basketBlock2__delivery">
-              <p>Доставка:</p>
-              <p>По тарифам перевозчика</p>
+              <p>{t('backet.delivery')}</p>
+              <p>{t('backet.rates')}</p>
             </div>
             <div className="basketBlock2__fullCoast">
-              <p>Всего:</p>
+              <p>{t('backet.all')}</p>
               <p>{`${cart.map(el => +el.price).reduce((a, b) => a + b, 0)}$`}</p>
             </div>
           </div>
@@ -243,7 +258,7 @@ export const BasketOrder = () => {
       {isOrderSuccess && (
         <div className="basketOrder__notification">
           <img src={success} alt="success" />
-          <p>Заказ оформлен</p>
+          <p>{t('backet.done')}</p>
         </div>
       )}
 

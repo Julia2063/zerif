@@ -1,15 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import '../PopularBlock3/PopularBlock3.scss';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Scrollbar } from 'swiper';
 import { useNavigate } from 'react-router-dom';
 
-import { body1Api } from '../../../API/Body1API';
-
 import '../../../styles/swiperScrollBar.scss';
+import { useTranslation } from 'react-i18next';
+import { AppContext } from '../../AppProvider';
+import { getRightData } from '../../../helpers/getrRightData';
+
+import noImage from '../../../images/ProductForm/noPhoto.svg';
 
 export const PopularBlock3 = () => {
   const navigate = useNavigate();
+  const { productsApi } = useContext(AppContext);
+
+  const { t, i18n } = useTranslation();
 
   const handleClick = () => {
     navigate('/categories');
@@ -47,16 +53,20 @@ export const PopularBlock3 = () => {
         }}
         modules={[Scrollbar]}
       >
-        {body1Api.map((product) => (
+        {productsApi.reverse().slice(0, 6).map(product => (
           <SwiperSlide key={product.id}>
         
             <img
-              src={require(`../../../images/Popular/Pagination/${product.id}.png`)}
+              src={product.image || noImage}
               alt=""
               className="swiperBox2__img"
             />
-            <p className="swiperBox2__title">{product.title}</p>
-            <p className="swiperBox2__price">{product.price}</p>
+            <p className="swiperBox2__title">
+              {getRightData(product, i18n.language, 'title' )}
+            </p>
+            <p className="swiperBox2__price">
+              {`$ ${product.price}.00` }
+            </p>
   
           </SwiperSlide>
         ))}
@@ -65,7 +75,7 @@ export const PopularBlock3 = () => {
         className="allProducts-button popularBlock-button"
         onClick={handleClick}
       >
-        <span>Весь ассортимент</span>
+        <span>{t('wholeRange')}</span>
         <p>&#10095;</p>
       </button>
     </div>

@@ -19,4 +19,10 @@
       background: none;
       border: none;
     }
+
+    & p {
+      &::first-letter {
+        text-transform: uppercase;
+      }
+    }
   }

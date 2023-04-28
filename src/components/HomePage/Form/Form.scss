@@ -56,20 +56,22 @@
         font-weight: 700;
         font-size: 40px;
         line-height: 105%;
+        text-transform: uppercase;
 
         margin-bottom: 28px;
-
-      
-
-      @include onTablet {
-        font-size: 30px;
-      }
 
       @include onDesktop {
         margin-bottom: 20px;
       }
 
+      @include onTablet {
+        font-size: 30px;
+      }
+
+      
+
       @include onMobile {
+        text-transform: capitalize;
         font-size: 24px;
         line-height: 25px;
 
@@ -124,6 +126,7 @@
     line-height: 150%;
 
     margin-bottom: 20px;
+
 
     &:nth-child(2) {
       margin-bottom: 30px;

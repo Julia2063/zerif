@@ -1,7 +1,7 @@
-@import '../../../styles/mixines.scss';
+@import '../../styles/mixines.scss';
 
 .accountEnterMain {
-  background-image: url('../../../images/Contacts/BgrdGradient.png');
+  background-image: url('../../images/Contacts/BgrdGradient.png');
   background-size: cover;
   padding: 150px 0;
   text-align: center;
@@ -86,6 +86,10 @@
       background: none;
       border: none;
 
+      &::first-letter {
+        text-transform: uppercase;
+      }
+
       @include onMobile {
         border-radius: 4.824px;
         font-size: 12px;
@@ -151,7 +155,7 @@
       &:checked+span::before {
         box-sizing: border-box;
         border: 3px solid rgba(8, 9, 11, 1);
-        background-image: url('../../../images/AccountInformation/check.svg') ;
+        background-image: url('../../images/AccountInformation/check.svg') ;
       }
     }
 

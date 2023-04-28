@@ -1,6 +1,13 @@
-import { React, useState, useEffect, useContext } from 'react';
+import { 
+  React, 
+  useState,
+  useEffect, 
+  useContext, 
+  useRef,
+} from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
+import { useTranslation } from 'react-i18next';
 import { PageNavLink } from '../PageNavLink';
 import './Header.scss';
 
@@ -15,6 +22,8 @@ import burger from '../../images/HomePage/burger.svg';
 import close from '../../images/HomePage/closeIcon.svg';
 import { AppContext } from '../AppProvider';
 import { Modal } from '../Modal/Modal';
+import { useOnClickOutside } from '../../helpers/useOnClickOutside';
+import { getRightData } from '../../helpers/getrRightData';
 
 
 
@@ -26,7 +35,7 @@ export const Header = ({ setProductCategory }) => {
   const [query, setQuery] = useState('');
   const [search, setSearch] = useState([]);
 
-  const { cart, productsApi, language, setLanguage } = useContext(AppContext);
+  const { cart, productsApi } = useContext(AppContext);
 
   const [cartCount, setCartCount] = useState(cart.length);
 
@@ -35,17 +44,24 @@ export const Header = ({ setProductCategory }) => {
   const [modalMessage, setModalMessage] = useState('');
   const [isLanguagesSelectOpen, setIsLanguagesSelectOpen] = useState(false);
 
+  const { t, i18n } = useTranslation();
+
   const categories = [
-    ['десерты', 'desert'],
-    ['торты', 'cakes'],
-    ['выпечка', 'bakery'],
-    ['клубника и фрукты в шоколаде', 'in-chocolate'],
-    ['конфеты и шоколад', 'candy-and-chocolate'],
-    ['мороженое', 'ice-cream'],
+    [t('categories.deserts'), 'deserts'],
+    [t('categories.cakes'), 'cakes'],
+    [t('categories.bakery'), 'bakery'],
+    [t('categories.in-chocolate'), 'in-chocolate'],
+    [t('categories.candy-and-chocolate'), 'candy-and-chocolate'],
+    [t('categories.ice-cream'), 'ice-cream'],
   ];
 
-  const languages = ['en', 'ru'];
+  const languages = ['en', 'ru', 'az'];
+  const ref = useRef();
 
+  const refInp = useRef();
+
+  useOnClickOutside(ref, () => {setQuery(''); setSearch([]); setIsSearch(false);} );
+  useOnClickOutside(refInp, () => {setIsSearch(false);} );
   
   const handleModal = () => {
     setIsModal(!isModal);
@@ -116,21 +132,23 @@ export const Header = ({ setProductCategory }) => {
     handleCloseSelectDropdown();
     if (cart.length === 0) {
       setIsModal(true);
-      setModalTitle('Basket error');
-      setModalMessage('Basket is empty!');
+      setModalTitle(t('basket.error'));
+      setModalMessage(t('basket.empty'));
     }
   };
 
   useEffect(() => {
     const searchResult =  productsApi
-      .filter(el => el.title.toLowerCase().includes(query.toLowerCase()));
+      .filter(
+        el => getRightData(el, i18n.language, 'title').toLowerCase().includes(query.toLowerCase())
+      );
     if (query.length > 0) {
       setSearch(searchResult);
     }
   }, [query]);
 
-  const handleSelectLanguage = (el) => {
-    setLanguage(el);
+  const  handleSelectLanguage = (el) => {
+    i18n.changeLanguage(el);
     setIsLanguagesSelectOpen(false);
   };
 
@@ -172,15 +190,15 @@ export const Header = ({ setProductCategory }) => {
           <div className="desktopLinks" >
             <div onClick={handleCloseSelectDropdown}>
               <PageNavLink
-                to={'/'}
-                text="Главная"
+                to={'/'} 
+                text={t('navigation.main')}
                 
               />
             </div>
             <div  onClick={handleCloseSelectDropdown}>
               <PageNavLink
                 to={'/popular'}
-                text="Популярное"
+                text={t('navigation.popular')}
                
               />
             </div>
@@ -189,7 +207,7 @@ export const Header = ({ setProductCategory }) => {
               onKeyDown={handleCloseSelectDropdown}
             >
               <PageNavLink
-                text="Товары"
+                text={t('navigation.goods')}
                 to="/categories"
                 img={(downIcon)}
                 handleClick={handleOnClickSelect}
@@ -217,12 +235,12 @@ export const Header = ({ setProductCategory }) => {
             <div onClick={handleCloseSelectDropdown}>
               <PageNavLink
                 to={'/contacts'}
-                text="Контакты"
+                text={t('navigation.contacts')}
                 
               />
             </div>
             {isSearch && (
-              <div className="search">
+              <div className="search" ref={refInp}>
                 <input 
                   type="text" 
                   className="search__input" 
@@ -232,7 +250,7 @@ export const Header = ({ setProductCategory }) => {
                   onChange={(e) => searchOnChange(e)}
                 />
                 {(query.length > 0 && search.length > 0) && (
-                  <div className="search__list">
+                  <div className="search__list" ref={ref}>
                     {search.map(el => {
                     
                       return (
@@ -250,7 +268,9 @@ export const Header = ({ setProductCategory }) => {
                             alt="" className="search__list-image"
                           />
                           <div className="search__list-text">
-                            <p className="search__list-title">{el.title}</p>
+                            <p className="search__list-title">
+                              {getRightData(el, i18n.language, 'title')}
+                            </p>
                             <p className="search__list-price">{`${el.price}$`}</p>
                           </div>
                           
@@ -312,7 +332,7 @@ export const Header = ({ setProductCategory }) => {
           <div className="language select" onClick={() => {
             handleCloseSelectDropdown();
           }}>
-            <p className="language__text">{language}</p>
+            <p className="language__text">{i18n.language}</p>
             <img 
               src={downIcon} 
               alt="" 
@@ -322,7 +342,7 @@ export const Header = ({ setProductCategory }) => {
             {isLanguagesSelectOpen && (
               <div className="language__dropdown">
                 {languages.map(el => (
-                  <div onClick={() => handleSelectLanguage(el)}>
+                  <div onClick={() => handleSelectLanguage(el)} key={el}>
                     {el}
                   </div>
                 ))}
@@ -348,7 +368,7 @@ export const Header = ({ setProductCategory }) => {
             } }>
               <PageNavLink
                 to={'/'}
-                text="Главная" />
+                text={t('navigation.main')} />
             </div>
             <div onClick={() => {
               handleCloseSelectDropdown();
@@ -356,14 +376,15 @@ export const Header = ({ setProductCategory }) => {
             } }>
               <PageNavLink
                 to={'/popular'}
-                text="Популярное" />
+                text={t('navigation.popular')} 
+              />
             </div>
             <div
               className="select--burger"
               onKeyDown={handleCloseSelectDropdown}
             >
               <PageNavLink
-                text="Товары"
+                text={t('navigation.goods')}
                 to="/categories"
                 img={isCategoryOpen ? upIcon : downIcon}
                 handleClick={handleOnClickSelect}
@@ -399,7 +420,7 @@ export const Header = ({ setProductCategory }) => {
             } }>
               <PageNavLink
                 to={'/contacts'}
-                text="Контакты" />
+                text={t('navigation.contacts')} />
             </div>
 
           </div>

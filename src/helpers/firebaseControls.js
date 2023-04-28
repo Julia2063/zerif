@@ -101,9 +101,9 @@ export function removeDocumentFromCollection(collection, docId) {
 
 export function uploadFileToStorage (file, product) {
   return new Promise(function (resolve, reject) {
-    storage.ref(`${file.name}`).put(file).then(res => {
+    storage.ref(`${product.id}`).put(file).then(res => {
      
-      storage.ref().child(file.name).getDownloadURL().then(r => {
+      storage.ref().child(product.id).getDownloadURL().then(r => {
         updateFieldInDocumentInCollection('products', product.idPost, 'image', r);
         console.log('updateUrl');
       }).catch(er => {
@@ -116,16 +116,75 @@ export function uploadFileToStorage (file, product) {
   });
 };
 
+export async function uploadFileToStoragesFolder (files, product, newInformation) {
+  const imagesUrl = [];
+  const promisesUploadImages = [];
+  for (let i = 0; i < files.length; i++) {
+    const uploadTask = new Promise(function (resolve, reject) {
+      storage.ref(`images${product.id}/${files[i].name}`).put(files[i]).then(res => {
+        storage.ref(`images${product.id}`).child(files[i].name).getDownloadURL().then(url => {
+          imagesUrl.push(url);
+          resolve(res);
+        }).catch(e => {
+          console.log(e);
+        });
+      }).catch(e => {
+        reject(e);
+      });
+    });
+    promisesUploadImages.push(uploadTask);
+  }
+  
+  return   Promise.all(promisesUploadImages).then(res => {
+    return new Promise(function (resolve, reject) {
+  
+      updateFieldInDocumentInCollection(
+        'products', product.idPost, 'images', [...newInformation, ...imagesUrl]).then(r => {
+        resolve(res);
+      }).catch(e => {
+        reject(e);
+      });
+    });
+  });
+};
+
+
 export function deleteObjectFromeStorage (product) {
-  return new Promise(function (resolve, reject) {
+  const deleteMainImage = new Promise(function (resolve, reject) {
     deleteObject(ref(storage, `${product.image}`)).then((r) => {
       resolve(r);
     }).catch((error) => {
       reject(error);
-      
     });
   });
-}
+
+  const imagesRef = storage.ref().child(`images${product.id}`);
+
+  const deleteImages = new Promise (function (resolve, reject) {
+    imagesRef.listAll().then(function (result) {
+      console.log(result._delegate.items);
+      result._delegate.items.forEach(function (file) {
+        deleteObject(ref(storage, file));
+      });
+      resolve(result);
+    }).catch(error => {
+      reject(error);
+    });
+  });
+ 
+
+  return Promise.all([deleteMainImage, deleteImages]);
+};
+
+export function deleteImageFromStorage (image) {
+  return new Promise(function (resolve, reject) {
+    deleteObject(ref(storage, image)).then((r) => {
+      resolve(r);
+    }).catch((error) => {
+      reject(error);
+    });
+  });
+};
 
 
 export function createNewUser(regInfo) {
@@ -157,7 +216,7 @@ export function createNewOrder(orderInfo, user) {
     const order_to_firebase = {
       uidUser: user.uid,
       orderNumber : Math.floor(Date.now() * Math.random()).toString(),
-      dateCreating: format(new Date(), 'dd-MM-yyyy HH:mm'),
+      dateCreating: format(new Date(), 'yyyy-MM-dd HH:mm'),
       status: 'Новый',
       sum: orderInfo.sum,
       orderDetails: orderInfo.details,
@@ -172,29 +231,79 @@ export function createNewOrder(orderInfo, user) {
   });
 };
 
-export function createNewProduct(productInfo, file) {
+export function createNewProduct(productInfo, file ,files) {
+  
+  const id = Math.floor(Date.now() * Math.random()).toString();
+  let urlMainImages = '';
+  const imagesUrl = [];
+  const uploadMainImage = file ? new Promise(function (resolve, reject) {
+   
+    storage.ref(`${id}`).put(file).then(res => {
+      storage.ref().child(id).getDownloadURL().then(url => {
+        urlMainImages = url;
+        resolve(res);
+      }).catch(e => {
+        console.log(e);
+      });
+    }).catch(e => {
+      reject(e);
+    });
+  }) : null;
 
-  return new Promise(function (resolve, reject) {
-    storage.ref(`${file.name}`).put(file).then(res => {
-     
-      storage.ref().child(file.name).getDownloadURL().then(r => {
-        const product_to_firebase = {
-          id : Math.floor(Date.now() * Math.random()).toString(),
-          image: r,
-          title: productInfo.title,
-          price: productInfo.price,
-          type: productInfo.type,
-        };
-        setDocumentToCollection('products', product_to_firebase).then(r => {
+  const promisesUploadImages = [];
 
-          console.log('product saved in DB');
+  for (let i = 0; i < files.length; i++) {
+    const uploadTask = new Promise(function (resolve, reject) {
+      storage.ref(`images${id}/${files[i].name}`).put(files[i]).then(res => {
+        storage.ref(`images${id}`).child(files[i].name).getDownloadURL().then(url => {
+          imagesUrl.push(url);
           resolve(res);
         }).catch(e => {
-          reject(e);
+          console.log(e);
         });
+      }).catch(e => {
+        reject(e);
       });
-      
     });
-    
+    promisesUploadImages.push(uploadTask);
+  }
+
+  Promise.all([uploadMainImage, ...promisesUploadImages]).then(res => {
+    return new Promise(function (resolve, reject) {
+  
+      const product_to_firebase = {
+        id,
+        image: urlMainImages,
+        images: imagesUrl,
+        ru: {
+          title: productInfo.ru.title || '', 
+          description: productInfo.ru.description || '',
+          taste: productInfo.ru.taste || '',
+        },
+        en: {
+          title: productInfo.en.title || '', 
+          description: productInfo.en.description || '',
+          taste: productInfo.en.taste || '',
+        },
+        az: {
+          title: productInfo.az.title || '', 
+          description: productInfo.az.description || '',
+          taste: productInfo.az.taste || '',
+        },
+        price: productInfo.price || '', 
+        weight: productInfo.weight || '',
+        count: productInfo.count || '',
+        path: productInfo.path > 0 ? `${id}-${productInfo.path}` : id,
+        type: productInfo.type,
+        dateCreating: format(new Date(), 'yyyy-MM-dd HH:mm'),
+      };
+
+      setDocumentToCollection('products', product_to_firebase).then(r => {
+        console.log('product saved in DB');
+        resolve(r);
+      }).catch(e => {
+        reject(e);
+      });
+    });
   });
 };

@@ -6,6 +6,7 @@ import { Scrollbar } from 'swiper';
 import { Link, useParams } from 'react-router-dom';
 import classNames from 'classnames';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import success from '../../images/BasketPage/success.svg';
 
 
@@ -17,6 +18,9 @@ import { ProductCardMini } from '../ProductCardMini/ProductCardMini';
 import { useLocalStorage } from '../../helpers/useLocalStorage';
 import { AppContext } from '../AppProvider';
 import { PageNavigation } from '../PageNavigation/PageNavigation';
+
+import noPhoto from '../../images/ProductForm/noPhoto.svg';
+import { getRightData } from '../../helpers/getrRightData';
 
 
 export const ProductCardMain = () => {
@@ -46,6 +50,8 @@ export const ProductCardMain = () => {
 
   const { slug } = useParams();
 
+  const { t, i18n } = useTranslation();
+
   const randomStart = () => {
     
     const result =  Math.floor(Math.random() * (productsApi.length - 3));
@@ -55,7 +61,7 @@ export const ProductCardMain = () => {
   
   useEffect(() => {
     const currentProduct = productsApi.find(el => 
-      el.id === slug);
+      el.path === slug);
 
     if (currentProduct) {
       setProduct(currentProduct);
@@ -137,66 +143,65 @@ export const ProductCardMain = () => {
             >
               <SwiperSlide className="swiper__img">
                 <img
-                  src={product.image}
-                  alt=""
+                  src={product.image || noPhoto}
+                  alt="slide_image"
+                />
+              </SwiperSlide>
+              {product.images?.map(el => {
+                return (
+                  <SwiperSlide className="swiper__img" key={el}>
+                    <img
+                      src={el}
+                      alt="slide_image"
                   
-                />
-              </SwiperSlide>
-              <SwiperSlide  className="swiper__img">
-                <img
-                  src={product.image}
-                  alt=""
-                 
-                />
-              </SwiperSlide>
+                    />
+                  </SwiperSlide>
+                );
+              })}
             </Swiper>
-            <img
-              src={require('../../images/ProductCard/sideImg1.png')}
-              alt="small pie imag1"
-              className="desktopDisplay__photoZone-sideImg1"
-            />
-            <img
-              src={require('../../images/ProductCard/sideImg2.png')}
-              alt="small pie image2"
-              className="desktopDisplay__photoZone-sideImg2"
-            />
-            <img
-              src={require('../../images/ProductCard/sideImg3.png')}
-              alt="small pie image3"
-              className="desktopDisplay__photoZone-sideImg3"
-            />
-            <img
-              src={require('../../images/ProductCard/sideImg4.png')}
-              alt="small pie image4"
-              className="desktopDisplay__photoZone-sideImg4"
-            />
+
+            {product.images?.map(el => {
+              return (
+                <img
+                  key={el}
+                  src={el}
+                  alt="small_product_image"
+                  className="desktopDisplay__photoZone-sideImg"
+                />
+              );
+            })}
+            
           </div>
           <img
-            src={product.image}
+            src={product.image || noPhoto}
             alt="small pie image5"
             className="desktopDisplay__photo-mobile"
           />
           <div>
-            <p className="productCardHeader__title2">{product.title}</p>
-            <p className="productCardHeader__price">{`Цена - ${product.price},00 $`}</p>
-            <p className="productCardHeader__descriptionTitle">Описание:</p>
+            <p className="productCardHeader__title2">
+              {getRightData(productsApi.find(el => 
+                el.path === slug), i18n.language, 'title')}
+            </p>
+            <p className="productCardHeader__price">{`${t('price')} - ${product.price},00 $`}</p>
+            <p className="productCardHeader__descriptionTitle">{`${t('description')}:`}</p>
             <p className="productCardHeader__description">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do
-                  eiusmod tempor
+              {getRightData(productsApi.find(el => 
+                el.path === slug), i18n.language, 'description')}
             </p>
             <p className="productCardHeader__weight">
-              <b>Вес</b> - 2 кг
+              <b>{t('weight')}</b> {` - ${product.weight / 1000} ${t('kg')}`}
             </p>
             <p className="productCardHeader__taste">
-              <b>Вкус</b> - воздушный бисквит с шоколадной крошкой и нежными
-                  ягодными нотками
+              <b>{t('taste')}</b> 
+              {` - ${getRightData(productsApi.find(el => 
+                el.path === slug), i18n.language, 'description')}`}
             </p>
             <div className="productCardHeader__basketButtons">
               <button 
                 className="productCardHeader__basketButton"
                 onClick={handleAddToCart}
               >
-                Добавить в корзину
+                {t('addToBasket')}
               </button>
               <div className="counterBox">
                 <button 
@@ -205,10 +210,13 @@ export const ProductCardMain = () => {
                 >
                   -
                 </button>
-                <p className="productCardHeader__counterTitle">{productCount}</p>
+                <p className="productCardHeader__counterTitle">
+                  {productCount > product.count ? product.count : productCount}
+                </p>
                 <button 
                   className="productCardHeader__counterButton"
                   onClick={handleCountInc}
+                  disabled={productCount >= product.count}
                 >
                   +
                 </button>
@@ -227,7 +235,7 @@ export const ProductCardMain = () => {
       
             onClick={handleFeedbackTab}
           >
-          Отзывы
+            {t('feedback')}
           </button>
           <button 
             // eslint-disable-next-line max-len
@@ -237,7 +245,7 @@ export const ProductCardMain = () => {
       
             onClick={handleDetailsTab}
           >
-          Подробности
+            {t('details')}
           </button>
           <button 
             // eslint-disable-next-line max-len
@@ -247,7 +255,7 @@ export const ProductCardMain = () => {
       
             onClick={handleInformationTab}
           >
-          Дополнительная информация
+            {t('moreInformation')}
           </button>
         </div>
       
@@ -276,12 +284,12 @@ export const ProductCardMain = () => {
       </div>
 
       <div className="productCardBlock2">
-        <p className="productCardBlock2__title1">Похожие товары:</p>
+        <p className="productCardBlock2__title1">{`${t('similar')}:`}</p>
         <div className="display">
           {sameProducts.map(el => {
             return (
               <div 
-                onClick={async () => navigate(`/categories/${el.id}`)}
+                onClick={async () => navigate(`/categories/${el.path}`)}
                 key={el.id}
               >
                 <ProductCardMini 
@@ -297,7 +305,7 @@ export const ProductCardMain = () => {
         
           <ProductCardMini 
             product={productsApi[0]}
-            path={`${ productsApi[0]?.id}`}
+            path={`${ productsApi[0]?.path}`}
           />
        
         </div>
@@ -307,9 +315,9 @@ export const ProductCardMain = () => {
         <div className="productCardHeader__notification">
           <img src={success} alt="success" />
           <div className="productCardHeader__notification-content">
-            <p>Товар добавлен в корзину</p>
+            <p>{t('added')}</p>
             <Link to="/basket">
-                Перейти в корзину
+              {t('goToBasket')}
             </Link>
           </div>
         </div>

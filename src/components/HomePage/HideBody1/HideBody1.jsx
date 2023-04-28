@@ -1,9 +1,11 @@
 import React from 'react';
 import '../HideBody1/HideBody1.scss';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export const HideBody1 = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const handleClick = () => {
     navigate('/categories');
@@ -19,7 +21,9 @@ export const HideBody1 = () => {
         <div className="blockRd__someContent">
 
           <div className="someContentSide">
-            <p className="blockRd__someContent--title">у нас Своё производство</p>
+            <p className="blockRd__someContent--title">
+              {t('homePage.ownProduction')}
+            </p>
             <p className="blockRd__someContent--description">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit,
               sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -34,7 +38,7 @@ export const HideBody1 = () => {
         className="order-button hideBody1__button"
         onClick={handleClick}
       >
-        оформить заказ
+        {t('orderButton')}
       </button>
     </div>
   );

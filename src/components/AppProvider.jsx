@@ -9,8 +9,6 @@ export const AppContext = React.createContext({
   setCart: () => {},
   productsApi: [],
   setProductsApi: () => {},
-  language: null,
-  setLanguage: () => {},
 });
 
 export const AppProvider = ({ children }) => {
@@ -19,8 +17,6 @@ export const AppProvider = ({ children }) => {
   const [userInfo, setUserInfo] = useState(null);
   const [cart, setCart] = useState([]);
   const [productsApi, setProductsApi] = useState([]);
-  const [language, setLanguage] = useState('ru');
-
 
   const contextValue =  {
     user,
@@ -31,8 +27,6 @@ export const AppProvider = ({ children }) => {
     setCart,
     productsApi,
     setProductsApi,
-    language,
-    setLanguage,
   };
 
 

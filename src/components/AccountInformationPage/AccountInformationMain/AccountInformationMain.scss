@@ -69,6 +69,10 @@
       border: none;
       background: none;
 
+      &::first-letter {
+        text-transform: uppercase;
+      }
+
       &--active {
         border-bottom: 1px solid #000;
       }
@@ -116,10 +120,15 @@
       text-align: left;
       font-weight: normal;
       vertical-align: top;
+
+      &::first-letter {
+        text-transform: uppercase;
+      }
     }
 
     & td {
       color: rgba(8, 9, 11, 0.5);
+     
 
       & button {
         border: none;

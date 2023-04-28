@@ -1,20 +1,58 @@
+@import "../../styles/mixines.scss";
+
 .productForm {
- 
-  &__img {
+
+  & form {
+    width: 100%;
+  }
+
+  &__imgs {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 2fr 7fr;
+    gap: 20px;
+    align-items: end;
+     &-image {
+      border-radius: 8px;
+    }
+
+    @include onMobile {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+    }
+
+    &-items {
+      width: 100%;
+      display: grid; 
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 10px;
+      justify-items: end;
+
+      @include onMobile {
+        justify-items: start;
+        gap: 5px;
+      }
+      
+      .productForm__imgs-item {
+        height: 50px;
+        width: 50px;
+      }
+    }
+
+    &-item {
     position: relative;
     height: 70px;
+    width: 70px;
 
-   
 
     & input {
       opacity: 0;
-      top: 60%;
+      top: 65%;
       position: absolute;
-      height: 40px;
       width: 30px;
-      left: 15%;
+      left: 80%;
       z-index: 2;
-       
       }
 
     & img {
@@ -22,37 +60,108 @@
     }
   }
 
+  }
+ 
+  
   &__input {
     background: #fff;
     border: none;
     border-radius: 8px;
-    height: 50px;
+    height: 30px;
     outline: none;
     color: #000;
     line-height: 100%;
-    padding: 10px;
+    padding: 5px 10px;
   }
 
   &__file {
-    height: 30px;
-    width: 30px;
+    height: 20px;
+    width: 20px;
     position: absolute;
-    top: 50%;
-    left: 15%;
+    bottom: 0;
+    left: 80%;
     background: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
+    border: none;
+    color: #000;
 
     border-radius: 50%;
     
     & img {
       z-index: 1;
-      height: 15px;
+      height: 10px;
+    }
+  }
+
+  &__submitButton {
+    width: 50%;
+    height: 30px;
+    border-radius: 8px;
+    color: #000;
+    font-weight: bold;
+    border: none;
+    align-self: center;
+    text-transform: uppercase;
+  }
+
+  &__langTabs {
+    
+   
+    &-tabsButtons {
+      display: flex;
+      justify-content: space-between;
+
+      &-item {
+        border: none;
+        background: none;
+        width: 70px;
+       
+        font-family: inherit;
+
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        padding-top: 5px;
+        
+        &--active {
+          background: #6b2f09;
+        }
+      }
     }
 
-    
+    &-body {
+      background: #6b2f09;
+      padding: 10px;
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
 
+      &--right {
+        border-top-right-radius: 8px;
+      }
 
+      &--left {
+        border-top-left-radius: 8px;
+      }
+
+      &--center {
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+      }
+
+    }
+
+    & textarea {
+      height: 90px;
+      resize: none;
+      font-family: Roboto, serif;
+
+      &::placeholder {
+        font-family: Roboto, serif;
+      }
+    }
   }
 }

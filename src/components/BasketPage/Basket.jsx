@@ -1,10 +1,14 @@
 import React, { useContext, useEffect, useState } from 'react';
 import '../BasketPage/Basket.scss';
 import { Link, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useLocalStorage } from '../../helpers/useLocalStorage';
 import { AppContext } from '../AppProvider';
 
 import cross from '../../images/AccountInformation/cross__white.svg';
+
+import noPhoto from '../../images/ProductForm/noPhoto.svg';
+import { getRightData } from '../../helpers/getrRightData';
 
 
 export const Basket = () => {
@@ -14,6 +18,8 @@ export const Basket = () => {
   const navigate = useNavigate();
   
   const [isModal, setIsModal] = useState(false);
+
+  const { t, i18n } = useTranslation();
 
   const handleModal = () => {
     setIsModal(!isModal);
@@ -89,7 +95,7 @@ export const Basket = () => {
 
   return (
     <div className="basket">
-      <h1 className="basket__title">Корзина</h1>
+      <h1 className="basket__title">{t('backet.cart')}</h1>
       <div className="basketBox">
         <div className="basketBlock1">
           {visibledCart.map((el, i) => {
@@ -98,13 +104,13 @@ export const Basket = () => {
               <div className="basketBlock1__item" key={el.id}>
                 <div className="imgBlock">
                   <img
-                    src={productsApi.find(e => e.id === el.id)?.image}
+                    src={productsApi.find(e => e.id === el.id)?.image || noPhoto}
                     alt="product image1"
                     className="basketBlock1__img"
                   />
                 </div>
                 <div className="basketBlock1__title">
-                  <p>{el.title}</p>
+                  <p>{getRightData(el, i18n.language, 'title')}</p>
         
                   <div className="basketBlock1__counterBox">
                     <button 
@@ -113,11 +119,13 @@ export const Basket = () => {
                     > 
                       - 
                     </button>
-                    <p className="basketBlock1__counterText">{counts[i] 
+                    <p className="basketBlock1__counterText">{(counts[i] > el.count 
+                      ? el.count : counts[i])
                       || cart.filter(e => el.id === e.id).length}</p>
                     <button 
                       className="basketBlock1__counterButton"
                       onClick={() => handleCountInc(el)}
+                      disabled={counts[i] >= el.count }
                     > 
                       + 
                     </button>
@@ -147,15 +155,15 @@ export const Basket = () => {
         </div>
         <div className="basketBlock2">
           <div className="basketBlock2__productPrice">
-            <p>Товар:</p>
+            <p>{t('backet.product')}</p>
             <p>{`${cart.map(el => +el.price).reduce((a, b) => a + b, 0)}$`}</p>
           </div>
           <div className="basketBlock2__delivery">
-            <p>Доставка:</p>
-            <p>По тарифам перевозчика</p>
+            <p>{t('backet.delivery')}</p>
+            <p>{t('backet.rates')}</p>
           </div>
           <div className="basketBlock2__fullCoast">
-            <p>Всего:</p>
+            <p>{t('backet.all')}</p>
             <p>{`${cart.map(el => +el.price).reduce((a, b) => a + b, 0)}$`}</p>
           </div>
         </div>
@@ -164,7 +172,7 @@ export const Basket = () => {
         className="basket__button"
         onClick={handleOrder}
       > 
-          Оформить заказ 
+        {t('orderButton')} 
       </button>
 
       {isModal && (
@@ -173,7 +181,7 @@ export const Basket = () => {
             <div class="modal__window">
               <div className="modal__title">
                 <div className="modal__between" />
-                <p>Order error</p>
+                <p>{t('backet.orderError')}</p>
                 <button className="modal__close" onClick={handleModal}>
                   <img
                     src={cross}
@@ -182,11 +190,13 @@ export const Basket = () => {
                 </button>
               </div>
               <div class="modal__body">
-               Чтобы сделать заказ, нужно 
+                {t('backet.forOrder')} 
                 {' '}
                 <Link to="/account/registration" isRegister={true}> 
-                Зарегистрироваться
-                </Link> или <Link to="/account/login" isRegister={false}>Войти</Link>
+                  {t('account.register')}
+                </Link>  {t('backet.or')} <Link to="/account/login" isRegister={false}>
+                  {t('account.enter')}
+                </Link>
               </div>
             </div>
           </div><div className="modal__shadow" />

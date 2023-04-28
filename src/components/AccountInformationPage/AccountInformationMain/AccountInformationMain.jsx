@@ -10,6 +10,7 @@ import {
 import '../AccountInformationMain/AccountInformationMain.scss';
 import classNames from 'classnames';
 
+import { useTranslation } from 'react-i18next';
 import pencil from '../../../images/AccountInformation/penIcon.svg';
 import { Modal } from '../../Modal/Modal';
 import { AppContext } from '../../AppProvider';
@@ -46,6 +47,8 @@ export const AccountInformationMain = () => {
     address: '',
   });
   const [userOrders, setUserOrders] = useState(null);
+
+  const { t } = useTranslation();
   console.log(userOrders);
 
   const [showReAutrnticateNotification, setShowReAutrnticateNotification] = useState(false);
@@ -56,7 +59,6 @@ export const AccountInformationMain = () => {
       const currentUserorders = 
         await getCollectionWhereKeyValue('orders', 'uidUser', auth.currentUser.uid);
       setUserOrders(currentUserorders);
-      console.log('hgvhjbvj');
     } catch (error) {
       console.log(error);
     }
@@ -72,7 +74,7 @@ export const AccountInformationMain = () => {
 
     }).catch((error) => {
       setIsModal(true);
-      setErrorTitle('Something went wrong...');
+      setErrorTitle(t('account.somethingTwo'));
       setErrorMessage(error.message);
     });
   };
@@ -135,7 +137,7 @@ export const AccountInformationMain = () => {
       } catch (error) {
         console.log(error);
         setIsModal(true);
-        setErrorTitle('Error');
+        setErrorTitle(t('account.error'));
         setErrorMessage(error.message);
         return;
       }
@@ -146,7 +148,7 @@ export const AccountInformationMain = () => {
         setPromptForCredentials(null);
       } catch (error) {
         setIsModal(true);
-        setErrorTitle('Error');
+        setErrorTitle(t('account.error'));
         setErrorMessage(error.message);
       }
     }
@@ -171,7 +173,7 @@ export const AccountInformationMain = () => {
         setUserInfo({...userInfo, ...newData});
       } catch (error) {
         setIsModal(true);
-        setErrorTitle('Error');
+        setErrorTitle(t('account.error'));
         setErrorMessage(error.message);
       }
     }
@@ -186,26 +188,20 @@ export const AccountInformationMain = () => {
   const handleOrderDetail = (el) => {
     console.log(el.orderDetails);
     setIsModal(true);
-    setErrorTitle('Детали заказа');
+    setErrorTitle(t('account.orderDetails'));
     setErrorMessage(el.orderDetails );
   };
-
-  console.log(userOrders?.sort((a, b) =>
-  {
-    // eslint-disable-next-line max-len
-    return new Date(a.dateCreating.split(' ').slice(0, 1).join('').split('-').reverse().join('-')) - new Date(b.dateCreating.split(' ').slice(0, 1).join('').split('-').reverse().join('-'));
-  }));
 
   return (
     <div className="accountInformationMain">
       
       <div className="accountInformationMain__title">
-        <h1>Личный кабинет</h1>
+        <h1>{t('navigation.myAccount')}</h1>
         <button 
           className="accountInformationMain__tabs-item accountInformationMain__tabs-item--mobile"
           onClick={handleSignOut}
         >
-            Выход
+          {t('account.logout')}
         </button>
       </div>
       
@@ -218,7 +214,7 @@ export const AccountInformationMain = () => {
           )}
           onClick={setCurrentInformationTab}
         >
-            Информация
+          {t('account.information')}
         </button>
         <button 
           className={classNames(
@@ -227,13 +223,13 @@ export const AccountInformationMain = () => {
           )}
           onClick={setCurrentOrdersTab}
         >
-            Заказы
+          {t('account.orders')}
         </button>
         <button 
           className="accountInformationMain__tabs-item accountInformationMain__tabs-item--desktop"
           onClick={handleSignOut}
         >
-            Выход
+          {t('account.logout')}
         </button>
       </div>
       
@@ -241,7 +237,7 @@ export const AccountInformationMain = () => {
         <div className="infoDisplay">
           <div className="infoDisplay__block">
             <div className="infoDisplay__block-title">
-              ФИО
+              {t('account.fullName')}
               <button
                 name="isNameChange"
                 onClick={(e) => handleSetChangeDataInput(e)}
@@ -307,7 +303,7 @@ export const AccountInformationMain = () => {
           </div>
           <div className="infoDisplay__block">
             <div className="infoDisplay__block-title">
-              Телефон
+              {t('account.phoneNumber')}
               <button
                 name="isPhoneNumberChange"
                 onClick={(e) => handleSetChangeDataInput(e)}
@@ -338,7 +334,7 @@ export const AccountInformationMain = () => {
           </div>
           <div className="infoDisplay__block">
             <div className="infoDisplay__block-title">
-              Адрес доставки
+              {t('account.address')}
               <button
                 name="isAddressChange"
                 onClick={(e) => handleSetChangeDataInput(e)}
@@ -374,30 +370,29 @@ export const AccountInformationMain = () => {
         <table className="accountInformationMain__orders">
           <thead>
             <tr>
-              <th>Номер заказа</th>
-              <th>Дата</th>
-              <th>Статус</th>
-              <th>Сумма заказа</th>
-              <th>Действия</th>
+              <th>{t('account.orderNumber')}</th>
+              <th>{t('account.date')}</th>
+              <th>{t('account.status')}</th>
+              <th>{t('account.orderPrice')}</th>
+              <th>{t('account.actions')}</th>
             </tr>
           </thead>
           
           <tbody>
             {userOrders?.sort((a, b) => {
-              // eslint-disable-next-line max-len
-              return new Date(a.dateCreating.split(' ').slice(0, 1).join('').split('-').reverse().join('-')) - new Date(b.dateCreating.split(' ').slice(0, 1).join('').split('-').reverse().join('-'));
+              return new Date(a.dateCreating) - new Date(b.dateCreating);
             }).map(el => {
               return (
                 <tr key={el.orderNumber}>
                   <td>{el.orderNumber}</td>
                   <td>
-                    {el.dateCreating.split(' ').slice(0, 1).join('').split('-').join('.')}
+                    {el.dateCreating.split(' ').slice(0, 1).join('').split('-').reverse().join('.')}
                   </td>
                   <td>{el.status}</td>
                   <td>{`$ ${el.sum}`}</td>
                   <td>
                     <button onClick={() => handleOrderDetail(el)}>
-                      Детали заказа
+                      {t('account.orderDetails')}
                     </button>
                   </td>
                 </tr>
@@ -418,7 +413,7 @@ export const AccountInformationMain = () => {
       {showReAutrnticateNotification && (
         <ModalWithForm 
           setShowModalWithForm={setShowReAutrnticateNotification}
-          title="To change the email, please log in again"
+          title={t('account.toChangeEmail')}
           form={
             <ReAuthForm
               setShowModalWithForm={setShowReAutrnticateNotification}

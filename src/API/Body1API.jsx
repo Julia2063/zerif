@@ -2,43 +2,106 @@ export const body1Api = [
   {
     id: 1,
     img: '../image/body1/1.png',
-    title: 'СВОЙ SWEET-ROOM',
-    description: 'Продегустируйте и возьмите с собой',
+    ru: {
+      title: 'СВОЙ SWEET-ROOM',
+      description: 'Продегустируйте и возьмите с собой',
+    },
+    en: {
+      title: 'YOUR SWEET-ROOM',
+      description: 'Taste and take away',
+    },
+    az: {
+      title: '',
+      description: '',
+    },
     price: '$ 30.00',
   },
+
   {
     id: 2,
     img: '../image/body1/2.png',
-    title: 'ВСЕ В НАЛИЧИИ',
-    description: 'Десерты всегда в наличии на любой вкус и повод',
+    ru:{
+      title: 'ВСЕ В НАЛИЧИИ',
+      description: 'Десерты всегда в наличии на любой вкус и повод',
+    },
+    en: {
+      title: 'ALL IN STOCK',
+      description: 'Desserts are always available for every taste and occasion.',
+    },
+    az: {
+      title: '',
+      description: '',
+    },
     price: '$ 30.00',
   },
+
   {
     id: 3,
     img: '../image/body1/3.png',
-    title: 'СЕРТИФИЦИРОВАНО',
-    description: 'Сертификаты качества на всю продукцию',
+    ru:{
+      title: 'СЕРТИФИЦИРОВАНО',
+      description: 'Сертификаты качества на всю продукцию',
+    },
+    en: {
+      title: 'CERTIFIED',
+      description: 'Quality certificates for all products',
+    },
+    az: {
+      title: '',
+      description: '',
+    },
     price: '$ 30.00',
   },
   {
     id: 4,
     img: '../image/body1/5.png',
-    title: 'ДОСТАВКА',
-    description: 'Доставим Ваш заказ в целости и сохранности',
+    ru:{
+      title: 'ДОСТАВКА',
+      description: 'Доставим Ваш заказ в целости и сохранности',
+    },
+    en: {
+      title: 'DELIVERY',
+      description: 'We will deliver your order safe and sound',
+    },
+    az: {
+      title: '',
+      description: '',
+    },
     price: '$ 30.00',
   },
   {
     id: 5,
     img: '../image/body1/6.png',
-    title: 'ВЫСОКОЕ КАЧЕСТВО',
-    description: 'Подбираем только качественные ингредиенты',
+    ru:{
+      title: 'ВЫСОКОЕ КАЧЕСТВО',
+      description: 'Подбираем только качественные ингредиенты',
+    },
+    en: {
+      title: 'HIGH QUALITY',
+      description: 'We select only high quality ingredients',
+    },
+    az: {
+      title: '',
+      description: '',
+    },
     price: '$ 30.00',
   },
+
   {
     id: 6,
     img: '../image/body1/4.png',
-    title: 'ОНЛАЙН ОПЛАТА',
-    description: 'Оплачивайте заказ онлайн прямо на сайте',
+    ru:{
+      title: 'ОНЛАЙН ОПЛАТА',
+      description: 'Оплачивайте заказ онлайн прямо на сайте',
+    },
+    en: {
+      title: 'ONLINE PAYMENT',
+      description: 'Pay for the order online directly on the site',
+    },
+    az: {
+      title: '',
+      description: '',
+    },
     price: '$ 30.00',
   },
 ];

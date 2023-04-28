@@ -7,11 +7,12 @@ import {
   sendPasswordResetEmail,
 } from 'firebase/auth';
 
-import '../AccountEnterMain/AccountEnterMain.scss';
+import './AccountEnterMain.scss';
 import classNames from 'classnames';
-import { Modal } from '../../Modal/Modal';
-import { AppContext } from '../../AppProvider';
-import { createNewUser } from '../../../helpers/firebaseControls';
+import { useTranslation } from 'react-i18next';
+import { Modal } from '../Modal/Modal';
+import { AppContext } from '../AppProvider';
+import { createNewUser } from '../../helpers/firebaseControls';
 
 export const AccountEnterMain = ({ isRegister }) => {
 
@@ -20,14 +21,14 @@ export const AccountEnterMain = ({ isRegister }) => {
     password: '',
   });
 
-  console.log(isRegister);
-
   const [isModal, setIsModal] = useState(false);
   const [modalTitle, setModalTitle] = useState('');
   const [modalMessage, setModalMessage] = useState('');
   const auth = getAuth();
 
   const { user, setUser } = useContext(AppContext);
+
+  const { t } = useTranslation();
 
   const navigate = useNavigate();
 
@@ -55,8 +56,8 @@ export const AccountEnterMain = ({ isRegister }) => {
 
     if (regInfo.email.length === 0 || regInfo.password.length === 0) {
       setIsModal(true);
-      setModalTitle('Registration error');
-      setModalMessage('Enter email and password please!');
+      setModalTitle(t('account.registerError'));
+      setModalMessage(t('account.registerErrorMessage'));
       return;
     } else {
       
@@ -74,7 +75,7 @@ export const AccountEnterMain = ({ isRegister }) => {
         })
         .catch((error) => {
           setIsModal(true);
-          setModalTitle('Registration error');
+          setModalTitle(t('account.registerError'));
           setModalMessage(error.message);
         });;
     }
@@ -85,8 +86,8 @@ export const AccountEnterMain = ({ isRegister }) => {
 
     if (regInfo.email.length === 0 || regInfo.password.length === 0) {
       setIsModal(true);
-      setModalTitle('Login error');
-      setModalMessage('Enter email and password please!');
+      setModalTitle(t('account.loginError'));
+      setModalMessage(t('account.registerErrorMessage'));
       return;
     } else {
       const auth = getAuth();
@@ -109,23 +110,20 @@ export const AccountEnterMain = ({ isRegister }) => {
   const handleResetPassword = () => {
     if (regInfo.email.length === 0) {
       setIsModal(true);
-      setModalTitle('Reset password error');
-      setModalMessage('Enter your email please!');
+      setModalTitle(t('account.resetPasswordError'));
+      setModalMessage(t('account.enterEmail'));
       return;
     } else {
       sendPasswordResetEmail(auth, regInfo.email)
         .then(() => {
           setIsModal(true);
-          setModalTitle('Notification');
-          setModalMessage(
-            // eslint-disable-next-line max-len
-            'Password reset email sent! Please check it, confirm reset and re-login! Don\'t forget check "Spam" folder!'
-          );
+          setModalTitle(t('account.notification'));
+          setModalMessage(t('account.resetEmailSent'));
         })
         .catch(() => {
           setIsModal(true);
-          setModalTitle('Error');
-          setModalMessage('Something went wrong with reset password sending');
+          setModalTitle(t('account.error'));
+          setModalMessage(t('account.something'));
         });
     }
    
@@ -135,7 +133,7 @@ export const AccountEnterMain = ({ isRegister }) => {
 
   return (
     <div className="accountEnterMain">
-      <h1 className="accountEnterMain__title">Личный кабинет</h1>
+      <h1 className="accountEnterMain__title">{t('navigation.myAccount')}</h1>
       
       <form 
         className="accountEnterMain__form"
@@ -154,7 +152,7 @@ export const AccountEnterMain = ({ isRegister }) => {
              
             onClick={() => navigate('/account/login')}
           >
-            Вход
+            {t('account.enter')}
           </button>
           <button 
             type="button"
@@ -164,7 +162,7 @@ export const AccountEnterMain = ({ isRegister }) => {
             )}
             onClick={() => navigate('/account/registration')}
           >
-            Регистрация
+            {t('account.register')}
           </button>
         </div>
         <input
@@ -177,25 +175,25 @@ export const AccountEnterMain = ({ isRegister }) => {
         <input
           type="password"
           value={regInfo.password}
-          placeholder="пароль"
+          placeholder={t('account.password')}
           className="accountEnterMain__form-input"
           onChange={(e) => handleChange('password', e.target.value)}
         />
 
         <label className="accountEnterMain__checkbox">
           <input type="checkbox"/>
-          <span>Запомнить меня</span>
+          <span>{t('account.remember')}</span>
         </label>
 
         <button className="accountEnterMain__submitButton" type="submit">
-          {isRegister ? 'Зарегистрироваться' : 'Войти'}
+          {isRegister ? t('account.registration') : t('account.enter')}
         </button>
       </form>
       <button 
         className="accountEnterMain__forgotPassword"
         onClick={handleResetPassword}
       >
-          Забыли пароль?
+        {t('account.forget')}
       </button>
 
       {isModal && (

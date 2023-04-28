@@ -1,47 +1,143 @@
 export const body3Api = [
   {
     id: 1,
-    title: 'ДЕСЕРТ С КЛУБНИКОЙ',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    ru: {
+      title: 'ДЕСЕРТ С КЛУБНИКОЙ',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    },
+    en: {
+      title: 'DESSERT WITH STRAWBERRY',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    },
+    az: {
+      title: '',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    },
   },
   {
     id: 2,
-    title: 'ШАРЛОТКА С КОРИЦЕЙ',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    ru: {
+      title: 'ШАРЛОТКА С КОРИЦЕЙ',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    },
+    en: {
+      title: 'CHARLOTTE WITH CINNAMON',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    },
+    az: {
+      title: '',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    },
   },
   {
     id: 3,
-    title: 'ТОРТ С ЯГОДАМИ',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    ru: {
+      title: 'ТОРТ С ЯГОДАМИ',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    },
+    en: {
+      title: 'CAKE WITH BERRIES',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    },
+    az: {
+      title: '',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    },
   },
   {
     id: 4,
-    title: 'НАТУРАЛЬНОЕ МОРОЖЕНОЕ',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    
+    ru: {
+      title: 'НАТУРАЛЬНОЕ МОРОЖЕНОЕ',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    },
+    en: {
+      title: 'NATURAL ICE CREAM',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    },
+    az: {
+      title: '',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    },
   },
   {
     id: 5,
-    title: 'ТОРТ НА ОСНОВЕ ЙОГУРТА',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+  
+    ru: {
+      title: 'ТОРТ НА ОСНОВЕ ЙОГУРТА',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    },
+    en: {
+      title: 'YOGHURT BASED CAKE',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    },
+    az: {
+      title: '',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    },
   },
   {
     id: 6,
-    title: 'МАКАРУНЫ',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    
+    ru: {
+      title: 'МАКАРУНЫ',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    },
+    en: {
+      title: 'MACAROONS',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    },
+    az: {
+      title: '',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    },
   },
   {
     id: 7,
-    title: 'ДЕСЕРТ С КЛУБНИКОЙ',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+   
+    ru: {
+      title: 'ДЕСЕРТ С КЛУБНИКОЙ',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    },
+    en: {
+      title: 'DESSERT WITH STRAWBERRY',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    },
+    az: {
+      title: '',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    },
   },
   {
     id: 8,
-    title: 'ШАРЛОТКА С КОРИЦЕЙ',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+
+    ru: {
+      title: 'ШАРЛОТКА С КОРИЦЕЙ',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    },
+    en: {
+      title: 'CHARLOTTE WITH CINNAMON',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    },
+    az: {
+      title: '',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    },
   },
   {
     id: 9,
-    title: 'ТОРТ С ЯГОДАМИ',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    
+    ru: {
+      title: 'ТОРТ С ЯГОДАМИ',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    },
+    en: {
+      title: 'CAKE WITH BERRIES',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    },
+    az: {
+      title: '',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    },
   },
 ];

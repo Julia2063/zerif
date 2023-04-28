@@ -1,4 +1,4 @@
-@import "../../../styles/mixines.scss";
+@import "../../styles/mixines.scss";
 
 a {
   text-decoration: none;
@@ -14,7 +14,7 @@ input {
   font-weight: 500;
   text-transform: uppercase;
 
-  background-image: url('../../../images/Contacts/BgrdGradient.png');
+  background-image: url('../../images/Contacts/BgrdGradient.png');
   background-size: cover;
 
   padding: 50px 120px 180px 120px;
@@ -130,9 +130,8 @@ input {
         border: none;
         outline: none;
         padding: 10px;
+        resize: none;
       }
-
-
 
     &-button {
       height: 47px;
@@ -141,6 +140,10 @@ input {
       font-size: 20px;
       color: #fff;
       width: 100%;
+
+      &::first-letter {
+        text-transform: uppercase;
+      }
     }
   }
 }

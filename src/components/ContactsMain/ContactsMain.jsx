@@ -1,28 +1,32 @@
 import { React } from 'react';
-import '../ContactsMain/ContactsMain.scss';
+import './ContactsMain.scss';
 
-import viber from '../../../images/Contacts/viberIcon.svg';
-import facebook from '../../../images/Contacts/facebookIcon.svg';
-import youtube from '../../../images/Contacts/youtubeIcon.svg';
-import watsap from '../../../images/Contacts/watsapIcon.svg';
-import telegram from '../../../images/Contacts/telegramIcon.svg';
+import { useTranslation } from 'react-i18next';
+import viber from '../../images/Contacts/viberIcon.svg';
+import facebook from '../../images/Contacts/facebookIcon.svg';
+import youtube from '../../images/Contacts/youtubeIcon.svg';
+import watsap from '../../images/Contacts/watsapIcon.svg';
+import telegram from '../../images/Contacts/telegramIcon.svg';
 
 export const ContactsMain = () => {
+  const { t } = useTranslation();
   return (
     <div className="contactsMain">
       <div className="contactsMain__content">
-        <p className="contactsMain__content--title">Контакты</p>
-        <p className="contactsMain__content--font1">
-          Возникли вопросы? Хотите уточнить детали заказа? Свяжитесь с нами:
+        <p className="contactsMain__content--title">
+          {t('navigation.contacts')}
         </p>
-        <p className="contactsMain__content--font1 contTitle">Телефон:</p>
+        <p className="contactsMain__content--font1">
+          {t('contacts.questions')}
+        </p>
+        <p className="contactsMain__content--font1 contTitle">{t('form.phoneNumber')}</p>
         <div className="contactsMain__content--font2">
           <p>+ 0 000 000 00 00</p>
           <p >+ 0 000 000 00 00</p>
         </div>
-        <p className="contactsMain__content--font1 contTitle">Email</p>
+        <p className="contactsMain__content--font1 contTitle">{t('footer.mail')}</p>
         <p className="contactsMain__content--font2">zefir@gmail.com</p>
-        <p className="contactsMain__content--font1 contTitle">Соцсети:</p>
+        <p className="contactsMain__content--font1 contTitle">{t('socialMedia')}</p>
         <nav className="contactsMain__content--nav">
           <a href="">
             <img
@@ -58,11 +62,11 @@ export const ContactsMain = () => {
       </div>
       <div className="contactsMain__form">
         <p className="contactsMain__form-title">
-          Форма обратной связи:
+          {t('contacts.feedbackForm')}
         </p>
         <form action="">
           <label className="contactsMain__form-label">
-            Имя
+            {t('contacts.name')}
             <input type="text" className="contactsMain__form-textInputs" />
           </label>
          
@@ -72,17 +76,20 @@ export const ContactsMain = () => {
           </label>
           
           <label className="contactsMain__form-label">
-            Комментарий
+            {t('contacts.comments')}
             <textarea
               name=""
               id=""
               cols="30"
               rows="10"
               className="contactsMain__form-textArea"
+              res
             ></textarea>
           </label>
           
-          <button className="contactsMain__form-button">Отправить</button>
+          <button className="contactsMain__form-button">
+            {t('form.send')}
+          </button>
         </form>
       </div>
     </div>

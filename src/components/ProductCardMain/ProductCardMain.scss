@@ -72,6 +72,10 @@
     font-size: 24px;
     font-weight: 500;
 
+    &::first-letter {
+      text-transform: uppercase;
+    }
+
     margin-bottom: 30px;
 
     @include onDesktop {
@@ -100,6 +104,10 @@
     line-height: 26px;
 
     margin-bottom: 20px;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
 
     @include onDesktop {
       font-size: 20px;
@@ -145,6 +153,10 @@
 
     margin-bottom: 30px;
 
+    &::first-letter {
+      text-transform: uppercase;
+    }
+
     @include onDesktop {
       font-size: 20px;
 
@@ -173,6 +185,10 @@
     line-height: 23px;
 
     margin-bottom: 30px;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
 
       @include onTablet {
       font-size: 13px;
@@ -355,50 +371,18 @@
       }
     }
 
-    &-sideImg1 {
+    &-sideImg {
+      height: 115px;
 
-      @include onDesktop {
-        height: 100%;
-      }
-   
-     @include onTablet {
-       display: none;
+     @include onDesktop {
+      height: 100px;
      }
+
+     @include onTablet {
+      display: none;
+     }
+   }
   
-   }
-   
-   &-sideImg2 {
-
-    @include onDesktop {
-      height: 100%;
-    }
-   
-     @include onTablet {
-       display: none;
-     }
-   }
-   
-   &-sideImg3 {
-
-    @include onDesktop {
-      height: 100%;
-    }
-    
-     @include onTablet {
-       display: none;
-     }
-   }
-   
-   &-sideImg4 {
-
-    @include onDesktop {
-      height: 100%;
-    }
-   
-     @include onTablet {
-       display: none;
-     }
-   }
 
    & .swiper{
     width: 100%;
@@ -482,6 +466,10 @@
       padding-bottom: 12px;
       cursor: pointer;
 
+      &::first-letter {
+        text-transform: uppercase;
+      }
+
       @include onDesktop {
         font-size: 20px;
         line-height: 22px;
@@ -528,6 +516,10 @@
     line-height: 35px;
     
     margin-bottom: 43px;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
   }
 
   &__img {

@@ -1,11 +1,13 @@
 import React from 'react';
 import '../PopularBlock2/PopularBlock2.scss';
+import { useTranslation } from 'react-i18next';
 
 
 export const PopularBlock2 = () => {
+  const { t } = useTranslation();
   return (
     <div className="popularBlock2">
-      <p className="popularBlock2__title">Торты ко дню рождения</p>
+      <p className="popularBlock2__title">{t('popular.birthdayCakes')}</p>
       <p className="popularBlock2__description">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod
           tempor

@@ -1,7 +1,9 @@
 import React, { useContext, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { AppContext } from '../AppProvider';
 
 import './ReAuthForm.scss';
+
 
 export const ReAuthForm = ({
   setShowModalWithForm, 
@@ -9,6 +11,8 @@ export const ReAuthForm = ({
 }) => {
   const { user } = useContext(AppContext);
   const [newDataModal, setNewDataModal] = useState({email: user.email, password: ''});
+
+  const { t } = useTranslation();
 
   const handleChangeModal = (fieldName, newValue) => {
     setNewDataModal({
@@ -36,7 +40,7 @@ export const ReAuthForm = ({
       <input
         type="password"
         value={newDataModal.password}
-        placeholder="пароль"
+        placeholder={t('account.password')}
         className="accountEnterMain__form-input"
         onChange={(e) => handleChangeModal('password', e.target.value)} 
       />

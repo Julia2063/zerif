@@ -1,34 +1,41 @@
 import React from 'react';
 import '../Form/Form.scss';
+import { useTranslation } from 'react-i18next';
 
 export const Form = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="form">
       <div className="tillDesctop">
         <div className="form__content">
-          <p className="form__content--title1"> Не знаете что выбрать?</p>
+          <p className="form__content--title1">{t('homePage.whatToChoose')}</p>
           <p className="form__content--title2">
-                Заполните форму ниже и мы обязательно с Вами свяжемся!
+            {t('homePage.fillForm')}
           </p>
 
           <form action="" className="inputs">
-            <label className="inputs__title">Имя:
+            <label className="inputs__title">
+              {t('form.name')}
               <input
                 type="text"
                 className="inputs__input"
-                placeholder="Введите Ваше имя"
+                placeholder={t('form.fillName')}
               />
             </label>
            
-            <label className="inputs__title">Телефон:
+            <label className="inputs__title">
+              {t('form.phoneNumber')}
               <input
                 type="text"
                 className="inputs__input"
-                placeholder="Введите Ваш телефон"
+                placeholder={t('form.fillPhoneNumber')}
               />
             </label>
            
-            <button className="inputs__button order-button">Отправить</button>
+            <button className="inputs__button order-button">
+              {t('form.send')}
+            </button>
         
               
           </form>

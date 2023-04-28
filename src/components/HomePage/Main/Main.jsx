@@ -4,9 +4,12 @@ import '../Main/Main.scss';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from 'swiper';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 
 export const Main = () => {
+
+  const { t } = useTranslation();
 
   const navigate = useNavigate();
 
@@ -63,7 +66,7 @@ export const Main = () => {
           className="order-button"
           onClick={handleClick}
         >
-          Оформить заказ
+          {t('orderButton')}
         </button>
       </div>
     </div>

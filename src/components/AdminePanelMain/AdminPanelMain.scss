@@ -10,6 +10,8 @@
 
   @include onMobile {
     padding: 20px;
+    align-items: start;
+    overflow: scroll;
   }
 
   &__products {
@@ -17,6 +19,10 @@
     flex-direction: column;
     gap: 10px;
     width: 100%;
+
+    @include onMobile {
+      min-width: 550px;
+    }
 
     &-item {
       display: grid;

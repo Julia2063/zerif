@@ -1,6 +1,6 @@
 import { React } from 'react';
 import { AccountEnterMain } 
-  from '../components/AccountEnterPage/AccountEnterMain/AccountEnterMain';
+  from '../components/AccountEnterMain/AccountEnterMain';
 
 
 export const AccountEnterPage = ({ isRegister }) => {

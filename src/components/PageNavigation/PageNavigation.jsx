@@ -2,7 +2,9 @@ import React, { useContext } from 'react';
 
 import './PageNavigation.scss';
 import { Link, useLocation, useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { AppContext } from '../AppProvider';
+import { getRightData } from '../../helpers/getrRightData';
 
 export const PageNavigation = () => {
   const location = useLocation();
@@ -13,15 +15,17 @@ export const PageNavigation = () => {
 
   const { productsApi } = useContext(AppContext);
 
+  const { t, i18n } = useTranslation();
+
   return (
     <ul className="pageNavigation">
       <li>
         {pathnames.length > 0
           ? (
             <Link to="/categories">
-              <p>Товары</p> 
+              <p>{t('navigation.goods')}</p> 
             </Link> 
-          ) : <p>Товары</p>
+          ) : <p>{t('navigation.goods')}</p>
         }
         
       </li>
@@ -32,22 +36,22 @@ export const PageNavigation = () => {
         const currentLocation = () => {
           switch (pathname) {
           case 'desert':
-            return 'Десерты';
+            return t('categories.deserts');
 
           case 'cakes':
-            return 'Торты';
+            return t('categories.cakes');
 
           case 'bakery':
-            return 'Выпечка';
+            return t('categories.bakery');
 
           case 'in-chocolate':
-            return 'Клубника и фрукты в шоколаде';
+            return t('categories.in-chocolate');
 
           case  'candy-and-chocolate':
-            return 'Конфеты и шоколад';
+            return t('categories.candy-and-chocolate');
 
           case 'ice-cream':
-            return 'Мороженое';
+            return t('categories.ice-cream');
 
           default:
             return pathname;
@@ -57,7 +61,11 @@ export const PageNavigation = () => {
           <li key={pathname}>
             <p>{' / '}</p>
             <p>
-              {slug ? `${productsApi.find(el => el.id === slug)?.title}` : `${currentLocation()}`}
+              {slug 
+                ? `${getRightData(
+                  productsApi.find(el => el.path === slug), i18n.language, 'title'
+                )}` 
+                : `${currentLocation()}`}
             </p>
           </li>
         ) : (

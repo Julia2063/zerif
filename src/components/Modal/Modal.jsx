@@ -1,12 +1,17 @@
 import React, { useContext } from 'react';
 import './Modal.scss';
 
+import { useTranslation } from 'react-i18next';
 import cross from '../../images/AccountInformation/cross__white.svg';
 import { AppContext } from '../AppProvider';
+
+import noPhoto from '../../images/ProductForm/noPhoto.svg';
 
 export const Modal = ({ title, message, handleModal }) => {
 
   const { productsApi } = useContext(AppContext);
+
+  const { i18n } = useTranslation();
 
   const rightMessage = (message) => {
     return Array.isArray(message) 
@@ -14,13 +19,19 @@ export const Modal = ({ title, message, handleModal }) => {
         return(
           <div key={el.id} className="modal__body-text">
             <img 
-              src={productsApi.find(e => e.id === el.id).image}
+              src={productsApi.find(e => e.id === el.id)?.image || noPhoto}
               alt=""
             />
             {Object.entries(el).sort((a, b) => a[0].length - b[0].length || a[1] - b[1]).map(e => {
+              
+
               switch (e[0]) {
               case 'id':
-                return <span key={e[0]}>{productsApi.find(l => e[1] === l.id ).title}</span>;
+                return <span key={e[0]}>
+                  {i18n.language === 'ru' && el.titleRu}
+                  {i18n.language === 'en' && el.titleEn}
+                  {i18n.language === 'az' && el.titleAz}
+                </span>;
 
               case 'price':
                 return <span key={e[0]}>{`$ ${e[1]}`}</span>;
@@ -29,7 +40,7 @@ export const Modal = ({ title, message, handleModal }) => {
                 return <span key={e[0]}>{`x ${e[1]}`}</span>;
 
               default:
-                return e[1]; 
+                return null; 
               }
               
             })}

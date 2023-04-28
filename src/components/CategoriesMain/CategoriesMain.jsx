@@ -1,9 +1,9 @@
 import { React, useContext, useEffect, useState } from 'react';
-import '../CategoriesMain/CategoriesMain.scss';
+import './CategoriesMain.scss';
 import classNames from 'classnames';
-import { ProductCardMini } from '../../ProductCardMini/ProductCardMini';
-import { AppContext } from '../../AppProvider';
-import { PageNavigation } from '../../PageNavigation/PageNavigation';
+import { ProductCardMini } from '../ProductCardMini/ProductCardMini';
+import { AppContext } from '../AppProvider';
+import { PageNavigation } from '../PageNavigation/PageNavigation';
 
 
 export const CategoriesMain = ({ productCategory }) => {
@@ -57,13 +57,18 @@ export const CategoriesMain = ({ productCategory }) => {
 
 
   return (
+    
     <div className="categoriesMain">
+
       <PageNavigation />
       <div className="categoriesMain__boxDisplay">
-        {products.map(product => (
+        {products.sort((a, b) => {
+         
+          return new Date(b.dateCreating) - new Date(a.dateCreating);
+        }).map(product => (
           <ProductCardMini 
             product={product}
-            path={`${ product.id}`}
+            path={`${product.path}`}
             key={product.id}
           />
         ))}

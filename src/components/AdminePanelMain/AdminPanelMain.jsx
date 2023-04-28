@@ -4,13 +4,14 @@ import { AppContext } from '../AppProvider';
 
 import './AdminPanelMain.scss';
 import { 
-  deleteObjectFromeStorage, 
-  getCollection, 
+  deleteObjectFromeStorage,
   removeDocumentFromCollection,
 } from '../../helpers/firebaseControls';
 import { ModalWithForm } from '../ModalWithForm';
 import { ProductForm } from '../ProductForm';
+import { db } from '../../firebase';
 
+import noPhoto from '../../images/ProductForm/noPhoto.svg';
 
 export const AdminPanelMain = () => {
   const { setUser, setUserInfo } = useContext(AppContext);
@@ -26,19 +27,10 @@ export const AdminPanelMain = () => {
  
   const auth = getAuth();
 
-  const fetchData = async () => {
-    try {
-      const loadedProducts = 
-        await getCollection('products');
-      setProducts(loadedProducts);
-      console.log('hgvhjbvj');
-    } catch (error) {
-      alert(error);
-    }
-  };
-
   useEffect(() => {
-    fetchData();
+    db.collection('products').onSnapshot(snapshot => {
+      setProducts(snapshot.docs.map(doc => doc.data()))
+    });
   }, [fetchCount]);
 
   const handleSignOut = () => {
@@ -59,7 +51,9 @@ export const AdminPanelMain = () => {
   const handleProductDelete = async (product) => {
     try {
       await removeDocumentFromCollection('products', product.idPost);
-      await deleteObjectFromeStorage(product);
+      if (product.image.length > 0 || product.images.length > 0) {
+        await deleteObjectFromeStorage(product);
+      }
       setFetchCount(fetchCount + 1);
     } catch (error) {
       alert(error);
@@ -82,11 +76,14 @@ export const AdminPanelMain = () => {
           <p></p>
           <p></p>
         </div>
-        {products.map(el => {
+        {products.sort((a, b) => {
+         
+          return new Date(a.dateCreating) - new Date(b.dateCreating);
+        }).map(el => {
           return (
             <div className="adminPanelmain__products-item" key={el.id}>
-              <img src={el.image} alt="product__image" />
-              <div>{el.title}</div>
+              <img src={el.image || noPhoto} alt="product__image" />
+              <div>{el.ru.title}</div>
               <div>{el.price}</div>
               <div>{el.type}</div>
               <button 
