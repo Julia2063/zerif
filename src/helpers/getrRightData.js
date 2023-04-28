@@ -7,7 +7,7 @@ export const getRightData = (item, language, key) => {
     return item?.ru[key];
   
   case 'az': 
-    return item?.ru[key];
+    return item?.az[key];
   
   default: 
     return;

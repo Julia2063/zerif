@@ -110,7 +110,9 @@ export const Basket = () => {
                   />
                 </div>
                 <div className="basketBlock1__title">
-                  <p>{getRightData(el, i18n.language, 'title')}</p>
+                  <p>{getRightData(
+                    productsApi.find(e => e.id === el.id), i18n.language, 'title'
+                  )}</p>
         
                   <div className="basketBlock1__counterBox">
                     <button 
