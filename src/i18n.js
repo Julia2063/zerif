@@ -12,7 +12,12 @@ i18n
   .use(initReactI18next)
 
   .init({
-    fallbackLng: 'ru',
+    fallbackLng: {
+      'en-US':['en'],
+      'ru-RU':['ru'],
+      'az-AZ':['cn'],
+      default:['ru'],
+    },
     debug: true,
     
 
