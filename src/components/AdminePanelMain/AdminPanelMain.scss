@@ -22,7 +22,7 @@
     gap: 10px;
     width: 100%;
     height: min-content;
-     min-width: 550px;
+    min-width: 550px;
 
     &-item {
       display: grid;
@@ -32,9 +32,10 @@
       background: #f1f1f1;
       padding: 10px;
       border-radius: 8px;
-      height: max-content;
+      height: 90px;
       
       &:first-child {
+        height: 60px;
         font-weight: bold;
       }
 

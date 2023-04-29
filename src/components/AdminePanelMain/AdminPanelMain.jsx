@@ -83,9 +83,9 @@ export const AdminPanelMain = () => {
           return (
             <div className="adminPanelmain__products-item" key={el.id}>
               <img src={el.image || noPhoto} alt="product__image" />
-              <div>{el.ru.title}</div>
-              <div>{el.price}</div>
-              <div>{el.type}</div>
+              <p>{el.ru.title}</p>
+              <p>{el.price}</p>
+              <p>{el.type}</p>
               <button 
                 onClick={() => handleShowModal(el)} 
               >
