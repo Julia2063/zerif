@@ -27,7 +27,7 @@ i18n
     },
     
     backend: {
-      loadPath: 'zerif/locales/{{lng}}/translation.json',
+      loadPath: 'locales/{{lng}}/translation.json',
     },
 
     
