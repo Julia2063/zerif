@@ -15,7 +15,7 @@ i18n
     fallbackLng: {
       'en-US':['en'],
       'ru-RU':['ru'],
-      'az-AZ':['cn'],
+      'az-AZ':['az'],
       default:['ru'],
     },
     debug: true,

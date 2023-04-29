@@ -1,12 +1,12 @@
 export const getRightData = (item, language, key) => {
   switch (language) {
-  case 'en': 
+  case 'en' || 'en-US': 
     return item?.en[key];
   
-  case 'ru': 
+  case 'ru' || 'ru-RU': 
     return item?.ru[key];
   
-  case 'az': 
+  case 'az' || 'az-AZ': 
     return item?.az[key];
   
   default: 

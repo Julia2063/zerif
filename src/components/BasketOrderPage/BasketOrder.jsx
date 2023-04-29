@@ -95,9 +95,15 @@ export const BasketOrder = () => {
     const groupedCart = cartLocalStorage.map((el, i, arr) => {
       return {
         id: el.id, 
-        titleRu: el.ru.title, 
-        titleEn: el.en.title, 
-        titleAZ: el.az.title, 
+        ru: {
+          title: el.ru.title,
+        },
+        en: {
+          title: el.en.title,
+        },
+        az: {
+          title: el.az.title,
+        },
         price: el.price, 
         count: arr.filter(e => e.id === el.id).length,
       };

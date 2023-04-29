@@ -6,6 +6,7 @@ import cross from '../../images/AccountInformation/cross__white.svg';
 import { AppContext } from '../AppProvider';
 
 import noPhoto from '../../images/ProductForm/noPhoto.svg';
+import { getRightData } from '../../helpers/getrRightData';
 
 export const Modal = ({ title, message, handleModal }) => {
 
@@ -28,9 +29,8 @@ export const Modal = ({ title, message, handleModal }) => {
               switch (e[0]) {
               case 'id':
                 return <span key={e[0]}>
-                  {i18n.language === 'ru' && el.titleRu}
-                  {i18n.language === 'en' && el.titleEn}
-                  {i18n.language === 'az' && el.titleAz}
+                  {getRightData(el, i18n.language, 'title')}
+                 
                 </span>;
 
               case 'price':
