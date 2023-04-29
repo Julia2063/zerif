@@ -212,7 +212,7 @@
       font-size: 20px;
       line-height: 21px;
 
-      @include onMobile {
+      @include onTablet {
         height: 40px;
       }
     }
