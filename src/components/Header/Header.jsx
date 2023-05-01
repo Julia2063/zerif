@@ -334,7 +334,7 @@ export const Header = ({ setProductCategory }) => {
           <div className="language select" onClick={() => {
             handleCloseSelectDropdown();
           }}>
-            <p className="language__text">{i18n.language.split('-').slice(0, 1).join('')}</p>
+            <p className="language__text">{i18n.language.split('-')[0]}</p>
             <img 
               src={downIcon} 
               alt="" 
