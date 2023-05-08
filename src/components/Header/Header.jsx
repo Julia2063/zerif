@@ -60,8 +60,12 @@ export const Header = ({ setProductCategory }) => {
 
   const refInp = useRef();
 
-  useOnClickOutside(ref, () => {setQuery(''); setSearch([]); setIsSearch(false);} );
-  useOnClickOutside(refInp, () => {setIsSearch(false);} );
+  useOnClickOutside(ref, () => {
+    setQuery(''); 
+    setSearch([]); 
+    setIsSearch(false);
+  });
+  useOnClickOutside(refInp, () => setIsSearch(false) );
   
   const handleModal = () => {
     setIsModal(!isModal);

@@ -293,7 +293,7 @@ export function createNewProduct(productInfo, file ,files) {
         price: productInfo.price || '', 
         weight: productInfo.weight || '',
         count: productInfo.count || '',
-        path: productInfo.path > 0 ? `${id}-${productInfo.path}` : id,
+        path: productInfo.path.length > 0 ? `${id}-${productInfo.path}` : id,
         type: productInfo.type,
         dateCreating: format(new Date(), 'yyyy-MM-dd HH:mm'),
       };

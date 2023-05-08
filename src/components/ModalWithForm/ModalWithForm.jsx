@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useRef } from 'react';
 
 import cross from '../../images/AccountInformation/cross__white.svg';
+import { useOnClickOutside } from '../../helpers/useOnClickOutside';
+
+
 
 
 export const ModalWithForm = ({
@@ -8,10 +11,14 @@ export const ModalWithForm = ({
   setShowModalWithForm, 
   form,
 }) => {
+
+  const modalRef = useRef();
+
+  useOnClickOutside(modalRef, () => setShowModalWithForm(false) );
   
   return (
     <>
-      <div className="modal">
+      <div className="modal" ref={modalRef}>
         <div className="modal__window">
           <div className="modal__title">
             <div className="modal__between" />
