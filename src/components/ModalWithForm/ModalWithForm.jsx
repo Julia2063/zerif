@@ -18,8 +18,8 @@ export const ModalWithForm = ({
   
   return (
     <>
-      <div className="modal" ref={modalRef}>
-        <div className="modal__window">
+      <div className="modal">
+        <div className="modal__window" ref={modalRef}>
           <div className="modal__title">
             <div className="modal__between" />
             <p>{title}</p>
