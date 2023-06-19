@@ -30,9 +30,7 @@ export const PopularBlock1 = () => {
       <Swiper
         slidesPerView={1}
         spaceBetween={10}
-        pagination={{
-          clickable: true,
-        }}
+       
         breakpoints={{
           1: {
             slidesPerView: 1,
@@ -66,7 +64,7 @@ export const PopularBlock1 = () => {
             <p className="swiperBox1__title">
               {getRightData(product, i18n.language, 'title' )}
             </p>
-            <p className="swiperBox1__price">{`$ ${product.price}.00` }</p>
+            <p className="swiperBox1__price">{`${product.price}.00 AZN` }</p>
           </SwiperSlide>
         ))}
       </Swiper>

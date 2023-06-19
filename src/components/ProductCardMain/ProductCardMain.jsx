@@ -182,7 +182,7 @@ export const ProductCardMain = () => {
               {getRightData(productsApi.find(el => 
                 el.path === slug), i18n.language, 'title')}
             </p>
-            <p className="productCardHeader__price">{`${t('price')} - ${product.price},00 $`}</p>
+            <p className="productCardHeader__price">{`${t('price')} - ${product.price},00 AZN`}</p>
             <p className="productCardHeader__descriptionTitle">{`${t('description')}:`}</p>
             <p className="productCardHeader__description">
               {getRightData(productsApi.find(el => 

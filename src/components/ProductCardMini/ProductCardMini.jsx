@@ -24,7 +24,7 @@ export const ProductCardMini = ({ product, path}) => {
         <p className="productCardMini__productTitle">
           {getRightData(product, i18n.language, 'title')}
         </p>
-        <p className="productCardMini__price">{`$ ${product?.price},00`}</p>
+        <p className="productCardMini__price">{`${product?.price},00 AZN`}</p>
       </div>
     </Link>
   );

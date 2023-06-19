@@ -7,7 +7,7 @@
   background-position: 100% 0;
 
 
-  padding: 50px 120px 66px 120px;
+  padding: 50px 100px 66px;
   
 
     @include onDesktop {
@@ -44,6 +44,13 @@
 
       margin-bottom: 84px;
 
+      @media screen and (max-width: 1350px) {
+        
+          column-gap: 65px;
+          row-gap: 65px;
+        
+      }
+
         @include onDesktop {
         
           column-gap: 60px;
@@ -53,8 +60,8 @@
         @include onTablet {
         display: grid;
       
-        column-gap: 40px;
-        row-gap: 40px;
+        column-gap: 30px;
+        row-gap: 30px;
       }
 
         @include onMobile {

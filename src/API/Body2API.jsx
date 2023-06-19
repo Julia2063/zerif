@@ -1,33 +1,36 @@
+/* eslint-disable max-len */
 export const body2Api = [
   {
     id: 1,
     ru: {
-      title: 'Торт пряничный',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+      title: 'Торт Мандариновый',
+      description: 
+      'Цитрусовый бисквит с маком, цитрусовый крем, дольки мандарина, сливки, печенье',
     },
     en: {
       title: 'gingerbread cake',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
     },
     az: {
-      title: '',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+      title: 'Mandarin',
+      description: 'Sitruslu biskvit mak ilə, sitruslu krem, mandarin dilimləri, qaymaqlı krem,peçenye.',
     },
    
   },
   {
     id: 2,
     ru: {
-      title: 'торт ягоды и шоколад',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+      title: 'Торт бананово-шоколадный',
+      description: 'Печенье с кусочками бельгийского шоколада, бананами, крем-мусс из белого шоколада, ягоды.',
     },
     en: {
-      title: 'cake berries and chocolate',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-    },
-    az: {
       title: '',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+     
+    },
+    az: {
+      title: 'Bananlı-şokoladlı',                       
+      description: 'Belçika şokoladı qırıntıları ilə biskvit, banan, ağ şokoladlı krem-muss, giləmeyvələr.',
     },
   },
 

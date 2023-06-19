@@ -65,7 +65,7 @@ export const PopularBlock3 = () => {
               {getRightData(product, i18n.language, 'title' )}
             </p>
             <p className="swiperBox2__price">
-              {`$ ${product.price}.00` }
+              {`${product.price}.00 AZN` }
             </p>
   
           </SwiperSlide>

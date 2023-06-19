@@ -29,7 +29,7 @@ export const AdminPanelMain = () => {
 
   useEffect(() => {
     db.collection('products').onSnapshot(snapshot => {
-      setProducts(snapshot.docs.map(doc => doc.data()))
+      setProducts(snapshot.docs.map(doc => doc.data()));
     });
   }, [fetchCount]);
 
