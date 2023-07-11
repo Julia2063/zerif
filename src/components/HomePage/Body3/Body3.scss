@@ -103,10 +103,13 @@
 
 .card3 {
  
-  height: 100%;
+ 
   display: flex;
   flex-direction: column;
   align-items: center;
+
+   border-radius: 50%;
+
 
   @include onTablet {
     padding: 0 10px;
@@ -114,17 +117,26 @@
   
   &__photo {
     margin-bottom: 28px;
+    
+    object-fit: cover;
+      height: 280px;
+      width: 280px;
+      border-radius: 50%;
+  
 
     @include onDesktop {
+      height: 240px;
       width: 240px;
     }
 
     @include onTablet {
+      height: 200px;
       width: 200px;
     }
 
     @include onMobile {
       width: 280px;
+      height: 280px;
     }
   }
 

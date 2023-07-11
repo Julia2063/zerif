@@ -1,131 +1,131 @@
 {  
   "navigation": {
-    "main": "главная",
-    "popular": "популярное",
-    "goods": "товары",
-    "contacts": "контакты",
-    "myAccount": "личный кабинет"
+    "main": "Əsas səhifə",
+    "popular": "məşhur",
+    "goods": "mallar",
+    "contacts": "kontaktlar",
+    "myAccount": "Şəxsi sahə"
 
   },
 
   "categories": {
-    "deserts": "десерты",
-    "cakes": "торты",
-    "bakery": "выпечка",
-    "in-chocolate": "клубника и фрукты в шоколаде",
-    "candy-and-chocolate": "конфеты и шоколад",
-    "ice-cream": "мороженое"
+    "deserts": "desert",
+    "cakes": "tortlar",
+    "bakery": "çörəkxana",
+    "in-chocolate": "şokoladda çiyələk və meyvələr",
+    "candy-and-chocolate": "konfet və şokolad",
+    "ice-cream": "Dondurma"
   },
 
   "basket": {
-    "error": "Ошибка корзины",
-    "empty": "Корзина пуста!"
+    "error": "Səbət xətası",
+    "empty": "Səbət boşdur!"
   },
 
   "homePage": {
     
-    "advantages": "преимущества",
-    "why": "почему именно мы",
-    "ownProduction": "у нас Своё производство",
-    "recommended": "рекомендуем",
-    "allTastes": "торты на любой вкус",
-    "author'sRecipes": "авторские рецепты",
-    "author'sDesserts": "авторские десерты",
-    "whatToChoose": "не знаете что выбрать?",
-    "fillForm": "Заполните форму ниже и мы обязательно с Вами свяжемся! "
+    "advantages": "üstünlükləri",
+    "why": "niyə biz",
+    "ownProduction": "öz istehsalımız var",
+    "recommended": "tövsiyə edin",
+    "allTastes": "hər zövqə uyğun tortlar",
+    "author'sRecipes": "müəllif reseptləri",
+    "author'sDesserts": "müəllif desertləri",
+    "whatToChoose": "nə seçəcəyinizi bilmirsiniz?",
+    "fillForm": "Aşağıdakı formanı doldurun və biz sizinlə əlaqə saxlayacağıq!"
   },
 
   "form": {
-    "name": "Имя:",
-    "fillName": "Введите Ваше имя",
-    "phoneNumber": "Телефон:",
-    "fillPhoneNumber": "Введите Ваш телефон",
-    "send": "send"
+    "name": "Adı:",
+    "fillName": "Adınızı daxil edin",
+    "phoneNumber": "Telefon:",
+    "fillPhoneNumber": "Telefonunuzu daxil edin",
+    "send": "göndər"
   },
 
   "footer": {
-    "contacts": "Контакты:",
-    "mail": "Email:",
-    "schedule": "График работы: ",
-    "daily": "ежедневно",
-    "from": "с 09:00 до 21:00"
+    "contacts": "Əlaqələr:",
+    "mail": "E-poçt:",
+    "schedule": "Cədvəl:",
+    "daily": "gündəlik",
+    "from": "09:00-dan 21:00-a kimi"
   },
 
   "popular": {
-    "title": "сладкие новинка",
-    "birthdayCakes": "торты ко дню рождения"
+    "title": "şirin yenilik",
+    "birthdayCakes": "ad günü tortları"
   },
 
   "contacts": {
-    "questions": "Возникли вопросы? Хотите уточнить детали заказа? Свяжитесь с нами:",
-    "feedbackForm": "форма обратной связи:",
-    "name": "имя",
-    "comments": "комментарий"
+    "questions": "Hər hansı sual? Sifarişin təfərrüatlarına aydınlıq gətirmək istəyirsiniz? Bizimlə əlaqə saxlayın:",
+    "feedbackForm": "rəy forması:",
+    "name": "ad",
+    "comments": "şərh"
   },
 
   "account": {
-    "enter": "вход",
-    "register": "регистрация",
-    "password": "пароль",
-    "remember": "запомнить меня",
-    "registration": "зарегистрироваться",
-    "forget": "забыли пароль",
-    "registerError": "Ошибка регистрации",
-    "registerErrorMessage": "Введите свой email и пароль пожалуйста!",
-    "loginError": "Ошибка входа",
-    "resetPasswordError": "Ошибка сброса пароля",
-    "enterEmail": "Введите ваш email пожалуйста!",
-    "resetEmailSent": "Письмо для сброса пароля отправлено! Пожалуйста, проверьте это, подтвердите сброс и повторно войдите в систему! Не забудьте проверить папку \"Спам\"!",
-    "notification": "Уведомление",
-    "error": "Ошибка",
-    "something": "Что-то пошло не так с отправкой сброса пароля",
-    "information": "информация",
-    "orders": "заказы",
-    "logout": "выход",
-    "fullName": "фио",
-    "phoneNumber": "телефон",
-    "address": "адрес доставки",
-    "orderNumber": "номер заказа",
-    "date": "дата",
-    "status": "статус",
-    "orderPrice": "сумма заказа",
-    "actions": "действия",
-    "orderDetails": "Детали заказа",
-    "toChangeEmail": "Чтобы поменять email, войдите заново, пожалуйста!",
-    "somethingTwo": "Что то пошло не так..."
+    "enter": "giriş",
+    "register": "qeydiyyat",
+    "password": "parol",
+    "remember": "Məni xatırla",
+    "registration": "qeydiyyatdan keçin",
+    "forget": "Şifrəni unutmusan",
+    "registerError": "qeydiyyat xətası",
+    "registerErrorMessage": "Zəhmət olmasa e-poçt və şifrənizi daxil edin!",
+    "loginError": "Giriş uğursuz oldu",
+    "resetPasswordError": "Parol sıfırlama xətası",
+    "enterEmail": "E-poçtunuzu daxil edin!",
+    "resetEmailSent": "Parol sıfırlama e-poçtu göndərildi! Zəhmət olmasa bunu yoxlayın, sıfırlamağı təsdiqləyin və yenidən daxil olun! \"Spam\" qovluğunu yoxlamağı unutmayın!",
+    "notification": "Bildiriş",
+    "error": "Xəta",
+    "something": "Parol sıfırlaması göndərilərkən xəta baş verdi",
+    "information": "məlumat",
+    "orders": "sifarişlər",
+    "logout": "çıxış",
+    "fullName": "Tam adı",
+    "phoneNumber": "telefon",
+    "address": "Çatdırılma ünvanı",
+    "orderNumber": "Sifariş nömrəsi",
+    "date": "Tarix",
+    "status": "status",
+    "orderPrice": "sifariş qiyməti",
+    "actions": "tədbirlər",
+    "orderDetails": "Sifariş detalları",
+    "toChangeEmail": "E-poçtunuzu dəyişdirmək üçün yenidən daxil olun!",
+    "somethingTwo": "Nəsə xəta baş verdi..."
   },
 
   "backet": {
-    "cart": "корзина",
-    "product": "Товар:",
-    "delivery": "Доставка",
-    "rates": "Согласно тарифам перевозчика",
-    "all": "всего",
-    "orderError": "Ошибка заказа",
-    "forOrder": "Чтобы сделать заказ, необходимо",
-    "or": "или",
-    "payment": "оплата",
-    "card": "Карта",
-    "cash": "Наличные",
-    "done": "Заказ оформлен",
-    "errorMessage": "Пожалуйста, заполните поля \"Имя\", \"Номер телефона\" и \"Адрес доставки\"! Эти данные необходимы для отправки заказа."
+    "cart": "səbət",
+    "product": "Məhsul:",
+    "delivery": "Çatdırılma",
+    "rates": "Daşıyıcının tariflərinə görə",
+    "all": "Ümumi",
+    "orderError": "Sifariş xətası",
+    "forOrder": "Sifariş vermək üçün sizə lazımdır",
+    "or": "və ya",
+    "payment": "ödəniş",
+    "card": "Xəritə",
+    "cash": "Nağd pul",
+    "done": "Sifariş emal olunur",
+    "errorMessage": "Zəhmət olmasa \"Ad\", \"Telefon nömrəsi\" və \"Çatdırılma ünvanı\" sahələrini doldurun! Sifariş göndərmək üçün bu məlumatlar tələb olunur."
     
   
   },
 
-  "wholeRange": "весь ассортимент",
-  "orderButton": "оформить заказ",
-  "socialMedia": "социальные сети:",
-  "price": "цена",
-  "description": "описание",
-  "weight": "вес",
-  "kg": "кг",
-  "taste": "вкус",
-  "addToBasket": "Добавить в корзину",
-  "feedback": "отзывы",
-  "details": "подробности",
-  "moreInformation": "дополнительная информация",
-  "similar": "похожие товары",
-  "added": "Товар добавлен в корзину",
-  "goToBasket": "Перейти в корзину"
+  "wholeRange": "bütün diapazon",
+  "orderButton": "yoxla",
+  "socialMedia": "sosial Mediya:",
+  "price": "qiymət",
+  "description": "təsviri",
+  "weight": "çəki",
+  "kg": "Kiloqram",
+  "taste": "dadmaq",
+  "addToBasket": "Səbət əlavə et",
+  "feedback": "rəylər",
+  "details": "təfərrüatlar",
+  "moreInformation": "əlavə informasiya",
+  "similar": "oxşar məhsullar",
+  "added": "Məhsul səbətə əlavə edildi",
+  "goToBasket": "Səbətə gedin"
 }
