@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/zerif/static/css/main.e0503f6f.css",
-    "main.js": "/zerif/static/js/main.e184e0b7.js",
+    "main.css": "/zerif/static/css/main.ab29fda8.css",
+    "main.js": "/zerif/static/js/main.ed5b84da.js",
     "static/js/787.044d8b7e.chunk.js": "/zerif/static/js/787.044d8b7e.chunk.js",
     "static/media/formPieNew2.png": "/zerif/static/media/formPieNew2.8f4ee826acf2f4f898bf.png",
     "static/media/GradientBody3Desc.png": "/zerif/static/media/GradientBody3Desc.db564e84eb1590b2ed95.png",
@@ -33,16 +33,13 @@
     "static/media/georgia.ttf": "/zerif/static/media/georgia.7eb0e3cec9d41a50efd7.ttf",
     "static/media/trebuchetms.ttf": "/zerif/static/media/trebuchetms.9f1aa0037c24e0f6935e.ttf",
     "static/media/honeyPie.png": "/zerif/static/media/honeyPie.fd015a3bbc2f3f4f5915.png",
-    "static/media/5.png": "/zerif/static/media/5.0c0e3d042e5bcf09af1c.png",
-    "static/media/2.png": "/zerif/static/media/2.0c0e3d042e5bcf09af1c.png",
-    "static/media/8.png": "/zerif/static/media/8.fc41d05a50398151e0b7.png",
-    "static/media/9.png": "/zerif/static/media/9.5779804575f97712ad25.png",
     "static/media/chocoPie.png": "/zerif/static/media/chocoPie.b6a1d0b4c883a2188d49.png",
-    "static/media/1.png": "/zerif/static/media/1.0c205443a8d500e70836.png",
-    "static/media/7.png": "/zerif/static/media/7.4aad68ebda14becf7845.png",
-    "static/media/4.png": "/zerif/static/media/4.0c205443a8d500e70836.png",
     "static/media/fone.jpg": "/zerif/static/media/fone.21a33c5d144190a6860d.jpg",
     "static/media/fruitPie.png": "/zerif/static/media/fruitPie.3c85522917856a1412aa.png",
+    "static/media/2.png": "/zerif/static/media/2.0c0e3d042e5bcf09af1c.png",
+    "static/media/1.png": "/zerif/static/media/1.0c205443a8d500e70836.png",
+    "static/media/5.png": "/zerif/static/media/5.0c0e3d042e5bcf09af1c.png",
+    "static/media/4.png": "/zerif/static/media/4.0c205443a8d500e70836.png",
     "static/media/6.png": "/zerif/static/media/6.418c7dcc99a501f3d130.png",
     "static/media/watsapIcon.svg": "/zerif/static/media/watsapIcon.cdb21ec3c72438f558f67877d96628b0.svg",
     "static/media/viberIcon.svg": "/zerif/static/media/viberIcon.1c711d79193de0ff183e8021504f55f4.svg",
@@ -67,12 +64,12 @@
     "static/media/upIcon.svg": "/zerif/static/media/upIcon.f0c879dc4eada967a4396651329ad3f2.svg",
     "static/media/downIcon.svg": "/zerif/static/media/downIcon.03f4ac5120a63ce59cb8a51958771e10.svg",
     "static/media/check.svg": "/zerif/static/media/check.70df0e1628ffdfd6cee5.svg",
-    "main.e0503f6f.css.map": "/zerif/static/css/main.e0503f6f.css.map",
-    "main.e184e0b7.js.map": "/zerif/static/js/main.e184e0b7.js.map",
+    "main.ab29fda8.css.map": "/zerif/static/css/main.ab29fda8.css.map",
+    "main.ed5b84da.js.map": "/zerif/static/js/main.ed5b84da.js.map",
     "787.044d8b7e.chunk.js.map": "/zerif/static/js/787.044d8b7e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e0503f6f.css",
-    "static/js/main.e184e0b7.js"
+    "static/css/main.ab29fda8.css",
+    "static/js/main.ed5b84da.js"
   ]
 }
