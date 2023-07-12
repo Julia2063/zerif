@@ -24,7 +24,7 @@ export const Body3 = () => {
       <p className="body3__title2">{t('homePage.author\'sDesserts')}</p>
 
       <div className="container3">
-        {productsApi.length > 0 && productsApi.slice(0, 10).map(card => (
+        {productsApi.length > 0 && productsApi.slice(0, 9).map(card => (
           <div className="card3" key={card.id}>
           
             <img
