@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/zerif/static/css/main.ab29fda8.css",
-    "main.js": "/zerif/static/js/main.ed5b84da.js",
+    "main.js": "/zerif/static/js/main.72641bbf.js",
     "static/js/787.044d8b7e.chunk.js": "/zerif/static/js/787.044d8b7e.chunk.js",
     "static/media/formPieNew2.png": "/zerif/static/media/formPieNew2.8f4ee826acf2f4f898bf.png",
     "static/media/GradientBody3Desc.png": "/zerif/static/media/GradientBody3Desc.db564e84eb1590b2ed95.png",
@@ -65,11 +65,11 @@
     "static/media/downIcon.svg": "/zerif/static/media/downIcon.03f4ac5120a63ce59cb8a51958771e10.svg",
     "static/media/check.svg": "/zerif/static/media/check.70df0e1628ffdfd6cee5.svg",
     "main.ab29fda8.css.map": "/zerif/static/css/main.ab29fda8.css.map",
-    "main.ed5b84da.js.map": "/zerif/static/js/main.ed5b84da.js.map",
+    "main.72641bbf.js.map": "/zerif/static/js/main.72641bbf.js.map",
     "787.044d8b7e.chunk.js.map": "/zerif/static/js/787.044d8b7e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ab29fda8.css",
-    "static/js/main.ed5b84da.js"
+    "static/js/main.72641bbf.js"
   ]
 }
