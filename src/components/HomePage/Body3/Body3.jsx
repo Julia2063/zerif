@@ -24,7 +24,7 @@ export const Body3 = () => {
       <p className="body3__title2">{t('homePage.author\'sDesserts')}</p>
 
       <div className="container3">
-        {productsApi.slice(0, 10).map(card => (
+        {productsApi.length > 0 && productsApi.slice(0, 10).map(card => (
           <div className="card3" key={card.id}>
           
             <img
@@ -47,7 +47,7 @@ export const Body3 = () => {
       <div className="container3Mob">
         <div className="container3Mob__card">
           <img
-            src={productsApi[0].image}
+            src={productsApi[0]?.image}
             alt=""
             className="card3__photo"
           />
